@@ -1,0 +1,144 @@
+{% extends "layout.njk" %}
+
+{% block header %}
+
+  {% include "partials/filters/_tag.njk" %}
+
+  <div data-controller="stream status" data-action="stream:update->status#update">
+    <div class="container-fluid content-header py-3" data-controller="filters" data-filters-target-value="episodes" data-filters-selected-template-id="selected" data-filters-tag-item-template-id="tag">
+      <div class="d-md-flex">
+        <div class="d-flex flex-md-grow-1">
+          {% include "partials/_stream.njk" %}
+        </div>
+
+        <div class="d-flex pt-3 p-md-0">
+          <a class="nav-link toggle-link fs-6 pe-3 flexgrow-1" data-bs-toggle="collapse" href="#filter-controls" role="button" aria-expanded="false" aria-controls="collapseexample">
+            Your Preferences
+          <span class="filters-selected-status" data-filters-target="status"></span>
+            <span class="toggle-link__icon"></span>
+          </a>
+        </div>
+
+        <div class="d-flex pt-3 p-md-0">
+          <a class="nav-link toggle-link" data-bs-toggle="collapse" href="#stream-detail" data-action="click->status#detail" role="button" aria-expanded="false" aria-controls="collapseexample">
+            <span class="filters-selected-status" data-filters-target="status"></span>
+            <span class="toggle-link__icon"></span>
+            <p data-status-target="title" class="mb-0">Currently offline</p>
+          </a>
+        </div>
+      </div>
+
+      <div class="collapse" id="filter-controls" data-filters-target="panel">
+        <div class="filters">
+          <div class="d-md-flex flex-row">
+            <div class="filters-header">
+
+              <ul class="nav nav-fill" data-filters-target="nav"></ul>
+
+              <div class="groups"><ul data-filters-target="groups"></ul></div>
+
+              <div class="selected" data-filters-target="selected">
+                <p class="filters-selected--none">No preferences selected</p>
+
+                <div class="d-flex">
+                  <button class="btn btn--link filters-selected--clear d-none" data-action="click->filters#clear">clear preferences</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="collapse toggle-panel pt-3" id="stream-detail">
+        <div class="row">
+          <div class="col-6">
+            <h5 class="highlight">Now</h5>
+
+            <img src="" data-status-target="currentimage" class="float-start pe-2 pb-1"/>
+            <h5 data-status-target="currenttitle"></h5>
+            <span data-status-target="currentelapsed"></span>
+          </div>
+
+          <div class="col-6">
+            <h5>Next</h5>
+
+            <img src="" data-status-target="nextimage" class="float-start pe-2 pb-1"/>
+            <span data-status-target="nexttitle"></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="container-fluid">
+
+    <h5>&gt;&gt;&gt; Click play icon above to start stream</h5>
+    <p class="lead mt-3 mb-4">Musical selections and discovery streamed for enlightened listening. You can curate your own content to suit your musical preferences using the drop down menu above.</p>
+
+    <div class="row shows my-3">
+      <div class="col-12 col-lg-6">
+        <div class="card blog-post mb-3">
+          <div class="row g-0">
+            <div class="col-12 g-0">
+              <div class="card-body p-0">
+                <img src="images/shows/timetogetdown-latin.png" class="img-fluid float-lg-start pe-3 mb-3 mb-lg-0" alt="Pattern Radio live"/>
+                <h3>Time To Get Down</h3>
+                <h5>Música Disco Latina</h5>
+                <p class="card-text">Disco and latin music go hand in hand, its all about letting it go on the dance floor! Tune in for the latest instalment of the monthly show presented by Alex Bowen. This month playing a selection of the finest latin infused disco tracks from 1970s to modern day to get your weekend up and running in suitable fashion.</p>
+
+                <p class="card-text">6-7pm Friday 20th October</p>
+                {# <p class="card-text">We are very excited to announce that Tropical Disco will be streaming live from Kanteena in Lancaster this Friday on Pattern Radio.</p>
+                <p class="card-text">Chris Holt will be joined by Murph and Subtrak DJs bringing Tropical Disco's sunshine sounds to Pattern Radio's webwaves live for 4 hours. Tropical Disco has been a force of nature with it's monthly shows on Pattern Radio and this is sure to take things up a notch.</p>
+                <p class="card-text">Some of the broadcast will be available for playback, but not all - so miss at your peril!</p> #}
+                {# <p class="card-text">
+                  <small class="text-body-secondary">Details on how you can access channels will be made available nearer the time.</small>
+                </p> #}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-lg-6 d-none d-md-inline">
+        <div class="row shows pb-2" data-controller="blogs" data-blogs-target="items" data-blogs-show-item-template-id="blog" data-blogs-items-value="1" data-blogs-offset-value="1">
+          {% include "templates/_blog.njk" %}
+        </div>
+      </div>
+    </div>
+
+    <div class="row my-3">
+      <div class="col-12 mb-5">
+        <div class="order-lg-1 episodes" id="episodes" data-controller="episodes" data-episodes-show-item-template-id="episode" data-episodes-filters-value="true" data-episodes-items-value="6" data-episodes-show-tags-value="true" data-episodes-search-value="true">
+          <div class="heading d-flex" data-episodes-target="heading">
+            <h2 class="mb-3" data-episodes-target="heading">Recent Shows</h2>
+            <button data-action="click->episodes#clearSearch" class="d-none">clear</button>
+          </div>
+
+          <h5>Press play button to listen</h5>
+          <div class="row shows" data-episodes-target="items"></div>
+          <a data-controller="navigation" data-action="click->navigation#navigate" class="nav-link" href="/browse">Browse all shows</a>
+        </div>
+
+        {% include "templates/_episode.njk" %}
+      </div>
+      
+      <div class="col-12 mb-5">
+        <div data-controller="schedule" data-schedule-show-item-template-id="schedule">
+          <div class="row shows" data-schedule-target="shows">
+            <h2 class="mb-3">Upcoming Shows</h2>
+            <h5>New shows to be streamed live soon</h5>
+          </div>
+
+          {% include "templates/_schedule.njk" %}
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

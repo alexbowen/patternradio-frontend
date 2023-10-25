@@ -1,0 +1,89 @@
+{% extends "layout.njk" %}
+
+{% block header %}
+
+  <div data-controller="stream status" data-action="stream:update->status#update">
+    <div class="container-fluid content-header py-3">
+      <div class="d-md-flex">
+        <div class="d-flex flex-md-grow-1">
+          {% include "partials/_stream.njk" %}
+        </div>
+        <div class="d-flex pt-3 p-md-0">
+          <a class="nav-link toggle-link" data-bs-toggle="collapse" href="#stream-detail" data-action="click->status#detail" role="button" aria-expanded="false" aria-controls="collapseexample">
+
+            <span class="filters-selected-status" data-filters-target="status"></span>
+            <span class="toggle-link__icon"></span>
+            <p data-status-target="title" class="mb-0">Currently offline</p>
+          </a>
+        </div>
+      </div>
+
+      <div class="collapse toggle-panel pt-3" id="stream-detail">
+        <div class="row">
+        <div class="col-6">
+          <h5 class="highlight">Now</h5>
+          
+          <img src="" data-status-target="currentimage" class="float-start pe-2 pb-1"/>
+          <h5 data-status-target="currenttitle"></h5>
+          <span data-status-target="currentelapsed"></span>
+        </div>
+
+        <div class="col-6">
+          <h5>Next</h5>
+
+          <img src="" data-status-target="nextimage" class="float-start pe-2 pb-1"/>
+          <span data-status-target="nexttitle"></span>
+        </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block content %}
+
+  <div class="container-fluid">
+    <h5>&gt;&gt;&gt; Click play icon above to start stream</h5>
+    <p class="lead mt-3 mb-4">Musical selections and discovery streamed for enlightened listening.</p>
+
+    <h2>Regular Shows</h2>
+    <div class="row shows">
+      {% for item in data %}
+
+      <div class="col-12 col-md-6 col-xl-4 card show pb-4">
+
+        <div class="row g-0">
+          <div class="col-md-12">
+            <img src="{{ item.image }}" class="img-fluid float-start pe-3" alt="{{ item.name }}">
+            <h3 class="title m-0 p-0">
+              {% if item.external %}
+                <a href="{{ item.external }}" class="nav-link" target="_blank">{{ item.title }}</a>
+              {% else %}
+                <a data-controller="navigation" data-action="click->navigation#navigate" class="nav-link" href="/show/{{ item.id }}">{{ item.title }}</a></h3>
+              {% endif %}
+            <h4 class="host m-0 pt-1 fs-6">{{ item.subtitle }}</h4>
+            <p class="when m-0 pt-2">{{ item.about }}</p>
+          </div>
+
+          <div class="card-body">
+
+            {% if item.external %}
+              <a href="{{ item.external }}" class="nav-link" target="_blank">View shows</a>
+            {% else %}
+              <a data-controller="navigation" data-action="click->navigation#navigate" class="nav-link" href="/show/{{ item.id }}">View shows</a>
+            {% endif %}
+
+            <div class="social-toolbar">
+              {% include "partials/_social-toolbar.njk" %}
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      {% endfor %}
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,9 @@
+<ul class="list-group list-group-horizontal d-flex align-items-baseline">
+  {% for social in item.social.channels %}
+  <li class="list-group-item">
+    <a href="{{ social.link }}" target="_blank">
+      {% include "partials/social/" + (social.channel) + ".njk" ignore missing %}
+    </a>
+  </li>
+  {% endfor %}
+</ul>

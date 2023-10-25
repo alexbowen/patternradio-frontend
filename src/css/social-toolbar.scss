@@ -1,0 +1,22 @@
+.social-toolbar {
+  .list-group {
+    line-height: 1;
+
+    .list-group-item {
+      border: none;
+      background-color: transparent;
+
+      &:first-child {
+        padding-left: 0;
+      }
+
+      a {
+        color: #aaa;
+
+        &:hover {
+          color: #F49D37;
+        }
+      }
+    }
+  }
+}

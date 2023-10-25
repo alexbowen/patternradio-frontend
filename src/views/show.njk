@@ -1,0 +1,93 @@
+{% extends "layout.njk" %}
+
+{% block header %}
+
+  <div data-controller="stream status" data-action="stream:update->status#update">
+    <div class="container-fluid content-header py-3">
+      <div class="d-md-flex">
+        <div class="d-flex flex-md-grow-1">
+          {% include "partials/_stream.njk" %}
+        </div>
+        <div class="d-flex pt-3 p-md-0">
+          <a class="nav-link toggle-link" data-bs-toggle="collapse" href="#stream-detail" data-action="click->status#detail" role="button" aria-expanded="false" aria-controls="collapseexample">
+
+            <span class="filters-selected-status" data-filters-target="status"></span>
+            <span class="toggle-link__icon"></span>
+            <p data-status-target="title" class="mb-0">Currently offline</p>
+          </a>
+        </div>
+      </div>
+
+      <div class="collapse toggle-panel pt-3" id="stream-detail">
+        <div class="row">
+          <div class="col-6">
+            <h5 class="highlight">Now</h5>
+            <img src="" data-status-target="currentimage" class="float-start pe-2 pb-1"/>
+            <h5 data-status-target="currenttitle"></h5>
+            <span data-status-target="currentelapsed"></span>
+          </div>
+
+          <div class="col-6">
+            <h5>Next</h5>
+            <img src="" data-status-target="nextimage" class="float-start pe-2 pb-1"/>
+            <span data-status-target="nexttitle"></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block content %}
+  <div data-controller="episode" data-show-id-value="{{ item.id }}">
+    <div class="container-fluid">
+      <h5>&gt;&gt;&gt; Click play icon above to start stream</h5>
+      <p class="lead mt-3 mb-4">Musical selections and discovery streamed for enlightened listening.</p>
+
+      <div class="row shows pb-4">
+        <div class="col-12 col-md-6 card show">
+          <h2 class="mb-3">{{ item.title }}</h2>
+          <div class="row g-0">
+            <div class="col-md-12">
+              <img src="/{{ item.image }}" class="img-fluid float-start pe-3 pb-1" alt="{{ item.name }}">
+              <h4 class="host m-0 p-0">{{ item.subtitle }}</h4>
+              <p class="when m-0 p-0 fs-6">{{ item.about }}</p>
+              <div class="social-toolbar">
+                {% include "partials/_social-toolbar.njk" %}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="episodes" id="episodes" data-action="episodes:loaded->pagination#update pagination:paginate->episodes#paginate" data-controller="episodes pagination" data-episodes-show-item-template-id="episode" data-episodes-tag-item-template-id="tag" data-episodes-items-value="12" data-episodes-query-value="{{ item.title }}" data-episodes-types-value="true" data-episodes-search-value="true" data-episodes-filters-value="true">
+
+      <div class="container-fluid pb-2">
+        <div class="heading d-flex" data-episodes-target="heading">
+          <h2>Shows Available For Playback</h2>
+          <button data-action="click->episodes#clearsearch" class="d-none">clear</button>
+        </div>
+        <div class="pagination d-flex flex-wrap flex-md-nowrap">
+          <div data-pagination-target="stats" class="flex-grow-1"></div>
+          <div data-pagination-target="control" data-action="click->pagination#paginate"></div>
+        </div>
+        <div class="row shows" data-episodes-target="items"></div>
+        <a class="nav-link" href="/shows" data-controller="navigation" data-action="click->navigation#navigate">Back to all shows</a>
+      </div>
+
+    </div>
+
+    {% include "templates/_episode.njk" %}
+
+    <div class="container-fluid mt-4">
+      <h2>Relevant Reading</h2>
+      {% set query = [item.id, item.tags] | join(",") %}
+      <div class="row shows pb-4" data-controller="blogs" data-blogs-target="items" data-blogs-overidden-value="true" data-blogs-show-item-template-id="blog" data-blogs-offset-value="0" data-blogs-show-tags-value="true" data-blogs-items-value="12" data-blogs-query-value="{{ query }}" data-blogs-search-value="true">
+        {% include "templates/_blog.njk" %}
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
