@@ -18,7 +18,7 @@ const BlogsController = class extends Controller {
   storage = new Storage
 
   // static host = 'http://localhost:5000';
-  static host = 'https://pattern-radio-api-e6b914080fe2.herokuapp.com';
+  static host = 'https://patternradio-api-e873df4d91a5.herokuapp.com';
 
   connect() {
     const query = this.queryValue ? this.queryValue : '';
