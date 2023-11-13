@@ -1,7 +1,7 @@
 import { Controller } from '@hotwired/stimulus';
 
 const ScheduleController = class extends Controller {
-  static targets = ['shows'];
+  static targets = ['episodes'];
 
   static exclude = ['Off Air', 'On Air Soon', 'On Air Electronic', 'On Air Eclectic', 'On Air Latest', 'On Air Organic', 'On Air Funky'];
 
@@ -33,7 +33,7 @@ const ScheduleController = class extends Controller {
       let img = clone.querySelector('img');
       img.src = a.playlist.artwork;
 
-      this.showsTarget.appendChild(clone);
+      this.episodesTarget.appendChild(clone);
     });
   }
 

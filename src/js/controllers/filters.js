@@ -39,7 +39,10 @@ const FiltersController = class extends Controller {
       "Soulful",
       "Eclectic",
       "Funky",
-      "Club"
+      "Club",
+      "Mix",
+      "Vinyl Only",
+      "Discovery"
     ].sort(),
     "origin": [
       "Brazil",
@@ -95,6 +98,7 @@ const FiltersController = class extends Controller {
 
   createGroup(filters, name) {
     const templateId = this.data.get('tagItemTemplateId');
+
     const template = document.getElementById(templateId);
 
     filters.forEach(a => {
@@ -145,13 +149,13 @@ const FiltersController = class extends Controller {
     
     this.selected = this.storage.getItem('filters').length ? this.storage.getItem('filters').split(',') : [];
  
-    if (!this.selected.length) {
-      this.selectedTarget.querySelector('.filters-selected--none').classList.remove('d-none');
-      this.selectedTarget.querySelector('.filters-selected--clear').classList.add('d-none');
-    } else {
-      this.selectedTarget.querySelector('.filters-selected--none').classList.add('d-none');
-      this.selectedTarget.querySelector('.filters-selected--clear').classList.remove('d-none');
-    }
+    // if (!this.selected.length) {
+    //   this.selectedTarget.querySelector('.filters-selected--none').classList.remove('d-none');
+    //   this.selectedTarget.querySelector('.filters-selected--clear').classList.add('d-none');
+    // } else {
+    //   this.selectedTarget.querySelector('.filters-selected--none').classList.add('d-none');
+    //   this.selectedTarget.querySelector('.filters-selected--clear').classList.remove('d-none');
+    // }
 
     document.querySelectorAll(`.groups ul li`).forEach(el => {
       el.classList.remove('selected');
@@ -181,7 +185,7 @@ const FiltersController = class extends Controller {
 
   filter() {
     const targetController = this.application.getControllerForElementAndIdentifier(document.getElementById(this.targetValue), this.targetValue);
-    targetController.filter();
+    targetController? targetController.filter() : false;
   }
 
   formatDate(d) {

@@ -1,0 +1,42 @@
+<template id="episode-latest">
+
+  <div class="card playable episode mb-3 carousel-item active" data-bs-interval="4000">
+    <div class="row pt-0 g-0">
+      <div class="col-12">
+        <div class="image-container float-start m-3 mb-lg-0" data-action="click->radio#play">
+          <div class="likes">
+            <span class="heart"></span>
+            <span class="count"></span>
+          </div>
+          <img src="images/new/online2.jpg" class="img-fluid" alt="..." width="200" height="200"/>
+
+          <div class="playable-button">
+
+            <span class="button">
+              <button></button>
+            </span>
+          </div>
+
+          <div class="badge">
+            <span class="time"></span>
+          </div>
+        </div>
+
+        <div class="card-body">
+          <h5 class="card-title fs-3">
+            <a data-controller="navigation" data-action="click->navigation#navigate"  href="#" class="title nav-link" style="color:#1c1c1c"></a>
+            <a data-controller="navigation" data-action="click->navigation#navigate"  href="#" class="detail nav-link" style="color:#1c1c1c"></a>
+          </h5>
+          <p class="card-text host"></p>
+
+          <ul class="tags ps-0" data-action="click->episodes#tagSearch"></ul>
+
+                    <p class="card-text">
+            <a data-controller="navigation" data-action="click->navigation#navigate"  href="#" class="detail nav-link" style="color:#1c1c1c">More detail</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</template>

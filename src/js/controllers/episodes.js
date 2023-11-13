@@ -10,7 +10,8 @@ const EpisodesController = class extends Controller {
     showTags: Boolean,
     types: Boolean,
     filters: Boolean,
-    query: String
+    query: String,
+    title: String
   }
 
   static types = [
@@ -61,14 +62,19 @@ const EpisodesController = class extends Controller {
       if (this.searchValue === true || this.queryValue) {
         this.itemsTarget.innerHTML = '';
         if (data.items.length && query.length && this.queryValue.length === 0) {
-          this.headingTarget.querySelector('h2').innerHTML = `Results Matching "${query}"`;
+          this.headingTarget.querySelector('h3').innerHTML = `Results Matching "${query}"`;
           this.headingTarget.querySelector('button').classList.remove('d-none');
         } else if (data.items.length === 0 && query.length) {
-          this.headingTarget.querySelector('h2').innerHTML = `No Results Matching "${query}"`;
+          this.headingTarget.querySelector('h3').innerHTML = `No Results Matching "${query}"`;
           this.headingTarget.querySelector('button').classList.remove('d-none');
         } else {
           const applied = filters ? '<span>(preferences applied)</span>' : '';
-          this.headingTarget.querySelector('h2').innerHTML = `Shows Available For Playback ${applied} `;
+          this.headingTarget.querySelector('h3').innerHTML = `Shows Available For Playback ${applied} `;
+          this.headingTarget.querySelector('button').classList.add('d-none');
+        }
+
+        if (this.titleValue) {
+          this.headingTarget.querySelector('h3').innerHTML = this.titleValue;
           this.headingTarget.querySelector('button').classList.add('d-none');
         }
       }
@@ -90,8 +96,13 @@ const EpisodesController = class extends Controller {
     const templateId = this.data.get('showItemTemplateId');
     const template = document.getElementById(templateId);
 
-    this.items.forEach(a => {
+    this.items.forEach((a, i) => {
+      console.log(a)
       let clone = template.content.cloneNode(true);
+
+      if (i > 0 && clone.querySelector('.episode').classList.contains('active')) {
+        clone.querySelector('.episode').classList.remove('active');
+      }
 
       let parts = a.name.split(' - ');
       let title = clone.querySelector('.title');
@@ -102,8 +113,13 @@ const EpisodesController = class extends Controller {
       host.innerHTML = parts[1];
 
       if (parts[2]) {
-        let detail = clone.querySelector('.detail');
-        detail.innerHTML = parts[2];
+        let detail = clone.querySelectorAll('.detail');
+        detail.forEach((d) => {
+          if (!d.innerHTML) {
+            d.innerHTML = parts[2];
+          }
+          d.href = `/episode/${a.slug}`;
+        });
       }
 
       let likes = clone.querySelector('.likes');
@@ -123,7 +139,7 @@ const EpisodesController = class extends Controller {
       img.src = a.pictures.large;
 
       let button = clone.querySelector('.playable');
-      button.dataset.url = `https://www.mixcloud.com/widget/iframe/?hide_cover=1&autoplay=1&feed=${a.key}`;
+      button.dataset.url = a.key;
 
       let tags = clone.querySelector('.tags');
       tags.classList.add('mt-1');
@@ -144,7 +160,7 @@ const EpisodesController = class extends Controller {
         tags.appendChild(tag);
       });
 
-      let content = this.element.querySelector('.row')
+      let content = this.element.querySelector('.episodes')
       content.appendChild(clone);
       this.element.style.display = 'block';
     });

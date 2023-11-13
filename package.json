@@ -9,7 +9,7 @@
   "scripts": {
     "start": "node index.js",
     "test": "node test.js",
-    "sass": "nodemon --watch src/css/new --ext scss build.sass.js",
+    "sass": "nodemon --watch src/css --ext scss build.sass.js",
     "build:dev": "nodemon --watch src/js esbuild.config.mjs",
     "build": "node esbuild.config.mjs"
   },

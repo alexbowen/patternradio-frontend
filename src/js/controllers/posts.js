@@ -1,7 +1,7 @@
 import { Controller } from '@hotwired/stimulus';
 import Storage from '../storage';
 
-const BlogsController = class extends Controller {
+const PostsController = class extends Controller {
   static targets = ['title', 'content', 'published', 'items'];
 
   static values = {
@@ -26,7 +26,7 @@ const BlogsController = class extends Controller {
   }
 
   request(limit, offset, query = '') {
-    let url = `${BlogsController.host}/api/`;
+    let url = `${PostsController.host}/api/`;
 
     if (this.searchValue === true && query.length) {
       url += `search/posts/?limit=${limit}&offset=${offset}&q=${query}`;
@@ -113,4 +113,4 @@ const BlogsController = class extends Controller {
   }
 };
 
-export default BlogsController;
+export default PostsController;

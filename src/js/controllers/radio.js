@@ -4,7 +4,7 @@ const RadioController = class extends Controller {
   static targets = ['player'];
 
   connect() {
-    this.broadcastPlayer('https://embed.radio.co/player/b84cf70.html');
+    this.broadcastPlayer('https://www.mixcloud.com/widget/iframe/?hide_cover=1&feed=/patternradio/sem-titulo-ines-duarte-21/');
   }
 
   play(e) {
@@ -19,13 +19,46 @@ const RadioController = class extends Controller {
   }
 
   broadcastPlayer(src) {
+
+    // if (!this.playerTarget.innerHTML) {
     this.playerTarget.innerHTML = "";
     const player = document.createElement('iframe');
     player.height = "120";
     player.width = "100%";
     player.allow = "autoplay";
-    this.playerTarget.insertAdjacentElement('beforeend', player);
     player.src = src;
+    this.playerTarget.insertAdjacentElement('beforeend', player);
+    // } else {
+    //   const playerEl = this.element.querySelector('iframe');
+    //   // playerEl.src = `https://www.mixcloud.com/widget/iframe/?hide_cover=1&autoplay=1&feed=${src}`;
+    //   let player;
+
+    //     player = Mixcloud.PlayerWidget(playerEl);
+
+    //     console.log('pl', player, playerEl)
+
+    //   //   player.events.error.on(function(e) {
+    //   //     console.log('e', e)
+  
+    //   // });
+
+    //     player.ready.then(function(p) {
+    //       console.log('p', p, src)
+    //       player.load(src, true).then((x) => {
+    //         console.log('play', player)
+    //         // player.play();
+    //         playerEl.click()
+    //       })
+    //   });
+
+
+
+
+
+      
+    //   // player.src = src;
+    // }
+    
   }
 };
 
