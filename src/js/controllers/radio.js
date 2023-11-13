@@ -4,7 +4,7 @@ const RadioController = class extends Controller {
   static targets = ['player'];
 
   connect() {
-    this.broadcastPlayer('https://www.mixcloud.com/widget/iframe/?hide_cover=1&feed=/patternradio/sem-titulo-ines-duarte-21/');
+    this.broadcastPlayer('https://embed.radio.co/player/b84cf70.html');
   }
 
   play(e) {
