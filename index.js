@@ -58,22 +58,13 @@ app
   }
   res.render('show.njk', data)
 })
-.get('/pages/episode/:id', (req, res) => {
+.get('/pages/blog', (req, res) => {
   let  data = {
-    page: 'episode',
+    page: 'blog',
     layout:  'layout.njk',
-    title: 'Broadcast Shows',
-    item: req.params.id
+    title: 'Blog'
   }
-  res.render('episode.njk', data)
-})
-.get('/pages/posts', (req, res) => {
-  let  data = {
-    page: 'posts',
-    layout:  'layout.njk',
-    title: 'Posts'
-  }
-  res.render('posts.njk', data)
+  res.render('blog.njk', data)
 })
 .get('/pages/about', (req, res) => {
   let  data = {
