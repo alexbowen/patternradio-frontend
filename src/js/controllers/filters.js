@@ -2,7 +2,7 @@ import { Controller } from '@hotwired/stimulus';
 import Storage from '../storage';
 
 const FiltersController = class extends Controller {
-  static targets = ['nav', 'selected', 'groups', 'status', 'panel'];
+  static targets = ['nav', 'selected', 'groups', 'status', 'panel', 'indicator'];
 
   static values = {
     target: String
@@ -10,15 +10,12 @@ const FiltersController = class extends Controller {
 
   static filters = {
     "genre" : [
-      "Afrobeat",
       "Blues",
       "Broken Beat",
       "Disco",
-      "Downtempo",
       "Dub",
       "Electro",
       "Electronica",
-      "Folk",
       "Funk",
       "Hip Hop",
       "Jazz",
@@ -26,27 +23,24 @@ const FiltersController = class extends Controller {
       "Punk",
       "Reggae",
       "Rock",
-      "Salsa",
       "Soul",
       "Techno",
       "World"
     ].sort(),
     "style": [
+      "Afro",
+      "Latin",
       "Fusion",
+      "Modern",
+      "Progressive",
+      "Balearic",
       "Retro",
       "Deep",
+      "Downtempo",
       "Psychedelic",
-      "Soulful",
-      "Eclectic",
       "Funky",
-      "Club"
-    ].sort(),
-    "origin": [
-      "Brazil",
-      "Africa",
-      "Detroit",
-      "Chicago",
-      "Latin"
+      "Club",
+      "Roots"
     ].sort()
   };
 
@@ -81,20 +75,9 @@ const FiltersController = class extends Controller {
     this.updateFilters();
   }
 
-  // get selected() {
-  //   if (!this.storage.getItem('filters')) {
-  //     this.storage.setItem('filters', '');
-  //   }
-    
-  //   return this.storage.getItem('filters').length ? this.storage.getItem('filters').split(',') : [];
-  // }
-
-  // set selected(selected) {
-  //   this.storage.setItem('filters', selected.toString());
-  // }
-
   createGroup(filters, name) {
     const templateId = this.data.get('tagItemTemplateId');
+
     const template = document.getElementById(templateId);
 
     filters.forEach(a => {
@@ -144,14 +127,6 @@ const FiltersController = class extends Controller {
     }
     
     this.selected = this.storage.getItem('filters').length ? this.storage.getItem('filters').split(',') : [];
- 
-    if (!this.selected.length) {
-      this.selectedTarget.querySelector('.filters-selected--none').classList.remove('d-none');
-      this.selectedTarget.querySelector('.filters-selected--clear').classList.add('d-none');
-    } else {
-      this.selectedTarget.querySelector('.filters-selected--none').classList.add('d-none');
-      this.selectedTarget.querySelector('.filters-selected--clear').classList.remove('d-none');
-    }
 
     document.querySelectorAll(`.groups ul li`).forEach(el => {
       el.classList.remove('selected');
@@ -161,7 +136,8 @@ const FiltersController = class extends Controller {
       document.querySelector(`.groups ul li[data-filter="${a}"]`).classList.add('selected');
     });
 
-    this.statusTarget.innerHTML = this.selected.length ? `(${this.selected.length} applied)` : '';
+    this.statusTarget.innerHTML = this.selected.length ? `(${this.selected.length})` : '';
+    this.selected.length ? this.indicatorTarget.classList.add('highlight') : this.indicatorTarget.classList.remove('highlight')
   }
 
   updateSelected(e) {
@@ -181,7 +157,7 @@ const FiltersController = class extends Controller {
 
   filter() {
     const targetController = this.application.getControllerForElementAndIdentifier(document.getElementById(this.targetValue), this.targetValue);
-    targetController.filter();
+    targetController? targetController.filter() : false;
   }
 
   formatDate(d) {

@@ -9,8 +9,12 @@ const SearchController = class extends Controller {
 
   request(e) {
     e.preventDefault();
-    const archivesController = this.application.getControllerForElementAndIdentifier(document.getElementById('archives'), 'archives');
-    archivesController.search(this.queryTarget.value);
+    const episodesController = this.application.getControllerForElementAndIdentifier(document.getElementById('episodes'), 'episodes');
+    episodesController.search(this.queryTarget.value);
+  }
+
+  clear() {
+    this.queryTarget.value = "";
   }
 };
 

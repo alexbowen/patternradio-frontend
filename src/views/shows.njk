@@ -43,11 +43,11 @@
 
 {% block content %}
 
-  <div class="container-fluid">
-    <h5>&gt;&gt;&gt; Click play icon above to start stream</h5>
-    <p class="lead mt-3 mb-4">Musical selections and discovery streamed for enlightened listening.</p>
+  <div class="container-fluid pt-4">
+    {# <h5>&gt;&gt;&gt; Click play icon above to start stream</h5>
+    <p class="lead mt-3 mb-4">Musical selections and discovery streamed for enlightened listening.</p> #}
 
-    <h2>Regular Shows</h2>
+    <h3>Regular Shows</h3>
     <div class="row shows">
       {% for item in data %}
 
@@ -56,17 +56,18 @@
         <div class="row g-0">
           <div class="col-md-12">
             <img src="{{ item.image }}" class="img-fluid float-start pe-3" alt="{{ item.name }}">
-            <h3 class="title m-0 p-0">
+            <h4 class="title m-0 p-0">
               {% if item.external %}
                 <a href="{{ item.external }}" class="nav-link" target="_blank">{{ item.title }}</a>
               {% else %}
-                <a data-controller="navigation" data-action="click->navigation#navigate" class="nav-link" href="/show/{{ item.id }}">{{ item.title }}</a></h3>
+                <a data-controller="navigation" data-action="click->navigation#navigate" class="nav-link" href="/show/{{ item.id }}">{{ item.title }}</a>
               {% endif %}
-            <h4 class="host m-0 pt-1 fs-6">{{ item.subtitle }}</h4>
+              </h4>
+            <h4 class="host m-0 pt-1 fs-5">{{ item.subtitle }}</h4>
             <p class="when m-0 pt-2">{{ item.about }}</p>
           </div>
 
-          <div class="card-body">
+          <div class="card-body px-0">
 
             {% if item.external %}
               <a href="{{ item.external }}" class="nav-link" target="_blank">View shows</a>

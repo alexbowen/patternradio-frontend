@@ -24,8 +24,8 @@ const RadioController = class extends Controller {
     player.height = "120";
     player.width = "100%";
     player.allow = "autoplay";
-    this.playerTarget.insertAdjacentElement('beforeend', player);
     player.src = src;
+    this.playerTarget.insertAdjacentElement('beforeend', player);
   }
 };
 

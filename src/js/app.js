@@ -13,10 +13,10 @@ import EpisodesController from './controllers/episodes';
 import EpisodeController from './controllers/episode';
 import ScheduleController from './controllers/schedule';
 import SearchController from './controllers/search';
-import StatusController from './controllers/status';
+// import StatusController from './controllers/status';
 import StreamController from './controllers/stream';
 import FiltersController from './controllers/filters';
-import BlogsController from './controllers/blogs';
+import PostsController from './controllers/posts';
 
 application.register('navigation', NavigationController);
 application.register('pagination', PaginationController);
@@ -25,15 +25,13 @@ application.register('episodes', EpisodesController);
 application.register('episode', EpisodeController);
 application.register('schedule', ScheduleController);
 application.register('search', SearchController);
-application.register('status', StatusController);
+// application.register('status', StatusController);
 application.register('stream', StreamController);
 application.register('filters', FiltersController);
-application.register('blogs', BlogsController);
-
-// shows, show -> episodes, episode
+application.register('posts', PostsController);
 
 const useHash = false;
-const routes = ['', 'home', 'browse', 'shows', 'show', 'blog', 'about'];
+const routes = ['', 'home', 'browse', 'shows', 'show', 'posts', 'about', 'episode'];
 const content = document.getElementById("spa-content-container");
 
 function get(page, id) {

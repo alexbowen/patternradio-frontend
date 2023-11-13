@@ -1,0 +1,34 @@
+<template id="episode-standard">
+
+  <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 playable episode card">
+    <div class="image-container" data-action="click->radio#play">
+    <img src="images/new/online2.jpg" class="card-img-top"/>
+
+    <div class="likes">
+      <span class="heart"></span>
+      <span class="count"></span>
+    </div>
+    <div class="playable-button">
+
+      <span class="button">
+        <button></button>
+      </span>
+    </div>
+
+    <div class="badge">
+      <span class="time"></span>
+    </div>
+    </div>
+    <div class="card-body">
+          <h5 class="card-title">
+            <a data-controller="navigation" data-action="click->navigation#navigate"  href="#" class="detail nav-link mb-1 fs-3" style="color:#1c1c1c"></a>
+            <a data-controller="navigation" data-action="click->navigation#navigate"  href="#" class="title nav-link fs-6" style="color:#1c1c1c"></a>
+          </h5>
+
+          <p class="card-text host"></p>
+          <ul class="tags ps-0" data-action="click->episodes#tagSearch"></ul>
+    </div>
+
+  </div>
+
+</template>

@@ -44,7 +44,7 @@ app
   let  data = {
     page: 'shows',
     layout:  'layout.njk',
-    title: 'Broadcast Shows',
+    title: 'Regular Shows',
     data: shows
   }
   res.render('shows.njk', data)
@@ -53,18 +53,27 @@ app
   let  data = {
     page: 'show',
     layout:  'layout.njk',
-    title: 'Broadcast Shows',
+    title: 'Show',
     item: shows.find(s => s.id === req.params.id)
   }
   res.render('show.njk', data)
 })
-.get('/pages/blog', (req, res) => {
+.get('/pages/episode/:id', (req, res) => {
   let  data = {
-    page: 'blog',
+    page: 'episode',
     layout:  'layout.njk',
-    title: 'Blog'
+    title: 'Broadcast Shows',
+    item: req.params.id
   }
-  res.render('blog.njk', data)
+  res.render('episode.njk', data)
+})
+.get('/pages/posts', (req, res) => {
+  let  data = {
+    page: 'posts',
+    layout:  'layout.njk',
+    title: 'Posts'
+  }
+  res.render('posts.njk', data)
 })
 .get('/pages/about', (req, res) => {
   let  data = {
@@ -78,7 +87,7 @@ app
   let data = {
     page: 'browse',
     layout:  'layout.njk',
-    title: 'Broadcast Archives',
+    title: 'Browse Shows',
     data: { filters }
   }
   res.render('browse.njk', data)

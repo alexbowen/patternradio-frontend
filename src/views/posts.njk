@@ -34,18 +34,22 @@
 
 {% block content %}
 
-  <div class="container-fluid">
-    <div class="row pb-2">
-          {# <h5>&gt;&gt;&gt; Click play icon above to start stream</h5> #}
-    <h3>Musical selections and discovery for enlightened listening</h3>
 
-      <p>Pattern Radio a non-profit organisation.</p>
-      
-      <p><a href="https://www.instagram.com/patternradio_pt/" class="nav-link" target="_blank">https://www.instagram.com/patternradio_pt/</a></p>
-      <p><a href="https://www.facebook.com/groups/patternradio" class="nav-link" target="_blank">https://www.facebook.com/groups/patternradio</a></p>
-      <p><a href="https://www.mixcloud.com/patternradio/" class="nav-link" target="_blank">https://www.mixcloud.com/patternradio/</a></p>
-      <p><a href="https://medium.com/@patternradio" class="nav-link" target="_blank">https://medium.com/@patternradio</a></p>
-      <p><a href="mailto:info@patternradio.net" class="nav-link">info@patternradio.net</a></p>
+  <div class="container-fluid pt-4">
+        {# <h5>&gt;&gt;&gt; Click play icon above to start stream</h5>
+    <p class="lead mt-3 mb-4">Musical selections and discovery streamed for enlightened listening. You can curate your own content to suit your musical preferences using the drop down menu above.</p> #}
+
+    <div class="posts" id="posts" data-action="posts:loaded->pagination#update pagination:paginate->posts#paginate" data-controller="posts pagination" data-posts-show-item-template-id="post" data-posts-items-value="2" data-posts-offset-value="0" data-posts-filters-value="true" data-posts-show-tags-value="true">
+      <h3>Blog Posts</h3>
+
+      <div class="pagination d-flex flex-wrap flex-md-nowrap">
+        <div data-pagination-target="stats" class="flex-grow-1"></div>
+        <div data-pagination-target="control" data-action="click->pagination#paginate"></div>
+      </div>
+
+      <div class="row shows" data-posts-target="items"></div>
+    
+      {% include "templates/_post.njk" %}
     </div>
   </div>
 

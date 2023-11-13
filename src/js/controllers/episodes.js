@@ -7,10 +7,12 @@ const EpisodesController = class extends Controller {
   static values = {
     search: Boolean,
     items: Number,
+    offset: Number,
     showTags: Boolean,
     types: Boolean,
     filters: Boolean,
-    query: String
+    query: String,
+    title: String
   }
 
   static types = [
@@ -32,7 +34,7 @@ const EpisodesController = class extends Controller {
 
   connect() {
     const query = this.queryValue ? this.queryValue : '';
-    this.request(this.itemsValue, 0, query);
+    this.request(this.itemsValue, this.offsetValue || 0, query);
   }
 
   request(limit, offset, query = '') {
@@ -58,17 +60,22 @@ const EpisodesController = class extends Controller {
     .then((response) => response.json())
     .then((data) => {
       this.dispatch("loaded", { detail: { limit: limit, offset: offset, total: data.count } })
-      if (this.searchValue === true || this.queryValue) {
+      if (this.searchValue === true || query) {
         this.itemsTarget.innerHTML = '';
-        if (data.items.length && query.length && this.queryValue.length === 0) {
-          this.headingTarget.querySelector('h2').innerHTML = `Results Matching "${query}"`;
-          this.headingTarget.querySelector('button').classList.remove('d-none');
+        if (data.items.length && query.length && query.length === 0) {
+          this.headingTarget.querySelector('h3').innerHTML = `Results Matching "${query}"`;
+          this.headingTarget.querySelector('button').classList.add('d-none');
         } else if (data.items.length === 0 && query.length) {
-          this.headingTarget.querySelector('h2').innerHTML = `No Results Matching "${query}"`;
-          this.headingTarget.querySelector('button').classList.remove('d-none');
+          this.headingTarget.querySelector('h3').innerHTML = `No Results Matching "${query}"`;
+          this.headingTarget.querySelector('button').classList.add('d-none');
         } else {
-          const applied = filters ? '<span>(preferences applied)</span>' : '';
-          this.headingTarget.querySelector('h2').innerHTML = `Shows Available For Playback ${applied} `;
+
+          this.headingTarget.querySelector('h3').innerHTML = 'Shows Available For Playback';
+          filters && !query.length ? this.headingTarget.querySelector('span').classList.remove('d-none') : this.headingTarget.querySelector('span').classList.add('d-none');
+        }
+
+        if (this.titleValue) {
+          this.headingTarget.querySelector('h3').innerHTML = this.titleValue;
           this.headingTarget.querySelector('button').classList.add('d-none');
         }
       }
@@ -90,8 +97,12 @@ const EpisodesController = class extends Controller {
     const templateId = this.data.get('showItemTemplateId');
     const template = document.getElementById(templateId);
 
-    this.items.forEach(a => {
+    this.items.forEach((a, i) => {
       let clone = template.content.cloneNode(true);
+
+      if (i > 0 && clone.querySelector('.episode').classList.contains('active')) {
+        clone.querySelector('.episode').classList.remove('active');
+      }
 
       let parts = a.name.split(' - ');
       let title = clone.querySelector('.title');
@@ -102,8 +113,13 @@ const EpisodesController = class extends Controller {
       host.innerHTML = parts[1];
 
       if (parts[2]) {
-        let detail = clone.querySelector('.detail');
-        detail.innerHTML = parts[2];
+        let detail = clone.querySelectorAll('.detail');
+        detail.forEach((d) => {
+          if (!d.innerHTML) {
+            d.innerHTML = parts[2];
+          }
+          d.href = `/episode/${a.slug}`;
+        });
       }
 
       let likes = clone.querySelector('.likes');
@@ -144,7 +160,7 @@ const EpisodesController = class extends Controller {
         tags.appendChild(tag);
       });
 
-      let content = this.element.querySelector('.row')
+      let content = this.element.querySelector('.episodes')
       content.appendChild(clone);
       this.element.style.display = 'block';
     });
@@ -160,7 +176,13 @@ const EpisodesController = class extends Controller {
     this.request(this.itemsValue, 0, '');
   }
 
+  clearFilters() {
+    const targetController = this.application.getControllerForElementAndIdentifier(document.getElementById('filters'), 'filters');
+    targetController.clear();
+  }
+
   search(query) {
+    this.queryValue = query;
     this.request(this.itemsValue, 0, query);
   }
 
@@ -169,7 +191,7 @@ const EpisodesController = class extends Controller {
   }
 
   paginate({detail: { limit, offset }}) {
-    this.request(limit, offset);
+    this.request(limit, offset, this.queryValue);
   }
 
   formatTime(d) {
