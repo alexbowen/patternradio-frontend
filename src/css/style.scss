@@ -28,7 +28,7 @@ body {
 
 h1 {
   @include font-size(2.6rem);
-  color: #717171;
+  color: #1c1c1c;
 }
 
 h2 {
@@ -42,7 +42,7 @@ h3 {
 
   span {
     @include font-size(1.4rem);
-    color: #717171;
+    color: #1c1c1c;
   }
 }
 
@@ -165,7 +165,7 @@ header {
   }
 
   .row {
-    padding-top: 1rem;
+    padding-top: 1.2rem;
 
     &__orange {
       background: url('/images/brand/patterns_01_tile.png') repeat;
