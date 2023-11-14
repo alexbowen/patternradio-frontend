@@ -3,7 +3,7 @@
 {% block header %}
   {% include "partials/filters/_tag.njk" %}
 
-  <div class="container-fluid content-header" data-controller="filters" data-filters-target-value="episodes" data-filters-selected-template-id="selected" data-filters-tag-item-template-id="tag">
+  <div class="container-fluid content-header" data-filters-target-value="episodes" data-filters-selected-template-id="selected" data-filters-tag-item-template-id="tag">
 
     <div class="collapse" id="filter-controls" data-filters-target="panel">
       <div class="filters">
@@ -38,9 +38,9 @@
 
     <div class="container-fluid">
       <div class="row header" data-episodes-target="heading">
-        <div class="d-flex col-12 col-md-9">
-          <h3>Shows Available For Playback</h3>
-          <button data-action="click->episodes#clearSearch click->search#clear" class="d-none">clear</button>
+        <div class="col-12 col-md-9">
+          {% include "templates/episodes/_title.njk" %}
+          {# <button data-action="click->episodes#clearSearch click->search#clear" class="d-none">clear</button> #}
         </div>
         <div class="col-12 col-md-3 mb-3 mb-md-0">
           <form class="input-group input-group-sm" id="search" role="search" data-action="submit->search#request">
@@ -54,6 +54,7 @@
         <div data-pagination-target="stats" class="flex-grow-1"></div>
         <div data-pagination-target="control" data-action="click->pagination#paginate"></div>
       </div>
+      
       <div class="row episodes" data-episodes-target="items"></div>
     </div>
   </div>

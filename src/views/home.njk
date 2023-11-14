@@ -188,8 +188,7 @@
       <div class="col-12 mb-5">
         <div class="order-lg-1 episodes" id="episodes" data-controller="episodes" data-episodes-show-item-template-id="episode-standard" data-episodes-filters-value="true" data-episodes-items-value="6" data-episodes-show-tags-value="true" data-episodes-search-value="true">
           <div class="heading d-flex" data-episodes-target="heading">
-            <h3 data-episodes-target="heading">Recent Shows</h3>
-            <button data-action="click->episodes#clearsearch" class="d-none">clear</button>
+            {% include "templates/episodes/_title.njk" %}
           </div>
 
           <p>Click show to load in player</p>

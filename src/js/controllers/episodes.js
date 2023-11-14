@@ -64,14 +64,15 @@ const EpisodesController = class extends Controller {
         this.itemsTarget.innerHTML = '';
         if (data.items.length && query.length && query.length === 0) {
           this.headingTarget.querySelector('h3').innerHTML = `Results Matching "${query}"`;
-          this.headingTarget.querySelector('button').classList.remove('d-none');
+          this.headingTarget.querySelector('button').classList.add('d-none');
         } else if (data.items.length === 0 && query.length) {
           this.headingTarget.querySelector('h3').innerHTML = `No Results Matching "${query}"`;
-          this.headingTarget.querySelector('button').classList.remove('d-none');
-        } else {
-          const applied = filters && !query.length ? '<span>(preferences applied)</span>' : '';
-          this.headingTarget.querySelector('h3').innerHTML = `Shows Available For Playback ${applied} `;
           this.headingTarget.querySelector('button').classList.add('d-none');
+        } else {
+
+          this.headingTarget.querySelector('h3').innerHTML = 'Shows Available For Playback';
+          filters && !query.length ? this.headingTarget.querySelector('span').classList.remove('d-none') : this.headingTarget.querySelector('span').classList.add('d-none');
+          // filters && !query.length ? this.headingTarget.querySelector('button').classList.remove('d-none') : this.headingTarget.querySelector('button').classList.add('d-none');
         }
 
         if (this.titleValue) {
@@ -175,6 +176,12 @@ const EpisodesController = class extends Controller {
 
   clearSearch() {
     this.request(this.itemsValue, 0, '');
+  }
+
+  clearFilters() {
+    console.log('clear')
+    const targetController = this.application.getControllerForElementAndIdentifier(document.getElementById('filters'), 'filters');
+    targetController.clear();
   }
 
   search(query) {
