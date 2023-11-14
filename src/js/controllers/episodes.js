@@ -26,8 +26,8 @@ const EpisodesController = class extends Controller {
     "discovery": "discovery"
   };
 
-  // static host = 'http://localhost:5000';
-  static host = 'https://patternradio-api-e873df4d91a5.herokuapp.com';
+  static host = 'http://localhost:5000';
+  // static host = 'https://patternradio-api-e873df4d91a5.herokuapp.com';
 
   storage = new Storage
 
@@ -59,16 +59,17 @@ const EpisodesController = class extends Controller {
     .then((response) => response.json())
     .then((data) => {
       this.dispatch("loaded", { detail: { limit: limit, offset: offset, total: data.count } })
-      if (this.searchValue === true || this.queryValue) {
+      if (this.searchValue === true || query) {
+        console.log('query', query)
         this.itemsTarget.innerHTML = '';
-        if (data.items.length && query.length && this.queryValue.length === 0) {
+        if (data.items.length && query.length && query.length === 0) {
           this.headingTarget.querySelector('h3').innerHTML = `Results Matching "${query}"`;
           this.headingTarget.querySelector('button').classList.remove('d-none');
         } else if (data.items.length === 0 && query.length) {
           this.headingTarget.querySelector('h3').innerHTML = `No Results Matching "${query}"`;
           this.headingTarget.querySelector('button').classList.remove('d-none');
         } else {
-          const applied = filters ? '<span>(preferences applied)</span>' : '';
+          const applied = filters && !query.length ? '<span>(preferences applied)</span>' : '';
           this.headingTarget.querySelector('h3').innerHTML = `Shows Available For Playback ${applied} `;
           this.headingTarget.querySelector('button').classList.add('d-none');
         }
@@ -177,6 +178,7 @@ const EpisodesController = class extends Controller {
   }
 
   search(query) {
+    this.queryValue = query;
     this.request(this.itemsValue, 0, query);
   }
 
@@ -185,7 +187,7 @@ const EpisodesController = class extends Controller {
   }
 
   paginate({detail: { limit, offset }}) {
-    this.request(limit, offset);
+    this.request(limit, offset, this.queryValue);
   }
 
   formatTime(d) {

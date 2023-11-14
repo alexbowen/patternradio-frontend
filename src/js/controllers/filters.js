@@ -153,7 +153,7 @@ const FiltersController = class extends Controller {
       document.querySelector(`.groups ul li[data-filter="${a}"]`).classList.add('selected');
     });
 
-    this.statusTarget.innerHTML = this.selected.length ? `(${this.selected.length} applied)` : '';
+    this.statusTarget.innerHTML = this.selected.length ? `(${this.selected.length})` : '';
   }
 
   updateSelected(e) {
