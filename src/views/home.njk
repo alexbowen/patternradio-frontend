@@ -62,8 +62,8 @@
 
             <div class="row">
               <div class="col col-md-6">
+                <a href="#upcoming-shows" class="nav-link" style="color:#1c1c1c;">Upcoming Shows</a>
                 <a data-controller="navigation" data-action="click->navigation#navigate" class="nav-link" href="/browse" style="color:#1c1c1c;">Browse Shows</a>
-                <a data-controller="navigation" data-action="click->navigation#navigate" class="nav-link" href="/posts" style="color:#1c1c1c;">Browse Articles</a>
               </div>
               <div class="col col-md-6">
                 <div class="social-toolbar">
@@ -202,7 +202,7 @@
     </div>
 
     <div class="col-12 mb-5">
-      <div data-controller="schedule" data-schedule-show-item-template-id="schedule">
+      <div id="upcoming-shows" data-controller="schedule" data-schedule-show-item-template-id="schedule">
         <div class="row episodes" data-schedule-target="episodes">
           <h2 class="mb-3">Upcoming Shows</h2>
           <h5>New shows to be streamed live soon</h5>

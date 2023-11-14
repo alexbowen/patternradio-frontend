@@ -44,7 +44,7 @@ app
   let  data = {
     page: 'shows',
     layout:  'layout.njk',
-    title: 'Broadcast Shows',
+    title: 'Regular Shows',
     data: shows
   }
   res.render('shows.njk', data)
@@ -53,7 +53,7 @@ app
   let  data = {
     page: 'show',
     layout:  'layout.njk',
-    title: 'Broadcast Shows',
+    title: 'Show',
     item: shows.find(s => s.id === req.params.id)
   }
   res.render('show.njk', data)
@@ -87,7 +87,7 @@ app
   let data = {
     page: 'browse',
     layout:  'layout.njk',
-    title: 'Broadcast Archives',
+    title: 'Browse Shows',
     data: { filters }
   }
   res.render('browse.njk', data)
