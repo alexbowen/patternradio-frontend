@@ -4,7 +4,7 @@ const RadioController = class extends Controller {
   static targets = ['player'];
 
   connect() {
-    // this.broadcastPlayer('https://embed.radio.co/player/b84cf70.html');
+    this.broadcastPlayer('https://embed.radio.co/player/b84cf70.html');
   }
 
   play(e) {
@@ -51,14 +51,8 @@ const RadioController = class extends Controller {
     //       })
     //   });
 
-
-
-
-
-      
     //   // player.src = src;
     // }
-    
   }
 };
 

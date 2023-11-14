@@ -84,18 +84,6 @@ const FiltersController = class extends Controller {
     this.updateFilters();
   }
 
-  // get selected() {
-  //   if (!this.storage.getItem('filters')) {
-  //     this.storage.setItem('filters', '');
-  //   }
-    
-  //   return this.storage.getItem('filters').length ? this.storage.getItem('filters').split(',') : [];
-  // }
-
-  // set selected(selected) {
-  //   this.storage.setItem('filters', selected.toString());
-  // }
-
   createGroup(filters, name) {
     const templateId = this.data.get('tagItemTemplateId');
 
