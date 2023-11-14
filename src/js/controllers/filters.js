@@ -10,15 +10,12 @@ const FiltersController = class extends Controller {
 
   static filters = {
     "genre" : [
-      "Afrobeat",
       "Blues",
       "Broken Beat",
       "Disco",
-      "Downtempo",
       "Dub",
       "Electro",
       "Electronica",
-      "Folk",
       "Funk",
       "Hip Hop",
       "Jazz",
@@ -26,30 +23,24 @@ const FiltersController = class extends Controller {
       "Punk",
       "Reggae",
       "Rock",
-      "Salsa",
       "Soul",
       "Techno",
       "World"
     ].sort(),
     "style": [
+      "Afro",
+      "Latin",
       "Fusion",
+      "Modern",
+      "Progressive",
+      "Balearic",
       "Retro",
       "Deep",
+      "Downtempo",
       "Psychedelic",
-      "Soulful",
-      "Eclectic",
       "Funky",
       "Club",
-      "Mix",
-      "Vinyl Only",
-      "Discovery"
-    ].sort(),
-    "origin": [
-      "Brazil",
-      "Africa",
-      "Detroit",
-      "Chicago",
-      "Latin"
+      "Roots"
     ].sort()
   };
 
