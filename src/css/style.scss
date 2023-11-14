@@ -129,14 +129,14 @@ header {
   }
 }
 
-.test-c {
+.collapse-spacer {
   height: 7.5rem;
 }
 
 .main-content {
   margin-top: 4rem;
   padding-bottom: 4rem;
-  position:relative;
+  position: relative;
   min-height: 100vh;
 
   // footer {
@@ -150,6 +150,7 @@ header {
 
   .row {
     padding-top: 1rem;
+
     &__orange {
       background: url('/images/brand/patterns_01_tile.png') repeat;
 
@@ -162,43 +163,69 @@ header {
         @include font-size(2rem);
       }
 
-      .episodes {
-        .episode {
-          padding: 0;
-          .card-body {
-            background-color: #f2f2f2;
-            min-height: 240px;
-            padding: 1rem;
+      .card {
+        padding: 0;
 
-
-
-
-          }
-
-
+        .card-body {
+          background-color: #f2f2f2;
+          min-height: 240px;
+          padding: 1rem;
         }
       }
     }
   }
 }
 
-.pattern-status {
-  position: relative;
-  display: inline;
+.episode {
+  .image-container {
+    position: relative;
+    display: inline-block;
 
-  .transmission {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    .badge {
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+      background-color: #666;
+      padding: 5px;
+
+      span {
+        color: white;
+      }
+    }
+  }
+
+  p {
+    padding: 0;
+    margin: 0;
+  }
+
+  .tags {
+    list-style-type: none;
+    padding: 0;
+
+    li {
+      display: inline;
+
+      button {
+        border: none;
+        background-color: #e0e1e1;
+      }
+    }
+  }
+
+  pre {
+    font-family: 'Urbanist', sans-serif;
+    text-wrap: wrap;
+  }
+
+  .card-body {
+    padding: 1rem 0;
+    width: 100%;
   }
 }
 
 .stream {
-
   position: relative;
-
-
 
   p {
     padding-left: 42px;
@@ -359,8 +386,6 @@ header {
   }
 }
 
-
-
 .player-footer {
   background-color: #25292c;
   position: fixed;
@@ -461,9 +486,9 @@ header {
     }
   }
 
-  // a {
-  //   color: #253434;
-  // }
+  a {
+    color: #253434;
+  }
 
   .tags {
     display: none;
@@ -475,71 +500,6 @@ header {
   }
 }
 
-.episodes {
-  .type {
-    display: none;
-    scroll-margin-top: 300px;
-  }
-
-  .episode {
-    // color: #25292c;
-
-    // h4 {
-    //   color: #666;
-    // }
-
-
-
-
-
-    .image-container {
-      position: relative;
-
-      .badge {
-        position: absolute;
-        bottom: 0px;
-        left: 0px;
-        background-color: #666;
-        padding: 5px;
-
-        span {
-          color: white;
-        }
-      }
-    }
-
-    p {
-      // color: #666;
-      padding: 0;
-      margin: 0;
-    }
-
-    .card-body {
-      padding: 1rem 0;
-      width: 100%;
-
-      .tags {
-        list-style-type: none;
-        padding: 0;
-
-        li {
-          display: inline;
-
-          button {
-            border: none;
-            background-color: #e0e1e1;
-          }
-        }
-      }
-
-      pre {
-        font-family: 'Urbanist', sans-serif;
-        text-wrap: wrap;
-        }
-    }
-  }
-}
-
 .tags {
   li {
     text-transform: capitalize;
@@ -547,22 +507,6 @@ header {
 
   button {
     &:hover {
-      text-decoration: underline;
-    }
-  }
-}
-
-.episodes {
-  .header {
-    h2 {
-      span {
-        font-size: 1rem;
-        text-transform: lowercase;
-      }
-    }
-
-    button {
-      border: none;
       text-decoration: underline;
     }
   }
@@ -589,8 +533,6 @@ header {
     }
   }
 }
-
-
 
 .likes {
   position: absolute;

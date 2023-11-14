@@ -33,8 +33,8 @@
 {% endblock %}
 
 {% block content %}
-<div class="container-fluid">
-  <div  class="episodes" data-controller="episode" data-episode-id-value="{{ item }}"  data-episode-show-item-template-id="episode-detail">
+<div class="container-fluid py-4">
+  <div data-controller="episode" data-episode-id-value="{{ item }}"  data-episode-show-item-template-id="episode-detail">
 
   </div>
   {% include "templates/episode/_detail.njk" %}
