@@ -2,7 +2,7 @@ import { Controller } from '@hotwired/stimulus';
 import Storage from '../storage';
 
 const FiltersController = class extends Controller {
-  static targets = ['nav', 'selected', 'groups', 'status', 'panel'];
+  static targets = ['nav', 'selected', 'groups', 'status', 'panel', 'indicator'];
 
   static values = {
     target: String
@@ -145,6 +145,7 @@ const FiltersController = class extends Controller {
     });
 
     this.statusTarget.innerHTML = this.selected.length ? `(${this.selected.length})` : '';
+    this.selected.length ? this.indicatorTarget.classList.add('highlight') : this.indicatorTarget.classList.remove('highlight')
   }
 
   updateSelected(e) {
