@@ -5,11 +5,11 @@
         <img src="/images/brand/Logo_White2.png" height="40" width="40"/>
       </a>
 
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarnavdropdown" aria-controls="navbarnavdropdown" aria-expanded="false" aria-label="toggle navigation" data-filters-target="indicator">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".multi-collapse" aria-controls="navbarnavdropdown" aria-expanded="false" aria-label="toggle navigation" data-filters-target="indicator">
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse" id="navbarnavdropdown">
+      <div class="collapse navbar-collapse multi-collapse" id="navbarnavdropdown">
         <ul class="navbar-nav justify-content-end flex-grow-1">
           <li class="nav-item">
             <a data-controller="navigation" data-action="click->navigation#navigate" class="nav-link {% if page === "home" %}active{% endif %}" aria-current="page" href="/home">Home</a>
@@ -34,9 +34,6 @@
               <span class="toggle-link__icon"></span>
             </a>
 
-            <div class="d-flex">
-              <button class="btn btn--link filters-selected--clear d-none" data-action="click->filters#clear">clear preferences</button>
-            </div>
           </li>
         </div>
       </div>
