@@ -26,8 +26,8 @@ const EpisodesController = class extends Controller {
     "discovery": "discovery"
   };
 
-  static host = 'http://localhost:5000';
-  // static host = 'https://patternradio-api-e873df4d91a5.herokuapp.com';
+  // static host = 'http://localhost:5000';
+  static host = 'https://patternradio-api-e873df4d91a5.herokuapp.com';
 
   storage = new Storage
 
