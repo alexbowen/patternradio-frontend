@@ -7,6 +7,7 @@ const EpisodesController = class extends Controller {
   static values = {
     search: Boolean,
     items: Number,
+    offset: Number,
     showTags: Boolean,
     types: Boolean,
     filters: Boolean,
@@ -33,7 +34,7 @@ const EpisodesController = class extends Controller {
 
   connect() {
     const query = this.queryValue ? this.queryValue : '';
-    this.request(this.itemsValue, 0, query);
+    this.request(this.itemsValue, this.offsetValue || 0, query);
   }
 
   request(limit, offset, query = '') {
@@ -179,7 +180,6 @@ const EpisodesController = class extends Controller {
   }
 
   clearFilters() {
-    console.log('clear')
     const targetController = this.application.getControllerForElementAndIdentifier(document.getElementById('filters'), 'filters');
     targetController.clear();
   }
