@@ -60,7 +60,7 @@
               {% include "partials/_stream.njk" %}
             </div>
 
-            <div class="row">
+            <div class="row pt-3">
               <div class="col col-md-6">
                 <a href="#upcoming-shows" class="nav-link py-2 py-md-0" style="color:#1c1c1c;">Coming Soon</a>
                 <a data-controller="navigation" data-action="click->navigation#navigate" class="nav-link pb-2 pb-md-0" href="/browse" style="color:#1c1c1c;">Search Shows</a>
@@ -110,7 +110,7 @@
       <div class="col-12 col-md-6 col-xl-4 pb-2">
         <div class="episodes" id="latest" data-controller="episodes" data-episodes-show-item-template-id="episode-latest" data-episodes-title-value="listen to latest shows" data-episodes-items-value="2" data-episodes-show-tags-value="true">
           <div class="heading d-flex" data-episodes-target="heading">
-            <h3 data-episodes-target="heading">Recent Shows</h3>
+            <h3 data-episodes-target="heading">Latest Shows</h3>
             <button data-action="click->episodes#clearsearch" class="d-none">clear</button>
           </div>
           <div class="carousel slide" id="carouselexampleautoplaying" data-bs-ride="carousel">
