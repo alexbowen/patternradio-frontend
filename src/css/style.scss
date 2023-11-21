@@ -180,14 +180,10 @@ header {
         @include font-size(2rem);
       }
 
-      .card {
-        padding: 0;
-
-        .card-body {
-          background-color: #f2f2f2;
-          min-height: 240px;
-          padding: 1rem;
-        }
+      .content {
+        background-color: #f2f2f2;
+        min-height: 240px;
+        padding: 1rem;
       }
     }
   }
