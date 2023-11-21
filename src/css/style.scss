@@ -1,28 +1,35 @@
-$font-family-base: "Work Sans";
-$font-size-base: 0.8rem;
+$font-family-base: "Urbanist";
+$grid-gutter-width: 1rem;
+$headings-font-family: "Bebas Neue";
+$font-size-base: 1rem;
+$lead-font-size: $font-size-base * 3;
 $badge-color: #25292c;
-$card-bg: #f1f1f1;
+$card-bg: transparent;
 $card-border-color: none;
 $card-border-radius: 0;
 $grid-gutter-width: 4rem;
-$headings-color: #25292c;
+$headings-color: #1c1c1c;
 $navbar-dark-color: #e0e1e1;
+$nav-link-font-size: 1.1rem;
 $nav-link-color: #e0e1e1;
-$navbar-dark-active-color: #F49D37;
+$navbar-dark-active-color: #E85C41;
+$transition-collapse: height .1s ease;
+$carousel-control-color: #1c1c1c;
+$carousel-indicator-active-bg: #1c1c1c;
+$list-group-item-padding-x: 0.6rem;
 
 @import '../../node_modules/bootstrap/scss/bootstrap';
 @import './social-toolbar';
 
 html,
 body {
-  color: #E0E1E1;
+  color: #1c1c1c;
   background-color: #f1f1f1;
 }
 
 h1 {
-  font-family: 'Comfortaa', cursive;
-  @include font-size(1.6rem);
-  color: #e0e1e1;
+  @include font-size(2.6rem);
+  color: #1c1c1c;
 }
 
 h2 {
@@ -30,16 +37,39 @@ h2 {
   margin-bottom: 1rem;
 }
 
+h3 {
+  @include font-size(2.4rem);
+  color: #1c1c1c;
+
+  span {
+    @include font-size(1.4rem);
+    color: #1c1c1c;
+  }
+}
+
 hr {
-  color: #666;
+  // color: #666;
   margin: 0 0 2rem;
 }
+
+.lead {
+  font-family: 'Bebas Neue', sans-serif;
+  color: #E8D7B9;
+  font-size: 2.8rem;
+}
+
 
 .radioco_status {
   display: none;
 }
 
+.spa-content-container {
+  // padding-bottom: 120px;
+  // padding-top: 50px;
+}
+
 .content-header {
+  // border-top: 1px solid white;
   background-color: #4A5359;
   width: 100%;
   z-index: 500;
@@ -56,10 +86,12 @@ hr {
 
 header {
   background-color: #4A5359;
+  color: #e0e1e1;
   position: fixed;
   width: 100%;
   z-index: 1000;
   top: 0;
+  height: 5rem;
 
   h2 {
     color: #e0e1e1;
@@ -68,6 +100,24 @@ header {
 
   h3 {
     font-size: calc(0.6vw + 1vh);
+  }
+
+  .navbar-toggler {
+    position: relative;
+  }
+
+  .highlight {
+    &::after {
+      content: ' ';
+      background-color: #E85C41;
+      width: 8px;
+      height: 8px;
+      display: inline-block;
+      position:absolute;
+      bottom: 4px;
+      right: 8px;
+      border-radius: 50%;
+    }
   }
 
   .sub-menu {
@@ -96,43 +146,101 @@ header {
   }
 }
 
-.main-content {
-  margin-top: 1rem;
+.collapse-spacer {
+  height: 8.5rem;
+}
 
-  p {
-    color: #666;
-  }
+.main-content {
+  margin-top: 5rem;
+  padding-bottom: 8rem;
+  position: relative;
+  min-height: 100vh;
+
+  // footer {
+  //   position:absolute;
+  //   bottom: 10rem;
+  // }
 
   .nav-link {
-    color: #253434;
     text-decoration: underline;
+  }
+
+  .row {
+    padding-top: 1.6rem;
+
+    &__orange {
+      background: url('/images/brand/patterns_01_tile.png') repeat;
+
+      .nav-link {
+        color: #E8D7B9;
+      }
+
+      h3 {
+        color: #E8D7B9;
+        @include font-size(2rem);
+      }
+
+      .content {
+        background-color: #f2f2f2;
+        min-height: 240px;
+        padding: 1rem;
+      }
+    }
   }
 }
 
-.pattern-status {
-  position: relative;
-  display: inline;
+.episode {
+  .image-container {
+    position: relative;
+    display: inline-block;
 
-  .transmission {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    .badge {
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+      background-color: #666;
+      padding: 5px;
+
+      span {
+        color: white;
+      }
+    }
+  }
+
+  p {
+    padding: 0;
+    margin: 0;
+  }
+
+  .tags {
+    list-style-type: none;
+    padding: 0;
+
+    li {
+      display: inline;
+
+      button {
+        border: none;
+        background-color: #e0e1e1;
+      }
+    }
+  }
+
+  pre {
+    font-family: 'Urbanist', sans-serif;
+    text-wrap: wrap;
+  }
+
+  .card-body {
+    padding: 1rem 0;
+    width: 100%;
   }
 }
 
 .stream {
-  background-color: #4A5359;
   position: relative;
 
-  p,
-  h2,
-  h3 {
-    color: #f1f1f1;
-  }
-
   p {
-    white-space: nowrap;
     padding-left: 42px;
     cursor: pointer;
   }
@@ -141,7 +249,7 @@ header {
     cursor: pointer;
 
     button {
-      border-color: transparent transparent transparent #F49D37;
+      border-color: transparent transparent transparent #E85C41;
     }
   }
 
@@ -167,12 +275,13 @@ header {
 }
 
 .filters {
-  margin-top: 0.5rem;
-  padding-top: 0.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 
   ul {
     list-style-type: none;
     padding: 0;
+    margin-bottom: 0;
 
     li {
       display: inline;
@@ -198,7 +307,7 @@ header {
   }
 
   &-selected-status {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
 
   &-selected--clear {
@@ -219,7 +328,7 @@ header {
 
       &:hover:not(.active) {
         background-color: #ddd;
-        color: #25292c;
+        // color: #25292c;
       }
     }
 
@@ -283,10 +392,9 @@ header {
     }
 
     button {
-      background-color: #aaa;
-      color: #fff;
+      background-color: #E85C41;
+      color: #1c1c1c;
       border: none;
-      font-size: 0.8rem;
       text-transform: capitalize;
     }
   }
@@ -304,12 +412,12 @@ header {
   &-button {
     position: absolute;
     top: 6px;
-    left: 6px;
+    left: 8px;
     align-self: center;
 
     span {
-      width: 32px;
-      height: 32px;
+      width: 40px;
+      height: 40px;
       background-color: #4A5359;
       display: inline-block;
       border-radius: 50%;
@@ -318,12 +426,12 @@ header {
     }
 
     button {
-      top: 7px;
+      top: 8px;
       position: absolute;
-      left: 9px;
+      left: 12px;
       background-color: transparent;
       border-style: solid;
-      border-width: 6px 0px 6px 12px;
+      border-width: 9px 0px 9px 16px;
       border-color: transparent transparent transparent rgba(255, 255, 255, 1);
       box-sizing: border-box;
     }
@@ -339,7 +447,7 @@ header {
     cursor: pointer;
 
     button {
-      border-color: transparent transparent transparent #F49D37;
+      border-color: transparent transparent transparent #E85C41;
     }
   }
 }
@@ -353,13 +461,13 @@ header {
   }
 
   h3 {
-    color: #666;
+    // color: #666;
     margin-bottom: 1rem;
     text-transform: capitalize;
   }
 
   blockquote {
-    color: #666;
+    // color: #666;
     margin: 1rem 0;
     font-style: italic;
 
@@ -371,7 +479,7 @@ header {
 
   p,
   figure {
-    color: #666;
+    // color: #666;
     margin-bottom: 0.5rem;
   }
 
@@ -379,8 +487,9 @@ header {
     font-size: 1.2rem;
 
     figcaption {
-      font-weight: bold;
-      font-size: 1.4rem;
+      font-family: 'Bebas Neue', sans-serif;
+
+      font-size: 2rem;
     }
 
     @media only screen and (max-width: 990px) {
@@ -405,86 +514,14 @@ header {
   }
 }
 
-.shows {
-  .type {
-    display: none;
-    scroll-margin-top: 300px;
-  }
-
-  .show {
-    color: #25292c;
-
-    h4 {
-      color: #666;
-    }
-
-    .image-container {
-      position: relative;
-
-      .badge {
-        position: absolute;
-        bottom: 0px;
-        left: 0px;
-        background-color: #666;
-        padding: 5px;
-        span{
-          color:white;
-        }
-      }
-    }
-
-    p {
-      color: #666;
-      font-size: 0.8rem;
-      padding: 0;
-      margin: 0;
-    }
-
-    .card-body {
-      padding: 1rem 0;
-      width: 100%;
-
-      .tags {
-        list-style-type: none;
-        padding: 0;
-
-        li {
-          display: inline;
-
-          button {
-            border: none;
-            background-color: #e0e1e1;
-          }
-        }
-      }
-    }
-  }
-}
-
 .tags {
   li {
-  text-transform: capitalize;
+    text-transform: capitalize;
   }
+
   button {
     &:hover {
       text-decoration: underline;
-    }
-  }
-}
-
-.episodes {
-  .heading {
-    h2 {
-      span {
-        font-size: 1rem;
-        text-transform: lowercase;
-      }
-    }
-
-    button {
-      border: none;
-      text-decoration: underline;
-      margin-bottom: 1rem;
     }
   }
 }
@@ -501,7 +538,7 @@ header {
     li {
       padding: 0 2px;
       display: inline;
-      color: #999;
+      // color: #999;
       text-transform: uppercase;
 
       .current {
@@ -511,14 +548,9 @@ header {
   }
 }
 
-.spa-content-container {
-  padding-bottom: 120px;
-  padding-top: 50px;
-}
-
 .likes {
   position: absolute;
-  top: 14px;
+  top: 16px;
   right: 8px;
 
   .count {
@@ -532,7 +564,7 @@ header {
   }
 
   .heart {
-    background-color: #F49D37;
+    background-color: #E85C41;
     display: inline-block;
     height: 20px;
     margin: 0 5px;
@@ -545,7 +577,7 @@ header {
   .heart:before,
   .heart:after {
     content: "";
-    background-color: #F49D37;
+    background-color: #E85C41;
     border-radius: 50%;
     height: 20px;
     position: absolute;

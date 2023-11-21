@@ -1,6 +1,7 @@
 {% extends "layout.njk" %}
 
 {% block header %}
+
   {% include "partials/filters/_tag.njk" %}
 
   <div class="container-fluid content-header" data-controller="filters" data-filters-target-value="episodes" data-filters-selected-template-id="selected" data-filters-tag-item-template-id="tag">
@@ -29,24 +30,14 @@
     </div>
 
   </div>
-
 {% endblock %}
 
 {% block content %}
+<div class="container-fluid py-4">
+  <div data-controller="episode" data-episode-id-value="{{ item }}"  data-episode-show-item-template-id="episode-detail">
 
-  <div class="container-fluid">
-    <div class="row pb-2">
-          {# <h5>&gt;&gt;&gt; Click play icon above to start stream</h5> #}
-    <h3>Musical selections and discovery for enlightened listening</h3>
-
-      <p>Pattern Radio a non-profit organisation.</p>
-      
-      <p><a href="https://www.instagram.com/patternradio_pt/" class="nav-link" target="_blank">https://www.instagram.com/patternradio_pt/</a></p>
-      <p><a href="https://www.facebook.com/groups/patternradio" class="nav-link" target="_blank">https://www.facebook.com/groups/patternradio</a></p>
-      <p><a href="https://www.mixcloud.com/patternradio/" class="nav-link" target="_blank">https://www.mixcloud.com/patternradio/</a></p>
-      <p><a href="https://medium.com/@patternradio" class="nav-link" target="_blank">https://medium.com/@patternradio</a></p>
-      <p><a href="mailto:info@patternradio.net" class="nav-link">info@patternradio.net</a></p>
-    </div>
+  </div>
+  {% include "templates/episode/_detail.njk" %}
   </div>
 
 {% endblock %}
