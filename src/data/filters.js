@@ -5,6 +5,7 @@ module.exports = {
     "Disco",
     "Downtempo",
     "Reggae",
+    "Drum & Bass",
     "Dub",
     "Electro",
     "Electronica",

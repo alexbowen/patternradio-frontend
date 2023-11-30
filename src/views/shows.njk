@@ -44,8 +44,6 @@
 {% block content %}
 
   <div class="container-fluid pt-4">
-    {# <h5>&gt;&gt;&gt; Click play icon above to start stream</h5>
-    <p class="lead mt-3 mb-4">Musical selections and discovery streamed for enlightened listening.</p> #}
 
     <h3>Regular Shows</h3>
     <div class="row shows">
@@ -55,7 +53,7 @@
 
         <div class="row g-0">
           <div class="col-md-12">
-            <img src="{{ item.image }}" class="img-fluid float-start pe-3" alt="{{ item.name }}">
+            <img src="{{ item.image }}" class="img-fluid float-start pe-3" height="200" width="200" alt="{{ item.name }}">
             <h4 class="title m-0 p-0">
               {% if item.external %}
                 <a href="{{ item.external }}" class="nav-link" target="_blank">{{ item.title }}</a>
