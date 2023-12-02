@@ -126,10 +126,10 @@ module.exports = [
   {
     "id": "pattern-radio-live",
     "title": "Pattern Radio Live",
-    "subtitle": "Alex Bowen",
+    "subtitle": "Guest DJs",
     "active": true,
-    "image": "images/shows/pr-live.png",
-    "about": "Less talking, more music from the world of underground electronic music. Disco to Detroit Techno, Deep House to Broken Beat and maybe a suprise or two along the way.",
+    "image": "images/shows/pattern-radio-live/brand_200.png",
+    "about": "Live DJ mixes, live audio/visual broadcasts.",
     "social": {
       "size": "20",
       "channels": [
@@ -144,26 +144,27 @@ module.exports = [
       ]
     }
   },
-  // {
-  //   "title": "Pattern Radio Show",
-  //   "subtitle": "Alex Bowen",
-  //   "active": true,
-  //   "image": "images/shows/pr-show.jpg",
-  //   "about": "Selection of new releases, new finds and classics from across the musical spectrum. This is the place also for Pattern Radio updates and news.",
-  //   "social": {
-  //     "size": "20",
-  //     "channels": [
-  //       {
-  //         "channel": "facebook",
-  //         "link": "https://www.facebook.com/groups/5800911413254766"
-  //       },
-  //       {
-  //         "channel": "instagram",
-  //         "link": "https://www.instagram.com/pattern_radio/"
-  //       }
-  //     ]
-  //   }
-  // },
+  {
+    "id": "pattern-radio-show",
+    "title": "Pattern Radio Show",
+    "subtitle": "Guest DJs",
+    "active": true,
+    "image": "images/shows/pattern-radio-show/brand_200.png",
+    "about": "Guest DJ mixes and shows from across the musical spectrum.",
+    "social": {
+      "size": "20",
+      "channels": [
+        {
+          "channel": "facebook",
+          "link": "https://www.facebook.com/groups/5800911413254766"
+        },
+        {
+          "channel": "instagram",
+          "link": "https://www.instagram.com/pattern_radio/"
+        }
+      ]
+    }
+  },
   {
     "id": "rhythm-retreat",
     "title": "Rhythm Retreat",

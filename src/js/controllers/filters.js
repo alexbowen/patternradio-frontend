@@ -14,6 +14,7 @@ const FiltersController = class extends Controller {
       "Broken Beat",
       "Disco",
       "Dub",
+      "Drum & Bass",
       "Electro",
       "Electronica",
       "Funk",
