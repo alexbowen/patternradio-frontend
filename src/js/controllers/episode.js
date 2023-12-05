@@ -62,7 +62,7 @@ const EpisodeController = class extends Controller {
     img.src = a.pictures.large;
 
     let button = clone.querySelector('.playable');
-    button.dataset.url = a.key;
+    button.dataset.url = `https://www.mixcloud.com/widget/iframe/?hide_cover=1&autoplay=1&feed=${a.key}`;
 
     let tags = clone.querySelector('.tags');
     tags.classList.add('mt-1');
