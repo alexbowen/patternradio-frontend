@@ -3,7 +3,7 @@ import { Controller } from '@hotwired/stimulus';
 const ScheduleController = class extends Controller {
   static targets = ['episodes'];
 
-  static exclude = ['Off Air', 'On Air Soon', 'On Air Electronic', 'On Air Eclectic', 'On Air Latest', 'On Air Organic', 'On Air Funky'];
+  static exclude = ['Off Air', 'On Air Soon', 'On Air Electronic', 'On Air Eclectic', 'On Air Latest', 'On Air Organic', 'On Air Funky', 'On Air NYE'];
 
   connect(e) {
     fetch('https://public.radio.co/stations/s3ad39def4/embed/schedule')

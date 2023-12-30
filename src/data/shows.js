@@ -272,7 +272,7 @@ module.exports = [
     "subtitle": "Alex Bowen",
     "active": true,
     "image": "images/shows/the-lightbox/brand_200.png",
-    "about": "Underground house music all the way. New releases, classics, exclusives and anything thats been getting rotatation on the turntable of late.",
+    "about": "Underground club house sounds all the way. New releases, classics, exclusives and anything thats been getting rotatation on the turntable of late.",
     "social": {
       "size": "20",
       "channels": [
