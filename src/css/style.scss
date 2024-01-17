@@ -28,7 +28,7 @@ body {
 }
 
 h1 {
-  @include font-size(2.6rem);
+  @include font-size(2.4rem);
   color: #1c1c1c;
 }
 
@@ -63,13 +63,7 @@ hr {
   display: none;
 }
 
-.spa-content-container {
-  // padding-bottom: 120px;
-  // padding-top: 50px;
-}
-
 .content-header {
-  // border-top: 1px solid white;
   background-color: #4A5359;
   width: 100%;
   z-index: 500;
@@ -155,11 +149,6 @@ header {
   padding-bottom: 8rem;
   position: relative;
   min-height: 100vh;
-
-  // footer {
-  //   position:absolute;
-  //   bottom: 10rem;
-  // }
 
   .nav-link {
     text-decoration: underline;

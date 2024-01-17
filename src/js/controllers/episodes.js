@@ -27,6 +27,8 @@ const EpisodesController = class extends Controller {
     "discovery": "discovery"
   };
 
+  static MIXCLOUD_USERNAME = 'patternradio';
+
   // static host = 'http://localhost:5000';
   static host = 'https://patternradio-api-e873df4d91a5.herokuapp.com';
 
@@ -104,22 +106,31 @@ const EpisodesController = class extends Controller {
         clone.querySelector('.episode').classList.remove('active');
       }
 
-      let parts = a.name.split(' - ');
-      let title = clone.querySelector('.title');
-      title.innerHTML = parts[0];
-      title.href = `/show/${parts[0].toLowerCase().replace(/ /g, '-')}`;
+      if (a.user.username === EpisodesController.MIXCLOUD_USERNAME) {
+        let parts = a.name.split(' - ');
+        let title = clone.querySelector('.title');
+        title.innerHTML = parts[0];
+        title.href = `/show/${parts[0].toLowerCase().replace(/ /g, '-')}`;
+  
+        let host = clone.querySelector('.host');
+        host.innerHTML = parts[1];
+  
+        if (parts[2]) {
+          let detail = clone.querySelectorAll('.detail');
+          detail.forEach((d) => {
+            if (!d.innerHTML) {
+              d.innerHTML = parts[2];
+            }
+            d.href = `/episode/${a.slug}`;
+          });
+        }
+      } else {
+        let title = clone.querySelector('.title');
+        title.innerHTML = a.name;
+        title.href = a.url;
 
-      let host = clone.querySelector('.host');
-      host.innerHTML = parts[1];
-
-      if (parts[2]) {
-        let detail = clone.querySelectorAll('.detail');
-        detail.forEach((d) => {
-          if (!d.innerHTML) {
-            d.innerHTML = parts[2];
-          }
-          d.href = `/episode/${a.slug}`;
-        });
+        let host = clone.querySelector('.host');
+        host.innerHTML = a.user.name;
       }
 
       let likes = clone.querySelector('.likes');

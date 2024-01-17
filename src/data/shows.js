@@ -20,7 +20,7 @@ module.exports = [
     "title": "Ambient Berlin",
     "subtitle": "Andrew Lewis",
     "active": true,
-    "image": "images/shows/ambient-berlin.png",
+    "image": "images/shows/ambient-berlin/brand_200.png",
     "about": "A place to breath deeply and unwind to the sounds of ambient, electronica, krautrock and modern classical. Music from around the world, from the past, present and future, mixed with love in Berlin.",
     "tags": "krautrock"
   },
@@ -126,10 +126,10 @@ module.exports = [
   {
     "id": "pattern-radio-live",
     "title": "Pattern Radio Live",
-    "subtitle": "Alex Bowen",
+    "subtitle": "Guest DJs",
     "active": true,
-    "image": "images/shows/pr-live.png",
-    "about": "Less talking, more music from the world of underground electronic music. You will hear new releases, classics, exclusives and anything floating our boat. Disco to Detroit Techno, Deep House to Broken Beat and a suprise or two along the way.",
+    "image": "images/shows/pattern-radio-live/brand_200.png",
+    "about": "Live DJ mixes, live audio/visual broadcasts.",
     "social": {
       "size": "20",
       "channels": [
@@ -144,26 +144,27 @@ module.exports = [
       ]
     }
   },
-  // {
-  //   "title": "Pattern Radio Show",
-  //   "subtitle": "Alex Bowen",
-  //   "active": true,
-  //   "image": "images/shows/pr-show.jpg",
-  //   "about": "Selection of new releases, new finds and classics from across the musical spectrum. This is the place also for Pattern Radio updates and news.",
-  //   "social": {
-  //     "size": "20",
-  //     "channels": [
-  //       {
-  //         "channel": "facebook",
-  //         "link": "https://www.facebook.com/groups/5800911413254766"
-  //       },
-  //       {
-  //         "channel": "instagram",
-  //         "link": "https://www.instagram.com/pattern_radio/"
-  //       }
-  //     ]
-  //   }
-  // },
+  {
+    "id": "pattern-radio-show",
+    "title": "Pattern Radio Show",
+    "subtitle": "Guest DJs",
+    "active": true,
+    "image": "images/shows/pattern-radio-show/brand_200.png",
+    "about": "Guest DJ mixes and shows from across the musical spectrum.",
+    "social": {
+      "size": "20",
+      "channels": [
+        {
+          "channel": "facebook",
+          "link": "https://www.facebook.com/groups/5800911413254766"
+        },
+        {
+          "channel": "instagram",
+          "link": "https://www.instagram.com/pattern_radio/"
+        }
+      ]
+    }
+  },
   {
     "id": "rhythm-retreat",
     "title": "Rhythm Retreat",
@@ -249,8 +250,29 @@ module.exports = [
     "title": "Sunday Session",
     "subtitle": "Alex Bowen",
     "active": true,
-    "image": "images/shows/pr-sundaysession.png",
+    "image": "images/shows/sunday-session/brand_200.png",
     "about": "Sunday vibes all the way. A selection of music in the realm of jazz, soul, world, psych and downtempo. Many new releases, re-releases, classics and anything that has been getting heavy rotation on the turntable of late.",
+    "social": {
+      "size": "20",
+      "channels": [
+        {
+          "channel": "facebook",
+          "link": "https://www.facebook.com/groups/5800911413254766"
+        },
+        {
+          "channel": "instagram",
+          "link": "https://www.instagram.com/patternradio_pt/"
+        }
+      ]
+    }
+  },
+  {
+    "id": "the-lightbox",
+    "title": "The Lightbox",
+    "subtitle": "Alex Bowen",
+    "active": true,
+    "image": "images/shows/the-lightbox/brand_200.png",
+    "about": "Underground club house sounds all the way. New releases, classics, exclusives and anything thats been getting rotatation on the turntable of late.",
     "social": {
       "size": "20",
       "channels": [
@@ -270,7 +292,7 @@ module.exports = [
     "title": "Time To Get Down",
     "subtitle": "Alex Bowen",
     "active": true,
-    "image": "images/shows/time-to-get-down.png",
+    "image": "images/shows/time-to-get-down/brand_200.png",
     "about": "Many of you will know already that Alex has an unhealthy obssession with disco balls and it's all quarantined here. Alex's disco archives are expansive and each month with a theme, this show explores the genre from it's roots to the modern day.",
     "tags": "disco",
     "social": {

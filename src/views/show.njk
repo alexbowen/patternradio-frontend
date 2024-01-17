@@ -43,7 +43,7 @@
           <h3 class="mb-3">{{ item.title }}</h3>
           <div class="row g-0">
             <div class="col-md-12">
-              <img src="/{{ item.image }}" class="img-fluid float-start pe-3 pb-1" alt="{{ item.name }}">
+              <img src="/{{ item.image }}" class="img-fluid float-start pe-3 pb-1" height="200" width="200" alt="{{ item.name }}">
               <h4 class="host m-0 p-0">{{ item.subtitle }}</h4>
               <p class="when m-0 p-0 fs-6">{{ item.about }}</p>
               <div class="social-toolbar">
@@ -59,7 +59,7 @@
 
       <div class="container-fluid pb-2">
         <div class="heading d-flex" data-episodes-target="heading">
-{% include "templates/episodes/_title.njk" %}
+          {% include "templates/episodes/_title.njk" %}
         </div>
         <div class="pagination d-flex flex-wrap flex-md-nowrap">
           <div data-pagination-target="stats" class="flex-grow-1"></div>
