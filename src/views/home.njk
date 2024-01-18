@@ -122,7 +122,9 @@
       </div>
 
       <div class="col-12 col-md-6 col-xl-4">
-        <div class="episodes" id="latest" data-controller="episodes" data-episodes-show-item-template-id="episode-latest" data-episodes-title-value="listen to latest shows" data-episodes-items-value="2" data-episodes-show-tags-value="true">
+        
+        <div class="episodes" id="latest" data-controller="episodes" data-episodes-template-value="latest" data-episodes-title-value="listen to latest shows" data-episodes-items-value="2" data-episodes-show-tags-value="true">
+
           <div class="carousel slide" id="carouselexampleautoplaying" data-bs-ride="carousel">
             <div class="carousel-indicators">
 
@@ -133,13 +135,12 @@
 
           </div>
         </div>
-        {% include "templates/episode/_latest.njk" %}
       </div>
     </div>
 
     <div class="row">
       <div class="col-12 mb-5">
-        <div class="order-lg-1 episodes" id="episodes" data-controller="episodes" data-episodes-show-item-template-id="episode-standard" data-episodes-filters-value="true" data-episodes-items-value="6" data-episodes-offset-value="0" data-episodes-show-tags-value="true" data-episodes-search-value="true">
+        <div class="order-lg-1 episodes" id="episodes" data-controller="episodes" data-episodes-filters-value="true" data-episodes-items-value="6" data-episodes-offset-value="0" data-episodes-search-value="true">
           <div class="heading d-flex" data-episodes-target="heading">
             {% include "templates/episodes/_title.njk" %}
           </div>
@@ -148,8 +149,6 @@
           <div class="row episodes" data-episodes-target="items"></div>
           <a data-controller="navigation" data-action="click->navigation#navigate" class="nav-link" href="/browse">Browse all shows</a>
         </div>
-
-        {% include "templates/episode/_standard.njk" %}
       </div>
     </div>
 
