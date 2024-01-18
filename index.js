@@ -19,11 +19,23 @@ const env = nunjucks.configure(__dirname + '/src/views', {
 
 env.addGlobal('timeToMinutes', (d) => Math.floor(d * 1000 / 60000));
 
+/* next two functions temporary till look at rails app api */
+env.addGlobal('showData', (name) => {
+  const parts = name.split('-');
+  return {
+    title: parts[0],
+    host: parts[1],
+    detail: parts[2]
+  }
+});
+
+env.addGlobal('showTitleId', (title) => title.toLowerCase().replace(/ /g, '-'));
+
 const root = path.join(__dirname, 'public');
 
 app.use(express.static(root));
 
-// static host = 'http://localhost:5000';
+// const host = 'http://localhost:5000';
 const host = 'https://patternradio-api-e873df4d91a5.herokuapp.com';
 
 app
@@ -98,7 +110,7 @@ app
 })
 .get('/partial/episodes', (req, res) => {
   const endpoint = req.query.q && req.query.q.length ? 'search/shows' : 'shows';
-  const template = req.query.template ? `partials/episode/_${req.query.template}.njk` : 'partials/episode/_default.njk';
+  const template =  req.query.template ? req.query.template : 'default';
 
   fetch(`${host}/api/${endpoint}/?${new URLSearchParams(req.query)}`)
     .then((response) => response.json())
@@ -106,7 +118,7 @@ app
       let  data = {
         data: { episodes }
       }
-      res.render(template, data)
+      res.render(`partials/episode/_${template}.njk`, data)
   });
 })
 .use(fallback('index.html', { root: __dirname }))

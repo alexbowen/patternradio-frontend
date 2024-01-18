@@ -57,11 +57,7 @@ const EpisodesController = class extends Controller {
       params.filters = filters.split(',');
     }
 
-    fetch(`/partial/episodes?${new URLSearchParams(params)}`, {
-      headers: {
-        "Access-Control-Allow-Origin": "*"
-      }
-    })
+    fetch(`partial/episodes?${new URLSearchParams(params)}`)
     .then((response) => response.text())
     .then((data) => {
       if (this.searchValue === true || query) {

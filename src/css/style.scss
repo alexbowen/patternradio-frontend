@@ -160,10 +160,6 @@ header {
     &__orange {
       background: url('/images/brand/patterns_01_tile.png') repeat;
 
-      .nav-link {
-        color: #E8D7B9;
-      }
-
       h3 {
         color: #E8D7B9;
         @include font-size(2rem);
@@ -223,6 +219,10 @@ header {
   .card-body {
     padding: 1rem 0;
     width: 100%;
+  }
+
+  .nav-link {
+    color: #1c1c1c;
   }
 }
 
