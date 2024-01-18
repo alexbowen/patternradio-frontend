@@ -55,7 +55,7 @@
       </div>
     </div>
 
-    <div class="episodes" id="episodes" data-action="episodes:loaded->pagination#update pagination:paginate->episodes#paginate" data-controller="episodes pagination" data-episodes-show-item-template-id="episode-standard" data-episodes-tag-item-template-id="tag" data-episodes-items-value="12" data-episodes-query-value="{{ item.title }}" data-episodes-types-value="true" data-episodes-search-value="true">
+    <div class="episodes" id="episodes" data-action="episodes:loaded->pagination#update pagination:paginate->episodes#paginate" data-controller="episodes pagination" data-episodes-items-value="12" data-episodes-query-value="{{ item.title }}" data-episodes-types-value="true" data-episodes-search-value="true">
       <div class="container-fluid pb-2">
         <div class="heading d-flex" data-episodes-target="heading">
           {% include "templates/episodes/_title.njk" %}
@@ -74,7 +74,7 @@
     <div class="container-fluid mt-4">
       <h2>Relevant Reading</h2>
       {% set query = [item.id, item.tags] | join(",") %}
-      <div class="row episodes pb-4" data-controller="posts" data-posts-target="items" data-posts-overidden-value="true" data-posts-show-item-template-id="post" data-posts-offset-value="0" data-posts-show-tags-value="true" data-posts-items-value="12" data-posts-query-value="{{ query }}" data-posts-search-value="true">
+      <div class="row episodes pb-4" data-controller="posts" data-posts-target="items" data-posts-overidden-value="true" data-posts-show-item-template-id="post" data-posts-offset-value="0" data-posts-items-value="12" data-posts-query-value="{{ query }}" data-posts-search-value="true">
         {% include "templates/_post.njk" %}
       </div>
     </div>

@@ -13,7 +13,7 @@ const app = express();
 
 const env = nunjucks.configure(__dirname + '/src/views', {
     autoescape: true,
-    noCache: true,
+    noCache: false,
     express: app
 });
 
@@ -23,7 +23,7 @@ const root = path.join(__dirname, 'public');
 
 app.use(express.static(root));
 
-// static host = 'http://localhost:3000';
+// static host = 'http://localhost:5000';
 const host = 'https://patternradio-api-e873df4d91a5.herokuapp.com';
 
 app

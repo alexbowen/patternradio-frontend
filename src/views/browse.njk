@@ -33,7 +33,7 @@
 
 {% block content %}
 
-  <div class="episodes" id="episodes" data-action="episodes:loaded->pagination#update pagination:paginate->episodes#paginate" data-controller="episodes pagination search" data-episodes-show-item-template-id="episode-standard" data-episodes-tag-item-template-id="tag" data-episodes-items-value="12" data-episodes-types-value="true" data-episodes-search-value="true" data-episodes-filters-value="true" data-episodes-show-tags-value="true">
+  <div class="episodes" id="episodes" data-action="episodes:loaded->pagination#update pagination:paginate->episodes#paginate" data-controller="episodes pagination search" data-episodes-items-value="12" data-episodes-types-value="true" data-episodes-search-value="true" data-episodes-filters-value="true">
 
     <div class="container-fluid">
       <div class="row header" data-episodes-target="heading">
@@ -57,5 +57,5 @@
       <div class="row episodes" data-episodes-target="items"></div>
     </div>
   </div>
-  
+
 {% endblock %}

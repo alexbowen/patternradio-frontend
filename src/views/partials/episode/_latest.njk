@@ -6,50 +6,50 @@
   <div class="row g-0 p-0">
     <div class="col-12 col-sm-5 content pb-0">
       <div class="image-container w-100" data-action="click->radio#play">
-    {% if item.favorite_count > 0 %}
-    <div class="likes">
-      <span class="heart"></span>
-      <span class="count">{{item.favorite_count}}</span>
-    </div>
-    {% endif %}
+        {% if item.favorite_count > 0 %}
+        <div class="likes">
+          <span class="heart"></span>
+          <span class="count">{{item.favorite_count}}</span>
+        </div>
+        {% endif %}
+
         <img src="{{ item.pictures.large }}" alt="{{ item.name }}" class="w-100" alt="..." />
 
         <div class="playable-button">
-
           <span class="button">
             <button></button>
           </span>
         </div>
 
         <div class="badge">
-          <span class="time">{{ timeToMinutes(item.audio_length) }} min</span>
+          <span>{{ timeToMinutes(item.audio_length) }} min</span>
         </div>
       </div>
     </div>
 
     <div class="col-12 col-sm-7 content">
-          <h5 class="card-title">
-            <a data-controller="navigation" data-action="click->navigation#navigate"  href="#" class="detail nav-link mb-1 fs-3" style="color:#1c1c1c"></a>
-          </h5>
+      <h5 class="card-title">
+        <a data-controller="navigation" data-action="click->navigation#navigate"  href="#" class="nav-link mb-1 fs-3" style="color:#1c1c1c"></a>
+      </h5>
 
-          <h5 class="card-title">
-            <a data-controller="navigation" data-action="click->navigation#navigate"  href="{{ item.url }}" class="title nav-link fs-6" style="color:#1c1c1c">{{ item.name }}</a>
-          </h5>
-      <p class="card-text host">{{item.user.name}}</p>
+      <h5 class="card-title">
+        <a data-controller="navigation" data-action="click->navigation#navigate"  href="{{ item.url }}" class="nav-link fs-6" style="color:#1c1c1c">{{ item.name }}</a>
+      </h5>
+      <p class="card-text">{{item.user.name}}</p>
 
-                <ul class="tags ps-0" data-action="click->episodes#tagSearch">
-
-            {% for tag in item.tags %}
-              <li>
-                <button class="me-2 badge">{{ tag.name }}</button>
-              </li>
-            {% endfor %}
-          </ul>
+      <ul class="tags ps-0" data-action="click->episodes#tagSearch">
+        {% for tag in item.tags %}
+          <li>
+            <button class="me-2 badge">{{ tag.name }}</button>
+          </li>
+        {% endfor %}
+      </ul>
 
       <p class="card-text">
-        <a data-controller="navigation" data-action="click->navigation#navigate"  href="#" class="detail nav-link" style="color:#1c1c1c">More detail</a>
+        <a data-controller="navigation" data-action="click->navigation#navigate" href="#" class="nav-link" style="color:#1c1c1c">More detail</a>
       </p>
     </div>
   </div>
 </div>
+
 {% endfor %}

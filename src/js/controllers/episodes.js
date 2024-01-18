@@ -2,13 +2,12 @@ import { Controller } from '@hotwired/stimulus';
 import Storage from '../storage';
 
 const EpisodesController = class extends Controller {
-  static targets = ['tags', 'items', 'item', 'heading', 'count'];
+  static targets = ['tags', 'items', 'heading', 'count'];
 
   static values = {
     search: Boolean,
     items: Number,
     offset: Number,
-    showTags: Boolean,
     types: Boolean,
     filters: Boolean,
     query: String,
