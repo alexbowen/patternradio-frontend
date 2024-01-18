@@ -56,7 +56,6 @@
     </div>
 
     <div class="episodes" id="episodes" data-action="episodes:loaded->pagination#update pagination:paginate->episodes#paginate" data-controller="episodes pagination" data-episodes-show-item-template-id="episode-standard" data-episodes-tag-item-template-id="tag" data-episodes-items-value="12" data-episodes-query-value="{{ item.title }}" data-episodes-types-value="true" data-episodes-search-value="true">
-
       <div class="container-fluid pb-2">
         <div class="heading d-flex" data-episodes-target="heading">
           {% include "templates/episodes/_title.njk" %}
@@ -68,7 +67,6 @@
         <div class="row episodes" data-episodes-target="items"></div>
         <a class="nav-link" href="/shows" data-controller="navigation" data-action="click->navigation#navigate">Back to all shows</a>
       </div>
-
     </div>
 
     {% include "templates/episode/_standard.njk" %}

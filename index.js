@@ -11,15 +11,20 @@ const filters = require('./src/data/filters');
 
 const app = express();
 
-nunjucks.configure(__dirname + '/src/views', {
+const env = nunjucks.configure(__dirname + '/src/views', {
     autoescape: true,
     noCache: true,
     express: app
 });
 
+env.addGlobal('timeToMinutes', (d) => Math.floor(d * 1000 / 60000));
+
 const root = path.join(__dirname, 'public');
 
-app.use(express.static(root))
+app.use(express.static(root));
+
+// static host = 'http://localhost:3000';
+const host = 'https://patternradio-api-e873df4d91a5.herokuapp.com';
 
 app
 .get('/pages', (req, res) => {
@@ -87,10 +92,22 @@ app
   let data = {
     page: 'browse',
     layout:  'layout.njk',
-    title: 'Browse Shows',
-    data: { filters }
+    title: 'Browse Shows'
   }
   res.render('browse.njk', data)
+})
+.get('/partial/episodes', (req, res) => {
+  const endpoint = req.query.q && req.query.q.length ? 'search/shows' : 'shows';
+  const template = req.query.template ? `partials/episode/_${req.query.template}.njk` : 'partials/episode/_default.njk';
+
+  fetch(`${host}/api/${endpoint}/?${new URLSearchParams(req.query)}`)
+    .then((response) => response.json())
+    .then((episodes) => {
+      let  data = {
+        data: { episodes }
+      }
+      res.render(template, data)
+  });
 })
 .use(fallback('index.html', { root: __dirname }))
 .listen(PORT, () => console.log(`Listening on ${ PORT }`));

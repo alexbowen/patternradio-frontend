@@ -1,0 +1,45 @@
+<div data-count="{{ data.episodes.count }}" data-episodes-target="count"></div>
+{% for item in data.episodes.items %}
+  <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 playable episode card" data-url="https://www.mixcloud.com/widget/iframe/?hide_cover=1&autoplay=1&feed={{ item.key }}">
+    <div class="image-container" data-action="click->radio#play">
+    <img src="{{ item.pictures.large }}" alt="{{ item.name }}" class="card-img-top"/>
+
+    {% if item.favorite_count > 0 %}
+    <div class="likes">
+      <span class="heart"></span>
+      <span class="count">{{item.favorite_count}}</span>
+    </div>
+    {% endif %}
+    <div class="playable-button">
+
+      <span class="button">
+        <button></button>
+      </span>
+    </div>
+
+    <div class="badge">
+      <span class="time">{{ timeToMinutes(item.audio_length) }} min</span>
+    </div>
+    </div>
+    <div class="card-body">
+          <h5 class="card-title">
+            <a data-controller="navigation" data-action="click->navigation#navigate"  href="#" class="detail nav-link mb-1 fs-3" style="color:#1c1c1c"></a>
+          </h5>
+
+          <h5 class="card-title">
+            <a data-controller="navigation" data-action="click->navigation#navigate"  href="{{ item.url }}" class="title nav-link fs-6" style="color:#1c1c1c">{{ item.name }}</a>
+          </h5>
+
+          <p class="card-text host">{{item.user.name}}</p>
+          <ul class="tags ps-0" data-action="click->episodes#tagSearch">
+
+            {% for tag in item.tags %}
+              <li>
+                <button class="me-2 badge">{{ tag.name }}</button>
+              </li>
+            {% endfor %}
+          </ul>
+    </div>
+
+  </div>
+  {% endfor %}
