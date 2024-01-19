@@ -1,16 +1,9 @@
 <div data-count="{{ data.episodes.count }}" data-episodes-target="count"></div>
 
 {% for item in data.episodes.items | reverse %}
-  <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 playable episode card" data-url="https://www.mixcloud.com/widget/iframe/?hide_cover=1&autoplay=1&feed={{ item.key }}">
+  <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 playable episode card{% if item.user.username === 'patternradio' %} brand{% endif %}" data-url="https://www.mixcloud.com/widget/iframe/?hide_cover=1&autoplay=1&feed={{ item.key }}">
     <div class="image-container" data-action="click->radio#play">
       <img src="{{ item.pictures.large }}" alt="{{ item.name }}" class="card-img-top"/>
-
-      {% if item.favorite_count > 0 %}
-        <div class="likes">
-          <span class="heart"></span>
-          <span class="count">{{item.favorite_count}}</span>
-        </div>
-      {% endif %}
 
       <div class="playable-button">
         <span class="button">
@@ -18,8 +11,22 @@
         </span>
       </div>
 
-      <div class="badge">
-        <span>{{ timeToMinutes(item.audio_length) }} min</span>
+      <div class="d-flex statistics p-2">
+        <div class="flex-grow-1">
+          <span>{{ timeToMinutes(item.audio_length) }} min</span>
+        </div>
+
+      {% if item.favorite_count > 0 and item.user.username === 'patternradio' %}
+        <div class="likes count">
+          <span>{{item.favorite_count}}</span>
+        </div>
+      {% endif %}
+
+      {% if item.repost_count > 0 and item.user.username === 'patternradio' %}
+        <div class="reposts count ms-2">
+          <span>{{item.repost_count}}</span>
+        </div>
+      {% endif %}
       </div>
     </div>
 
