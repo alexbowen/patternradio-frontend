@@ -48,7 +48,6 @@ h3 {
 }
 
 hr {
-  // color: #666;
   margin: 0 0 2rem;
 }
 
@@ -178,14 +177,11 @@ header {
   .image-container {
     position: relative;
     display: inline-block;
-
-    img {
-      border: 6px solid #e0e1e1;
-    }
+    border: 6px solid #e0e1e1;
 
     .statistics {
       background-color: #e0e1e1;
-      font-size: 0.8rem;
+      font-size: 0.9rem;
 
       .count {
         padding-left: 1.4rem;
@@ -328,7 +324,6 @@ header {
 
       &:hover:not(.active) {
         background-color: #ddd;
-        // color: #25292c;
       }
     }
 
@@ -461,13 +456,11 @@ header {
   }
 
   h3 {
-    // color: #666;
     margin-bottom: 1rem;
     text-transform: capitalize;
   }
 
   blockquote {
-    // color: #666;
     margin: 1rem 0;
     font-style: italic;
 
@@ -479,7 +472,6 @@ header {
 
   p,
   figure {
-    // color: #666;
     margin-bottom: 0.5rem;
   }
 
@@ -538,7 +530,6 @@ header {
     li {
       padding: 0 2px;
       display: inline;
-      // color: #999;
       text-transform: uppercase;
 
       .current {

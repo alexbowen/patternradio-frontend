@@ -47,7 +47,7 @@
         
         <div class="d-flex flex-column">
           <div class="flex-fill mb-3" style="background-color:#f2f2f2;padding:20px;">
-            <h4 class="fs-2">Streaming Now</h4>
+            <h4 class="fs-2">Show Streaming Now</h4>
             <div data-controller="stream" data-action="stream:update->status#update">
               {% include "partials/_stream.njk" %}
             </div>
@@ -57,7 +57,7 @@
 
             <div class="row pt-0">
               <div data-controller="status">
-                <h4 class="mb-1">Next Show</h4>
+                <h4 class="mb-1">Show Streaming Next</h4>
               <p data-status-target="track" class="mb-2">next</p>
               </div>
               {# <div class="col col-md-6">
