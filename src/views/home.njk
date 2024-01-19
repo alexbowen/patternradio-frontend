@@ -36,29 +36,25 @@
 {% block content %}
 
   <div class="container-fluid">
-    
-
     <div class="row row__orange pb-3 pb-md-0">
-      <div class="flex-fill">
-        <h1 style="color:#e8d7b9;">Musical selections and discovery for enlightened listening</h1>
-      </div>
-
       <div class="col-12 col-xl-4 pb-4">
-        
+        <div class="flex-fill">
+          <h1 style="color:#e8d7b9;">Musical selections and discovery for enlightened listening</h1>
+        </div>
         <div class="d-flex flex-column">
           <div class="flex-fill mb-3" style="background-color:#f2f2f2;padding:20px;">
-            <h4 class="fs-2">Show Streaming Now</h4>
+            <h4 class="fs-2">Streaming Now</h4>
             <div data-controller="stream" data-action="stream:update->status#update">
               {% include "partials/_stream.njk" %}
             </div>
           </div>
 
           <div class="flex-fill" style="background-color:#f2f2f2;padding:20px;">
-
             <div class="row pt-0">
               <div data-controller="status">
-                <h4 class="mb-1">Show Streaming Next</h4>
-              <p data-status-target="track" class="mb-2">next</p>
+                <h4 class="mb-1">Streaming Next</h4>
+                <p data-status-target="track" class="mb-0">next</p>
+                <a href="#upcoming-shows" class="nav-link py-2 py-md-0">New Shows Coming Soon</a>
               </div>
               {# <div class="col col-md-6">
                 <a href="#upcoming-shows" class="nav-link py-2 py-md-0" style="color:#1c1c1c;">Coming Soon</a>
@@ -109,25 +105,25 @@
 
       <div class="col-12 col-md-6 col-xl-4 pb-4">
         <div class="row g-0 p-0">
-          <div class="col-12 col-sm-5 content pb-0">
+          <h3>Coming Soon</h3>
+          <div class="col-12 col-sm-5 content pb-2">
             <img src="images/shows/tropicaldisco.png" class="w-100" alt="Tropical Disco Goes Gospel"/>
           </div>
 
           <div class="col-12 col-sm-7 content">
             <h4 class="fs-2">Tropical Disco</h4>
             <p>Pattern Radio favourite hosted by Chris Holt. This time with guest mix from Greg Belson with his unique brand of funk fuelled gospel sounds.</p>
-            <p>Starts Friday 19th 6pm UTC.</p>
+            <p>Starts Friday 19th 7pm UTC.</p>
           </div>
         </div>
       </div>
 
       <div class="col-12 col-md-6 col-xl-4">
-        
-        <div class="episodes" id="latest" data-controller="episodes" data-episodes-template-value="latest" data-episodes-title-value="listen to latest shows" data-episodes-items-value="2" data-episodes-show-tags-value="true">
+        <h3>Recommended listening</h3>
+        <div class="episodes pb-2" id="latest" data-controller="episodes" data-episodes-template-value="latest" data-episodes-title-value="listen to latest shows" data-episodes-items-value="2" data-episodes-show-tags-value="true">
 
           <div class="carousel slide" id="carouselexampleautoplaying" data-bs-ride="carousel">
             <div class="carousel-indicators">
-
               <button type="button" data-bs-target="#carouselexampleindicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="slide 1"></button>
               <button type="button" data-bs-target="#carouselexampleindicators" data-bs-slide-to="1" aria-label="slide 2"></button>
             </div>
@@ -139,13 +135,13 @@
     </div>
 
     <div class="row">
-      <div class="col-12 mb-5">
+      <div class="col-12 mb-2">
         <div class="order-lg-1 episodes" id="episodes" data-controller="episodes" data-episodes-filters-value="true" data-episodes-items-value="6" data-episodes-offset-value="0" data-episodes-search-value="true">
           <div class="heading d-flex" data-episodes-target="heading">
             {% include "templates/episodes/_title.njk" %}
           </div>
 
-          <p>Click show to load in player</p>
+          <p class="mb-0">Click show to load in player</p>
           <div class="row episodes" data-episodes-target="items"></div>
           <a data-controller="navigation" data-action="click->navigation#navigate" class="nav-link" href="/browse">Browse all shows</a>
         </div>

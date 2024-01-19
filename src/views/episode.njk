@@ -33,11 +33,9 @@
 {% endblock %}
 
 {% block content %}
-<div class="container-fluid py-4">
-  <div data-controller="episode" data-episode-id-value="{{ item }}"  data-episode-show-item-template-id="episode-detail">
-
+  <div class="container-fluid py-4">
+    <div data-controller="episode" data-episode-id-value="{{ item }}">
+      <div class="episodes"></div>
+    </div>
   </div>
-  {% include "templates/episode/_detail.njk" %}
-  </div>
-
 {% endblock %}

@@ -2,11 +2,11 @@
 
 {% for item in data.episodes.items %}
 
-<div class="playable episode mb-3 carousel-item{% if loop.first %} active{% endif %}" data-bs-interval="4000"  data-url="https://www.mixcloud.com/widget/iframe/?hide_cover=1&autoplay=1&feed={{ item.key }}">
+<div class="playable episode mb-3 carousel-item{% if loop.first %} active{% endif %}" data-bs-interval="4000" data-url="https://www.mixcloud.com/widget/iframe/?hide_cover=1&autoplay=1&feed={{ item.key }}">
   <div class="row g-0 p-0">
-    <div class="col-12 col-sm-5 content pb-0">
+    <div class="col-12 col-sm-5 content">
       <div class="image-container w-100" data-action="click->radio#play">
-        <img src="{{ item.pictures.large }}" alt="{{ item.name }}" class="w-100" alt="..." />
+        <img src="{{ item.pictures.large }}" alt="{{ item.name }}" class="w-100" />
 
         <div class="playable-button">
           <span class="button">

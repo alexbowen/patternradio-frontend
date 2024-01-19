@@ -1,7 +1,7 @@
 <div data-count="{{ data.episodes.count }}" data-episodes-target="count"></div>
 
 {% for item in data.episodes.items | reverse %}
-  <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 playable episode card{% if item.user.username === 'patternradio' %} brand{% endif %}" data-url="https://www.mixcloud.com/widget/iframe/?hide_cover=1&autoplay=1&feed={{ item.key }}">
+  <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 playable episode card" data-url="https://www.mixcloud.com/widget/iframe/?hide_cover=1&autoplay=1&feed={{ item.key }}">
     <div class="image-container" data-action="click->radio#play">
       <img src="{{ item.pictures.large }}" alt="{{ item.name }}" class="card-img-top"/>
 
@@ -40,7 +40,6 @@
 
         <h5 class="card-title">
           {{showData(item.name).host}}
-
         </h5>
 
         <p class="card-text mb-1">
@@ -52,7 +51,6 @@
       {% endif %}
 
       <ul class="tags ps-0" data-action="click->episodes#tagsearch">
-
         {% for tag in item.tags %}
           <li>
             <button class="me-2 badge">{{ tag.name }}</button>
