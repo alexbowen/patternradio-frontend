@@ -6,23 +6,12 @@
   <div class="row g-0 p-0">
     <div class="col-12 col-sm-5 content pb-0">
       <div class="image-container w-100" data-action="click->radio#play">
-        {% if item.favorite_count > 0 %}
-        <div class="likes">
-          <span class="heart"></span>
-          <span class="count">{{item.favorite_count}}</span>
-        </div>
-        {% endif %}
-
         <img src="{{ item.pictures.large }}" alt="{{ item.name }}" class="w-100" alt="..." />
 
         <div class="playable-button">
           <span class="button">
             <button></button>
           </span>
-        </div>
-
-        <div class="badge">
-          <span>{{ timeToMinutes(item.audio_length) }} min</span>
         </div>
       </div>
     </div>
