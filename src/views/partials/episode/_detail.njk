@@ -1,0 +1,56 @@
+<div class="playable episode carousel-item active" data-bs-interval="4000" data-url="https://www.mixcloud.com/widget/iframe/?hide_cover=1&autoplay=1&feed={{ data.episode.key }}">
+  <div class="d-md-flex">
+
+    <div class="image-container me-3 mb-3" data-action="click->radio#play">
+      <img src="{{ data.episode.pictures.large }}" class="img-fluid" alt="{{ data.episode.name }}"/>
+
+      <div class="playable-button">
+        <span class="button">
+          <button></button>
+        </span>
+      </div>
+
+      <div class="d-flex statistics p-2 pb-0">
+        <div class="flex-grow-1">
+          <span>{{ timeToMinutes(data.episode.audio_length) }} min</span>
+        </div>
+
+        {% if data.episode.favorite_count > 0 and data.episode.user.username === 'patternradio' %}
+          <div class="likes count">
+            <span>{{data.episode.favorite_count}}</span>
+          </div>
+        {% endif %}
+
+        {% if data.episode.repost_count > 0 and data.episode.user.username === 'patternradio' %}
+          <div class="reposts count ms-2">
+            <span>{{data.episode.repost_count}}</span>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="flex-grow-1">
+      {% set title = showData(data.episode.name).title %}
+
+      <h3>{{ showData(data.episode.name).detail }}</h3>
+
+      <h2 class="mb-1">{{showData(data.episode.name).host}}</h2>
+
+      <p class="mb-1">{{ showData(data.episode.name).title }}</p>
+
+      <ul class="tags ps-0" data-action="click->episodes#tagsearch">
+        {% for tag in data.episode.tags %}
+          <li>
+            <button class="me-2 badge">{{ tag.name }}</button>
+          </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  <div class="row pt-0">
+    <div class="col">
+      <p><pre>{{ data.episode.description }}</pre></p>
+    </div>
+  </div>
+</div>

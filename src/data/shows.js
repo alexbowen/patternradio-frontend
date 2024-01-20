@@ -126,10 +126,10 @@ module.exports = [
   {
     "id": "pattern-radio-live",
     "title": "Pattern Radio Live",
-    "subtitle": "Guest DJs",
+    "subtitle": "Alex Bowen",
     "active": true,
     "image": "images/shows/pattern-radio-live/brand_200.png",
-    "about": "Live DJ mixes, live audio/visual broadcasts.",
+    "about": "100% live. New releases, music for the moment and a bit of chat. Won't be on playback, snooze and you will lose.",
     "social": {
       "size": "20",
       "channels": [

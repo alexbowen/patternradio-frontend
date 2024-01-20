@@ -118,7 +118,16 @@ app
       let  data = {
         data: { episodes }
       }
-      res.render(`partials/episode/_${template}.njk`, data)
+      res.render(`partials/episode/_${template}.njk`, data);
+  });
+})
+.get('/partial/episode/:id', (req, res) => {
+  fetch(`https://api.mixcloud.com/patternradio/${req.params.id}`)
+    .then((response) => response.json())
+    .then((episode) => {
+      res.render(`partials/episode/_detail.njk`, {
+        data: { episode }
+      });
   });
 })
 .use(fallback('index.html', { root: __dirname }))
