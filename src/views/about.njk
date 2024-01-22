@@ -1,37 +1,5 @@
 {% extends "layout.njk" %}
 
-{% block header %}
-  {% include "partials/filters/_tag.njk" %}
-
-  <div class="container-fluid content-header" data-controller="filters" data-filters-target-value="episodes" data-filters-selected-template-id="selected" data-filters-tag-item-template-id="tag">
-
-    <div class="collapse" id="filter-controls" data-filters-target="panel">
-      <div class="filters">
-        <div class="d-md-flex flex-row">
-          <div class="filters-header">
-
-            <ul class="nav nav-fill" data-filters-target="nav"></ul>
-
-            <div class="groups">
-              <ul data-filters-target="groups"></ul>
-            </div>
-
-            <div class="selected" data-filters-target="selected">
-              <p class="filters-selected--none">No preferences selected</p>
-
-              <div class="d-flex">
-                <button class="btn btn--link filters-selected--clear d-none" data-action="click->filters#clear">clear preferences</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-{% endblock %}
-
 {% block content %}
 
   <div class="container-fluid">

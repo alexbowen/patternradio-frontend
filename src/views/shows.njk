@@ -1,46 +1,5 @@
 {% extends "layout.njk" %}
 
-{% block header %}
-
-  <div data-controller="stream status" data-action="stream:update->status#update">
-    <div class="container-fluid content-header py-3">
-      <div class="d-md-flex">
-        <div class="d-flex flex-md-grow-1">
-          {% include "partials/_stream.njk" %}
-        </div>
-        <div class="d-flex pt-3 p-md-0">
-          <a class="nav-link toggle-link" data-bs-toggle="collapse" href="#stream-detail" data-action="click->status#detail" role="button" aria-expanded="false" aria-controls="collapseexample">
-
-            <span class="filters-selected-status" data-filters-target="status"></span>
-            <span class="toggle-link__icon"></span>
-            <p data-status-target="title" class="mb-0">Currently offline</p>
-          </a>
-        </div>
-      </div>
-
-      <div class="collapse toggle-panel pt-3" id="stream-detail">
-        <div class="row">
-        <div class="col-6">
-          <h5 class="highlight">Now</h5>
-          
-          <img src="" data-status-target="currentimage" class="float-start pe-2 pb-1"/>
-          <h5 data-status-target="currenttitle"></h5>
-          <span data-status-target="currentelapsed"></span>
-        </div>
-
-        <div class="col-6">
-          <h5>Next</h5>
-
-          <img src="" data-status-target="nextimage" class="float-start pe-2 pb-1"/>
-          <span data-status-target="nexttitle"></span>
-        </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-{% endblock %}
-
 {% block content %}
 
   <div class="container-fluid pt-4">

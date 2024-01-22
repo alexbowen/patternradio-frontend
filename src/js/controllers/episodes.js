@@ -2,30 +2,17 @@ import { Controller } from '@hotwired/stimulus';
 import Storage from '../storage';
 
 const EpisodesController = class extends Controller {
-  static targets = ['tags', 'items', 'heading', 'count'];
+  static targets = ['tags', 'items', 'count'];
 
   static values = {
     search: Boolean,
     items: Number,
     offset: Number,
-    types: Boolean,
     filters: Boolean,
     query: String,
     title: String,
     template: String
   }
-
-  static types = [
-    "show",
-    "mix",
-    "discovery"
-  ];
-
-  static typesView = {
-    "show": "shows",
-    "mix": "DJ Mixes",
-    "discovery": "discovery"
-  };
 
   // static MIXCLOUD_USERNAME = 'patternradio';
 
@@ -37,7 +24,6 @@ const EpisodesController = class extends Controller {
   }
 
   request(limit, offset, query = '') {
-
     const params = {
       limit: limit,
       offset: offset
@@ -62,39 +48,23 @@ const EpisodesController = class extends Controller {
     .then((data) => {
       if (this.searchValue === true || query) {
         this.itemsTarget.innerHTML = '';
-        if (data.length && query.length && query.length === 0) {
-          this.headingTarget.querySelector('h3').innerHTML = `Results Matching "${query}"`;
-          this.headingTarget.querySelector('button').classList.add('d-none');
-        } else if (data.length && query.length) {
-          this.headingTarget.querySelector('h3').innerHTML = `No Results Matching "${query}"`;
-          this.headingTarget.querySelector('button').classList.add('d-none');
-        } else {
-
-          this.headingTarget.querySelector('h3').innerHTML = 'Shows Available For Playback';
-          filters && !query.length ? this.headingTarget.querySelector('span').classList.remove('d-none') : this.headingTarget.querySelector('span').classList.add('d-none');
-        }
-
-        if (this.titleValue) {
-          this.headingTarget.querySelector('h3').innerHTML = this.titleValue;
-          this.headingTarget.querySelector('button').classList.add('d-none');
-        }
       }
 
       this.render(data);
 
-      this.dispatch('loaded', { detail: { limit: limit, offset: offset, total: this.countTarget.dataset.count } });
+      this.dispatch('paginate', { detail: { limit: limit, offset: offset, total: this.countTarget.dataset.count } });
+      this.dispatch('heading', { detail: { total: parseInt(this.countTarget.dataset.count), query: query, filters: !!filters } });
     });
   }
 
   render(html) {
-    let content = this.element.querySelector('.episodes')
-    content.insertAdjacentHTML("afterbegin", html);
+    this.itemsTarget.insertAdjacentHTML("afterbegin", html);
     this.element.style.display = 'block';
   }
 
   tagSearch(e) {
     if (e.target.dataset.name) {
-      this.request(this.itemsValue, 0, e.target.dataset.name);
+      this.request(this.itemsValue, 0, e.target.dataset.name.toLowerCase());
     }
   }
 
