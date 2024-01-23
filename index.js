@@ -35,8 +35,8 @@ const root = path.join(__dirname, 'public');
 
 app.use(express.static(root));
 
-const host = 'http://localhost:5000';
-// const host = 'https://patternradio-api-e873df4d91a5.herokuapp.com';
+// const host = 'http://localhost:5000';
+const host = 'https://patternradio-api-e873df4d91a5.herokuapp.com';
 
 app
 .get('/pages', (req, res) => {
