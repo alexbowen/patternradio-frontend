@@ -11,10 +11,10 @@
       }
 
       a {
-        color: #1c1c1c;
+        color: $brand-color-dark;
 
         &:hover {
-          color: #E85C41;
+          color: $brand-color-primary;
         }
       }
     }

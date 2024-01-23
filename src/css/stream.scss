@@ -1,0 +1,15 @@
+.stream {
+  position: relative;
+
+  p {
+    padding-left: 42px;
+    cursor: pointer;
+  }
+
+  .playable {
+    &-button {
+      left: 0;
+      top: -7px;
+    }
+  }
+}

@@ -19,21 +19,23 @@ const PaginationController = class extends Controller {
 
     this.controlTarget.innerHTML = '';
 
-    const control = document.createElement('ul');
+    if (total > limit) {
+      const control = document.createElement('ul');
 
-    for (let step = 1; step < numberLinks + 1; step++) {
-      
-      let page = document.createElement('li');
-      let link = document.createElement('button');
-      link.dataset.limit = limit;
-      link.dataset.offset = limit * (step - 1);
-      link.dataset.page = step;
-      link.innerHTML = step;
-      page.appendChild(link);
-      control.appendChild(page);
+      for (let step = 1; step < numberLinks + 1; step++) {
+        
+        let page = document.createElement('li');
+        let link = document.createElement('button');
+        link.dataset.limit = limit;
+        link.dataset.offset = limit * (step - 1);
+        link.dataset.page = step;
+        link.innerHTML = step;
+        page.appendChild(link);
+        control.appendChild(page);
+      }
+
+      this.controlTarget.appendChild(control);
     }
-
-    this.controlTarget.appendChild(control);
 
     const current = document.querySelector(`button[data-page="${this.current}"]`);
 

@@ -6,27 +6,24 @@
     <div class="row row__orange pb-3 pb-md-0">
       <div class="col-12 col-xl-4 pb-4">
         <div class="flex-fill">
-          <h1 style="color:#e8d7b9;">Musical selections and discovery for enlightened listening</h1>
+          <h1>Musical selections and discovery curated for enlightened listening</h1>
         </div>
         <div class="d-flex flex-column">
-          <div class="flex-fill mb-3" style="background-color:#f2f2f2;padding:20px;">
+          <div class="flex-fill mb-3 content">
             <h4 class="fs-2">Streaming Now</h4>
             <div data-controller="stream" data-action="stream:update->status#update">
               {% include "partials/_stream.njk" %}
             </div>
           </div>
 
-          <div class="flex-fill" style="background-color:#f2f2f2;padding:20px;">
+          <div class="flex-fill content">
             <div class="row pt-0">
               <div data-controller="status">
                 <h4 class="mb-1">Streaming Next</h4>
                 <p data-status-target="track" class="mb-2">next</p>
                 <a href="#upcoming-shows" class="nav-link py-2 py-md-0">Streaming Soon</a>
               </div>
-              {# <div class="col col-md-6">
-                <a href="#upcoming-shows" class="nav-link py-2 py-md-0" style="color:#1c1c1c;">Coming Soon</a>
-                <a data-controller="navigation" data-action="click->navigation#navigate" class="nav-link pb-2 pb-md-0" href="/browse" style="color:#1c1c1c;">Search Shows</a>
-              </div>
+              {#
               <div class="col col-md-6">
                 <div class="social-toolbar">
                   <ul class="list-group list-group-horizontal d-flex align-items-baseline">
@@ -103,7 +100,7 @@
 
     <div class="row">
       <div class="col-12 mb-2">
-        <div class="order-lg-1 episodes" id="episodes" data-controller="episodes heading" data-action="episodes:heading->heading#update" data-episodes-filters-value="true" data-episodes-items-value="6" data-episodes-offset-value="0" data-episodes-search-value="true">
+        <div class="order-lg-1 episodes list" id="episodes" data-controller="episodes heading" data-action="episodes:heading->heading#update" data-episodes-filters-value="true" data-episodes-items-value="6" data-episodes-offset-value="0" data-episodes-search-value="true">
           <div class="heading d-flex">
             {% include "partials/list/_heading.njk" %}
           </div>
