@@ -1,0 +1,89 @@
+.episode {
+  .image-container {
+    position: relative;
+    display: inline-block;
+    border: 6px solid $brand-color-light;
+
+    .statistics {
+      background-color: $brand-color-light;
+      font-size: 0.9rem;
+
+      .count {
+        padding-left: 1.3rem;
+        background-position: left;
+        background-repeat: no-repeat;
+      }
+
+      .likes {
+        background-image: url(/images/icons/heart.svg);
+      }
+
+      .reposts {
+        background-image: url(/images/icons/repost.svg);
+      }
+    }
+  }
+
+  p {
+    padding: 0;
+    margin: 0;
+  }
+
+  pre {
+    font-family: $brand-font-secondary, sans-serif;
+    text-wrap: wrap;
+  }
+
+  .card-body {
+    padding: 1rem 6px;
+    width: 100%;
+  }
+
+  .nav-link {
+    color: $brand-color-dark;
+  }
+}
+
+.playable {
+  &-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    align-self: center;
+
+    span {
+      width: 40px;
+      height: 40px;
+      background-color: $brand-color-dark;
+      display: inline-block;
+      border-radius: 50%;
+      border: 2px solid white;
+      position: relative;
+    }
+
+    button {
+      top: 8px;
+      position: absolute;
+      left: 12px;
+      background-color: transparent;
+      border-style: solid;
+      border-width: 9px 0px 9px 16px;
+      border-color: transparent transparent transparent rgba(255, 255, 255, 1);
+      box-sizing: border-box;
+    }
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    button {
+      border-color: transparent transparent transparent $brand-color-primary;
+    }
+  }
+}

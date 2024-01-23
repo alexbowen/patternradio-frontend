@@ -20,7 +20,7 @@
       </div>
     </div>
 
-    <div id="episodes" data-action="episodes:paginate->pagination#update pagination:paginate->episodes#paginate" data-controller="episodes heading pagination" data-episodes-items-value="12" data-episodes-query-value="{{ item.title }}" data-episodes-types-value="true" data-episodes-search-value="true">
+    <div class="list" id="episodes" data-action="episodes:paginate->pagination#update pagination:paginate->episodes#paginate" data-controller="episodes heading pagination" data-episodes-items-value="12" data-episodes-query-value="{{ item.title }}" data-episodes-types-value="true" data-episodes-search-value="true">
       <div class="container-fluid pb-2">
         {% include "partials/list/_pagination.njk" %}
 
