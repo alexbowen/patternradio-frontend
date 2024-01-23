@@ -109,10 +109,9 @@ app
   res.render('browse.njk', data)
 })
 .get('/partial/episodes', (req, res) => {
-  const endpoint = req.query.q && req.query.q.length ? 'search/shows' : 'shows';
   const template =  req.query.template ? req.query.template : 'default';
 
-  fetch(`${host}/api/${endpoint}/?${new URLSearchParams(req.query)}`)
+  fetch(`${host}/api/shows/?${new URLSearchParams(req.query)}`)
     .then((response) => response.json())
     .then((episodes) => {
       let  data = {
@@ -128,6 +127,16 @@ app
       res.render(`partials/episode/_detail.njk`, {
         data: { episode }
       });
+  });
+})
+.get('/partial/posts', (req, res) => {
+  fetch(`${host}/api/posts/?${new URLSearchParams(req.query)}`)
+    .then((response) => response.json())
+    .then((posts) => {
+      let  data = {
+        data: { posts }
+      }
+      res.render(`partials/post/_default.njk`, data);
   });
 })
 .use(fallback('index.html', { root: __dirname }))

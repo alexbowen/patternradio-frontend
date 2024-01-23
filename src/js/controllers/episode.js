@@ -2,11 +2,11 @@ import { Controller } from '@hotwired/stimulus';
 
 const EpisodeController = class extends Controller {
 
+  static targets = ['items'];
+
   static values = {
     id: String
   }
-
-  static host = 'https://api.mixcloud.com/patternradio/';
 
   connect() {
     this.request();
@@ -21,8 +21,7 @@ const EpisodeController = class extends Controller {
   }
 
   render(html) {
-    let content = this.element.querySelector('.episodes');
-    content.insertAdjacentHTML("afterbegin", html);
+    this.itemsTarget.insertAdjacentHTML("afterbegin", html);
     this.element.style.display = 'block';
   }
 }

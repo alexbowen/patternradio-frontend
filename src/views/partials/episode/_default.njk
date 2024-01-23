@@ -42,18 +42,17 @@
           {{showData(item.name).host}}
         </h5>
 
-        <p class="card-text mb-1">
-          <a data-controller="navigation" data-action="click->navigation#navigate" href="/show/{{ showTitleId(title | trim) }}" class="nav-link fs-6">{{ showData(item.name).title }}</a>
-        </p>
+        <a data-controller="navigation" data-action="click->navigation#navigate" href="/show/{{ showTitleId(title | trim) }}" class="nav-link fs-6">{{ showData(item.name).title }}</a>
+
       {% else %}
         <h5 class="card-title">{{ title }}</h5>
         <p class="card-text">{{item.user.name}}</p>
       {% endif %}
 
-      <ul class="tags ps-0" data-action="click->episodes#tagsearch">
+      <ul class="tags ps-0 mt-2" data-action="click->episodes#tagSearch">
         {% for tag in item.tags %}
           <li>
-            <button class="me-2 badge">{{ tag.name }}</button>
+            <button class="me-2 badge" data-name="{{ tag.name }}">{{ tag.name }}</button>
           </li>
         {% endfor %}
       </ul>

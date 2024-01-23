@@ -1,0 +1,21 @@
+<div data-count="{{ data.posts.count }}" data-posts-target="count"></div>
+
+{% for item in data.posts.items | reverse %}
+  <div class="col-12 card blog-post mb-4">
+    <div class="card-body p-0">
+      {# <h2 class="card-title" data-blog-target="title"></h2> #}
+
+      <div data-posts-target="content" class="content">{{ item.content | safe }}</div>
+    </div>
+
+    <p>{{ item.published_at }}</p>
+
+    <ul class="tags ps-0">
+      {% for tag in item.tags %}
+        <li>
+          <button class="me-2 badge">{{ tag }}</button>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endfor %}

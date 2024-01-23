@@ -157,21 +157,7 @@ const FiltersController = class extends Controller {
 
   filter() {
     const targetController = this.application.getControllerForElementAndIdentifier(document.getElementById(this.targetValue), this.targetValue);
-    targetController? targetController.filter() : false;
-  }
-
-  formatDate(d) {
-    const date = new Date(d);
-    const parts = [
-      date.toLocaleString('en-us', {  weekday: 'short' }),
-      date.getDate(),
-      date.toLocaleString('en-us', { month: "short" }),
-    ];
-    return parts.join(' ');
-  }
-
-  formatTime(d) {
-    return new Date(d).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+    targetController ? targetController.filter() : false;
   }
 };
 

@@ -1,56 +1,13 @@
 {% extends "layout.njk" %}
 
-{% block header %}
-  {% include "partials/filters/_tag.njk" %}
-
-  <div class="container-fluid content-header" data-controller="filters" data-filters-target-value="episodes" data-filters-selected-template-id="selected" data-filters-tag-item-template-id="tag">
-
-    <div class="collapse" id="filter-controls" data-filters-target="panel">
-      <div class="filters">
-        <div class="d-md-flex flex-row">
-          <div class="filters-header">
-
-            <ul class="nav nav-fill" data-filters-target="nav"></ul>
-
-            <div class="groups">
-              <ul data-filters-target="groups"></ul>
-            </div>
-
-            <div class="selected" data-filters-target="selected">
-              <p class="filters-selected--none">No preferences selected</p>
-
-              <div class="d-flex">
-                <button class="btn btn--link filters-selected--clear d-none" data-action="click->filters#clear">clear preferences</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-{% endblock %}
-
 {% block content %}
-
-
   <div class="container-fluid pt-4">
-        {# <h5>&gt;&gt;&gt; Click play icon above to start stream</h5>
-    <p class="lead mt-3 mb-4">Musical selections and discovery streamed for enlightened listening. You can curate your own content to suit your musical preferences using the drop down menu above.</p> #}
-
-    <div class="posts" id="posts" data-action="posts:loaded->pagination#update pagination:paginate->posts#paginate" data-controller="posts pagination" data-posts-show-item-template-id="post" data-posts-items-value="2" data-posts-offset-value="0" data-posts-filters-value="true" data-posts-show-tags-value="true">
+    <div id="posts" data-action="posts:paginate->pagination#update pagination:paginate->posts#paginate" data-controller="posts pagination" data-posts-items-value="2" data-posts-offset-value="0" data-posts-filters-value="true" data-posts-show-tags-value="true">
       <h3>Blog Posts</h3>
 
-      <div class="pagination d-flex flex-wrap flex-md-nowrap">
-        <div data-pagination-target="stats" class="flex-grow-1"></div>
-        <div data-pagination-target="control" data-action="click->pagination#paginate"></div>
-      </div>
+      {% include "partials/list/_pagination.njk" %}
 
-      <div class="row shows" data-posts-target="items"></div>
-    
-      {% include "templates/_post.njk" %}
+      <div data-posts-target="items"></div>
     </div>
   </div>
-
 {% endblock %}

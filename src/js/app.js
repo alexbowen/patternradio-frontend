@@ -7,7 +7,6 @@ application.debug = false;
 window.Stimulus = application;
 
 import NavigationController from './controllers/navigation';
-import PaginationController from './controllers/pagination';
 import RadioController from './controllers/radio';
 import EpisodesController from './controllers/episodes';
 import EpisodeController from './controllers/episode';
@@ -18,8 +17,10 @@ import StreamController from './controllers/stream';
 import FiltersController from './controllers/filters';
 import PostsController from './controllers/posts';
 
+import PaginationController from './controllers/list/pagination';
+import HeadingController from './controllers/list/heading';
+
 application.register('navigation', NavigationController);
-application.register('pagination', PaginationController);
 application.register('radio', RadioController);
 application.register('episodes', EpisodesController);
 application.register('episode', EpisodeController);
@@ -29,6 +30,9 @@ application.register('status', StatusController);
 application.register('stream', StreamController);
 application.register('filters', FiltersController);
 application.register('posts', PostsController);
+
+application.register('pagination', PaginationController);
+application.register('heading', HeadingController);
 
 const useHash = false;
 const routes = ['', 'home', 'browse', 'shows', 'show', 'posts', 'about', 'episode'];

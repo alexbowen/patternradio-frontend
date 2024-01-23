@@ -139,7 +139,7 @@ header {
 }
 
 .collapse-spacer {
-  height: 8.5rem;
+  height: 8rem;
 }
 
 .main-content {
@@ -153,7 +153,7 @@ header {
   }
 
   .row {
-    padding-top: 1.6rem;
+    padding-top: 1.4rem;
 
     &__orange {
       background: url('/images/brand/patterns_01_tile.png') repeat;
@@ -203,20 +203,6 @@ header {
     margin: 0;
   }
 
-  .tags {
-    list-style-type: none;
-    padding: 0;
-
-    li {
-      display: inline;
-
-      button {
-        border: none;
-        background-color: #e0e1e1;
-      }
-    }
-  }
-
   pre {
     font-family: 'Urbanist', sans-serif;
     text-wrap: wrap;
@@ -232,20 +218,31 @@ header {
   }
 }
 
+.tags {
+  list-style-type: none;
+  padding: 0;
+
+  li {
+    display: inline;
+    text-transform: capitalize;
+
+    button {
+      border: none;
+      background-color: #e0e1e1;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
 .stream {
   position: relative;
 
   p {
     padding-left: 42px;
     cursor: pointer;
-  }
-
-  &:hover {
-    cursor: pointer;
-
-    button {
-      border-color: transparent transparent transparent #E85C41;
-    }
   }
 
   .playable {
@@ -348,33 +345,6 @@ header {
     .active {
       background-color: #aaa;
       color: #fff;
-    }
-  }
-
-  .groups {
-    padding-top: 1rem;
-
-    .group {
-      display: none;
-
-      &:first-child {
-        display: block;
-      }
-
-      ul {
-        padding: 0;
-
-        button {
-          background-color: transparent;
-          border: none;
-          font-size: 0.8rem;
-          color: #d1d1d1;
-
-          &:hover {
-            color: #fff;
-          }
-        }
-      }
     }
   }
 
@@ -493,27 +463,6 @@ header {
 
   a {
     color: #253434;
-  }
-
-  .tags {
-    display: none;
-
-    .badge {
-      text-transform: capitalize;
-      background-color: #e0e1e1;
-    }
-  }
-}
-
-.tags {
-  li {
-    text-transform: capitalize;
-  }
-
-  button {
-    &:hover {
-      text-decoration: underline;
-    }
   }
 }
 

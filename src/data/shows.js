@@ -172,6 +172,7 @@ module.exports = [
     "active": true,
     "image": "images/shows/rhythm-retreat.png",
     "about": "Rhythm Retreat is hosted by JP from his home studio in Lisbon, Portugal. JP has been collecting and mixing house music since he was young, quality underground styles from the classic 90's sound to current day new releases is what Rhythm Retreat is about.",
+    "tags": "house,club",
     "social": {
       "size": "20",
       "channels": [
@@ -210,6 +211,7 @@ module.exports = [
     "active": true,
     "image": "images/shows/sem-titulo.jpeg",
     "about": "Show hosted by Resident DJ from Lisbon's internationaly renowned electronic night spot Lux Fragil.",
+    "tags": "house,club",
     "social": {
       "size": "20",
       "channels": [
@@ -252,6 +254,7 @@ module.exports = [
     "active": true,
     "image": "images/shows/sunday-session/brand_200.png",
     "about": "Sunday vibes all the way. A selection of music in the realm of jazz, soul, world, psych and downtempo. Many new releases, re-releases, classics and anything that has been getting heavy rotation on the turntable of late.",
+    "tags": "jazz,funk",
     "social": {
       "size": "20",
       "channels": [
@@ -273,6 +276,7 @@ module.exports = [
     "active": true,
     "image": "images/shows/the-lightbox/brand_200.png",
     "about": "Underground club house sounds all the way. New releases, classics, exclusives and anything thats been getting rotatation on the turntable of late.",
+    "tags": "house,club",
     "social": {
       "size": "20",
       "channels": [
