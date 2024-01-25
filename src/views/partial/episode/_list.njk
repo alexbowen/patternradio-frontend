@@ -1,6 +1,10 @@
-<div data-count="{{ data.episodes.count }}" data-episodes-target="count"></div>
+{% extends "partial/list/_layout.njk" %}
 
-{% for item in data.episodes.items | reverse %}
+{% block count %}
+<div data-count="{{ data.list.count }}" data-episodes-target="count"></div>
+{% endblock %}
+
+{% block content %}
   <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 playable episode card" data-url="https://www.mixcloud.com/widget/iframe/?hide_cover=1&autoplay=1&feed={{ item.key }}">
     <div class="image-container" data-action="click->radio#play">
       <img src="{{ item.pictures.large }}" alt="{{ item.name }}" class="card-img-top"/>
@@ -59,4 +63,4 @@
     </div>
 
   </div>
-{% endfor %}
+{% endblock %}

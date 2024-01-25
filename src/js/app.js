@@ -8,31 +8,33 @@ window.Stimulus = application;
 
 import NavigationController from './controllers/navigation';
 import RadioController from './controllers/radio';
-import EpisodesController from './controllers/episodes';
-import EpisodeController from './controllers/episode';
 import ScheduleController from './controllers/schedule';
-import SearchController from './controllers/search';
 import StatusController from './controllers/status';
 import StreamController from './controllers/stream';
 import FiltersController from './controllers/filters';
-import PostsController from './controllers/posts';
+
+import EpisodesController from './controllers/data/episode/index';
+import EpisodeController from './controllers/data/episode/show';
+import PostsController from './controllers/data/post/index';
 
 import PaginationController from './controllers/list/pagination';
 import HeadingController from './controllers/list/heading';
+import SearchController from './controllers/list/search';
 
 application.register('navigation', NavigationController);
 application.register('radio', RadioController);
-application.register('episodes', EpisodesController);
-application.register('episode', EpisodeController);
 application.register('schedule', ScheduleController);
-application.register('search', SearchController);
 application.register('status', StatusController);
 application.register('stream', StreamController);
 application.register('filters', FiltersController);
+
+application.register('episodes', EpisodesController);
+application.register('episode', EpisodeController);
 application.register('posts', PostsController);
 
 application.register('pagination', PaginationController);
 application.register('heading', HeadingController);
+application.register('search', SearchController);
 
 const useHash = false;
 const routes = ['', 'home', 'browse', 'shows', 'show', 'posts', 'about', 'episode'];
@@ -57,7 +59,7 @@ function get(page, id) {
       );
     }
   };
-  xhr.open('GET', `/pages${route}`, true);
+  xhr.open('GET', `/page${route}`, true);
   xhr.send();
 }
 

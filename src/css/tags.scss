@@ -1,0 +1,19 @@
+.tags {
+  list-style-type: none;
+  padding: 0;
+
+  li {
+    cursor: pointer;
+    display: inline;
+    text-transform: capitalize;
+
+    button {
+      border: none;
+      background-color: $brand-color-light;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

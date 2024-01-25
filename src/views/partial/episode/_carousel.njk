@@ -1,7 +1,10 @@
-<div data-count="{{ data.episodes.count }}" data-episodes-target="count"></div>
+{% extends "partial/carousel/_layout.njk" %}
 
-{% for item in data.episodes.items %}
+{% block count %}
+<div data-count="{{ data.list.count }}" data-episodes-target="count"></div>
+{% endblock %}
 
+{% block content %}
 <div class="playable episode mb-3 carousel-item{% if loop.first %} active{% endif %}" data-bs-interval="4000" data-url="https://www.mixcloud.com/widget/iframe/?hide_cover=1&autoplay=1&feed={{ item.key }}">
   <div class="row g-0 p-0">
     <div class="col-12 col-sm-5 content">
@@ -49,5 +52,4 @@
     </div>
   </div>
 </div>
-
-{% endfor %}
+{% endblock %}

@@ -1,0 +1,31 @@
+.toggle-link {
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+.toggle-link[aria-expanded='false'] {
+  .toggle-link__icon {
+    position: absolute;
+    left: 0;
+    top: 30%;
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-top: 7px solid $brand-color-medium;
+    margin: auto;
+  }
+}
+
+.toggle-link[aria-expanded='true'] {
+  .toggle-link__icon {
+    position: absolute;
+    left: 0;
+    top: 30%;
+    width: 0;
+    height: 0;
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid $brand-color-medium;
+  }
+}

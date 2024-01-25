@@ -12,7 +12,7 @@
               <h4 class="host m-0 p-0">{{ item.subtitle }}</h4>
               <p class="when m-0 p-0 fs-6">{{ item.about }}</p>
               <div class="social-toolbar">
-                {% include "partials/_social-toolbar.njk" %}
+                {% include "partial/_social-toolbar.njk" %}
               </div>
             </div>
           </div>
@@ -22,7 +22,7 @@
 
     <div class="list" id="episodes" data-action="episodes:paginate->pagination#update pagination:paginate->episodes#paginate" data-controller="episodes heading pagination" data-episodes-items-value="12" data-episodes-query-value="{{ item.title }}" data-episodes-types-value="true" data-episodes-search-value="true">
       <div class="container-fluid pb-2">
-        {% include "partials/list/_pagination.njk" %}
+        {% include "partial/list/_pagination.njk" %}
 
         <div class="row episodes" data-episodes-target="items"></div>
         <a class="nav-link" href="/shows" data-controller="navigation" data-action="click->navigation#navigate">Back to all shows</a>

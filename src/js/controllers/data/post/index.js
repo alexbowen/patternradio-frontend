@@ -1,5 +1,5 @@
 import { Controller } from '@hotwired/stimulus';
-import Storage from '../storage';
+import Storage from '../../../storage';
 
 const PostsController = class extends Controller {
   static targets = ['title', 'content', 'published', 'items', 'count'];
@@ -48,7 +48,7 @@ const PostsController = class extends Controller {
         
         this.render(data);
 
-        this.dispatch('paginate', { detail: { limit: limit, offset: offset, total: this.countTarget.dataset.count } });
+        this.dispatch('paginate', { detail: { limit: limit, offset: offset, total: parseInt(this.countTarget.dataset.count, 10) } });
       });
   }
 

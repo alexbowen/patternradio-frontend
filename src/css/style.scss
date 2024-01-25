@@ -21,12 +21,15 @@ $carousel-indicator-active-bg: $brand-color-dark;
 $list-group-item-padding-x: 0.6rem;
 
 @import '../../node_modules/bootstrap/scss/bootstrap';
-@import './filters';
 @import './episode';
+@import './filters';
+@import './list';
 @import './post';
 @import './pagination';
 @import './social-toolbar';
 @import './stream';
+@import './tags';
+@import './toggle';
 
 html,
 body {
@@ -61,7 +64,7 @@ hr {
   font-size: 2.8rem;
 }
 
-header {
+.main-header {
   background-color: $brand-color-dark;
   color: $brand-color-medium;
   position: fixed;
@@ -79,30 +82,29 @@ header {
     font-size: calc(0.6vw + 1vh);
   }
 
-  .navbar-toggler {
-    position: relative;
-  }
-
   .header__dropdown {
     background-color: $brand-color-dark;
     width: 100%;
     z-index: 500;
   }
-}
 
-.navbar {
-  background-color: $brand-color-medium;
-  opacity: 1;
-  background-size: 10px 10px;
-  background-image: repeating-linear-gradient(45deg, #4A5359 0, #4A5359 1px, $brand-color-dark 0, $brand-color-dark 50%);
-
-  padding: 0;
-
-  .navbar-brand {
+  .navbar {
+    background-color: $brand-color-medium;
+    opacity: 1;
+    background-size: 10px 10px;
+    background-image: repeating-linear-gradient(45deg, #4A5359 0, #4A5359 1px, $brand-color-dark 0, $brand-color-dark 50%);
     padding: 0;
 
-    h1 {
-      margin: 0;
+    .navbar-toggler {
+      position: relative;
+    }
+  
+    .navbar-brand {
+      padding: 0;
+  
+      h1 {
+        margin: 0;
+      }
     }
   }
 }
@@ -145,72 +147,10 @@ header {
   }
 }
 
-.list {
-  &__heading {
-    .reset {
-      border:none;
-      text-decoration: underline;
-      color: $brand-color-dark;
-    }
-  }
-}
-
-.tags {
-  list-style-type: none;
-  padding: 0;
-
-  li {
-    cursor: pointer;
-    display: inline;
-    text-transform: capitalize;
-
-    button {
-      border: none;
-      background-color: $brand-color-light;
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
-}
-
 .player-footer {
   background-color: #25292c;
   position: fixed;
   bottom: -20px;
   right: 0;
   width: 100%;
-}
-
-.toggle-link {
-  position: relative;
-  padding-left: 1.2rem;
-}
-
-.toggle-link[aria-expanded='false'] {
-  .toggle-link__icon {
-    position: absolute;
-    left: 0;
-    top: 30%;
-    width: 0;
-    height: 0;
-    border-left: 7px solid transparent;
-    border-right: 7px solid transparent;
-    border-top: 7px solid $brand-color-medium;
-    margin: auto;
-  }
-}
-
-.toggle-link[aria-expanded='true'] {
-  .toggle-link__icon {
-    position: absolute;
-    left: 0;
-    top: 30%;
-    width: 0;
-    height: 0;
-    border-left: 7px solid transparent;
-    border-right: 7px solid transparent;
-    border-bottom: 7px solid $brand-color-medium;
-  }
 }

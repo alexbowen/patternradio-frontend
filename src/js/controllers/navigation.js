@@ -29,7 +29,7 @@ const NavigationController = class extends Controller {
       }
     };
     
-    xhr.open('GET', `/pages${route}`, true);
+    xhr.open('GET', `/page${route}`, true);
     xhr.send();
   }
 };
