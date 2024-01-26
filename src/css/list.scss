@@ -1,0 +1,9 @@
+.list {
+  &__heading {
+    .reset {
+      border:none;
+      text-decoration: underline;
+      color: $brand-color-dark;
+    }
+  }
+}

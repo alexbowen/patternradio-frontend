@@ -7,7 +7,6 @@ const PORT = process.env.PORT || 3000;
 const nunjucks = require('nunjucks');
 
 const shows = require('./src/data/shows');
-const filters = require('./src/data/filters');
 
 const app = express();
 
@@ -39,92 +38,91 @@ app.use(express.static(root));
 const host = 'https://patternradio-api-e873df4d91a5.herokuapp.com';
 
 app
-.get('/pages', (req, res) => {
+.get('/page', (req, res) => {
   let  data = {
     page: 'home',
     layout:  'layout.njk',
-    title: 'Home',
-    data: { filters }
+    title: 'Home'
   }
-  res.render('home.njk', data)
+  res.render('page/home.njk', data)
 })
-.get('/pages/home', (req, res) => {
+.get('/page/home', (req, res) => {
   let  data = {
     page: 'home',
     layout:  'layout.njk',
-    title: 'Home',
-    data: { filters }
+    title: 'Home'
   }
-  res.render('home.njk', data)
+  res.render('page/home.njk', data)
 })
-.get('/pages/shows', (req, res) => {
+.get('/page/shows', (req, res) => {
   let  data = {
     page: 'shows',
     layout:  'layout.njk',
     title: 'Regular Shows',
     data: shows
   }
-  res.render('shows.njk', data)
+  res.render('page/shows.njk', data)
 })
-.get('/pages/show/:id', (req, res) => {
+.get('/page/show/:id', (req, res) => {
   let  data = {
     page: 'show',
     layout:  'layout.njk',
     title: 'Show',
     item: shows.find(s => s.id === req.params.id)
   }
-  res.render('show.njk', data)
+  res.render('page/show.njk', data)
 })
-.get('/pages/episode/:id', (req, res) => {
+.get('/page/episode/:id', (req, res) => {
   let  data = {
     page: 'episode',
     layout:  'layout.njk',
     title: 'Broadcast Shows',
     item: req.params.id
   }
-  res.render('episode.njk', data)
+  res.render('page/episode.njk', data)
 })
-.get('/pages/posts', (req, res) => {
+.get('/page/posts', (req, res) => {
   let  data = {
     page: 'posts',
     layout:  'layout.njk',
     title: 'Posts'
   }
-  res.render('posts.njk', data)
+  res.render('page/posts.njk', data)
 })
-.get('/pages/about', (req, res) => {
+.get('/page/about', (req, res) => {
   let  data = {
     page: 'about',
     layout:  'layout.njk',
     title: 'About'
   }
-  res.render('about.njk', data)
+  res.render('page/about.njk', data)
 })
-.get('/pages/browse', (req, res) => {
+.get('/page/browse', (req, res) => {
   let data = {
     page: 'browse',
     layout:  'layout.njk',
     title: 'Browse Shows'
   }
-  res.render('browse.njk', data)
+  res.render('page/browse.njk', data)
 })
 .get('/partial/episodes', (req, res) => {
-  const template =  req.query.template ? req.query.template : 'default';
+  const template =  req.query.template ? req.query.template : 'list';
 
   fetch(`${host}/api/shows/?${new URLSearchParams(req.query)}`)
     .then((response) => response.json())
     .then((episodes) => {
       let  data = {
-        data: { episodes }
+        layout: 'partial/list/_layout.njk',
+        data: { list: episodes }
       }
-      res.render(`partials/episode/_${template}.njk`, data);
+      res.render(`partial/episode/_${template}.njk`, data);
   });
 })
 .get('/partial/episode/:id', (req, res) => {
   fetch(`https://api.mixcloud.com/patternradio/${req.params.id}`)
     .then((response) => response.json())
     .then((episode) => {
-      res.render(`partials/episode/_detail.njk`, {
+      res.render(`partial/episode/_show.njk`, {
         data: { episode }
       });
   });
@@ -134,9 +132,9 @@ app
     .then((response) => response.json())
     .then((posts) => {
       let  data = {
-        data: { posts }
+        data: { list: posts }
       }
-      res.render(`partials/post/_default.njk`, data);
+      res.render(`partial/post/_list.njk`, data);
   });
 })
 .use(fallback('index.html', { root: __dirname }))

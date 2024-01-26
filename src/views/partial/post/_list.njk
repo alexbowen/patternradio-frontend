@@ -1,6 +1,10 @@
-<div data-count="{{ data.posts.count }}" data-posts-target="count"></div>
+{% extends "partial/list/_layout.njk" %}
 
-{% for item in data.posts.items | reverse %}
+{% block count %}
+<div data-count="{{ data.list.count }}" data-posts-target="count"></div>
+{% endblock %}
+
+{% block content %}
   <div class="col-12 card post mb-4">
     <div class="card-body p-0">
       {# <h2 class="card-title" data-blog-target="title"></h2> #}
@@ -18,4 +22,4 @@
       {% endfor %}
     </ul>
   </div>
-{% endfor %}
+{% endblock %}

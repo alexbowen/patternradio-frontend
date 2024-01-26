@@ -12,7 +12,7 @@
           <div class="flex-fill mb-3 content">
             <h4 class="fs-2">Streaming Now</h4>
             <div data-controller="stream" data-action="stream:update->status#update">
-              {% include "partials/_stream.njk" %}
+              {% include "partial/_stream.njk" %}
             </div>
           </div>
 
@@ -84,15 +84,13 @@
 
       <div class="col-12 col-md-6 col-xl-4">
         <h3>Recommended listening</h3>
-        <div class="episodes pb-2" id="latest" data-controller="episodes" data-episodes-template-value="latest" data-episodes-title-value="listen to latest shows" data-episodes-items-value="2" data-episodes-show-tags-value="true">
-
+        <div class="episodes pb-2" id="latest" data-controller="episodes" data-episodes-template-value="carousel" data-episodes-title-value="listen to latest shows" data-episodes-items-value="2" data-episodes-show-tags-value="true">
           <div class="carousel slide" id="carouselexampleautoplaying" data-bs-ride="carousel">
             <div class="carousel-indicators">
               <button type="button" data-bs-target="#carouselexampleindicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="slide 1"></button>
               <button type="button" data-bs-target="#carouselexampleindicators" data-bs-slide-to="1" aria-label="slide 2"></button>
             </div>
             <div class="episodes carousel-inner" data-episodes-target="items"></div>
-
           </div>
         </div>
       </div>
@@ -102,7 +100,7 @@
       <div class="col-12 mb-2">
         <div class="order-lg-1 episodes list" id="episodes" data-controller="episodes heading" data-action="episodes:heading->heading#update" data-episodes-filters-value="true" data-episodes-items-value="6" data-episodes-offset-value="0" data-episodes-search-value="true">
           <div class="heading d-flex">
-            {% include "partials/list/_heading.njk" %}
+            {% include "partial/list/_heading.njk" %}
           </div>
 
           <p class="mb-0">Click show to load in player</p>
@@ -119,7 +117,7 @@
           <h5>New shows to be streamed live soon</h5>
         </div>
 
-        {% include "templates/_schedule.njk" %}
+        {% include "template/_schedule.njk" %}
 
       </div>
     </div>
