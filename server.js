@@ -122,7 +122,7 @@ app
   fetch(`https://api.mixcloud.com/patternradio/${req.params.id}`)
     .then((response) => response.json())
     .then((episode) => {
-      res.render(`partial/episode/_show.njk`, {
+      res.render(`partial/episode/_detail.njk`, {
         data: { episode }
       });
   });

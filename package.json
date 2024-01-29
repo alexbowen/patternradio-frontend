@@ -7,7 +7,7 @@
   },
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node server.js",
     "test": "node test.js",
     "sass": "nodemon --watch src/css --ext scss build.sass.js",
     "build:dev": "nodemon --watch src/js esbuild.config.mjs",

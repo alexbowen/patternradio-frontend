@@ -1,86 +1,24 @@
-import { Application } from '@hotwired/stimulus';
-
-const application = Application.start();
-
-application.warnings = false;
-application.debug = false;
-window.Stimulus = application;
-
-import NavigationController from './controllers/navigation';
-import RadioController from './controllers/radio';
-import ScheduleController from './controllers/schedule';
-import StatusController from './controllers/status';
-import StreamController from './controllers/stream';
-import FiltersController from './controllers/filters';
-
-import EpisodesController from './controllers/data/episode/index';
-import EpisodeController from './controllers/data/episode/show';
-import PostsController from './controllers/data/post/index';
-
-import PaginationController from './controllers/list/pagination';
-import HeadingController from './controllers/list/heading';
-import SearchController from './controllers/list/search';
-
-application.register('navigation', NavigationController);
-application.register('radio', RadioController);
-application.register('schedule', ScheduleController);
-application.register('status', StatusController);
-application.register('stream', StreamController);
-application.register('filters', FiltersController);
-
-application.register('episodes', EpisodesController);
-application.register('episode', EpisodeController);
-application.register('posts', PostsController);
-
-application.register('pagination', PaginationController);
-application.register('heading', HeadingController);
-application.register('search', SearchController);
+import Route from './models/Route';
+import './controllers';
 
 const useHash = false;
-const routes = ['', 'home', 'browse', 'shows', 'show', 'posts', 'about', 'episode'];
-const content = document.getElementById("spa-content-container");
 
-function get(page, id) {
-  const xhr = new XMLHttpRequest();
-
-  const route = id ? `/${page}/${id}` : `/${page}`;
-
-  xhr.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-
-      content.innerHTML = xhr.responseText;
-      const title = `Pattern Radio - Online Music Broadcasting`;
-      window.history.pushState(
-        { 'content': xhr.responseText, 'title': title },
-        title,
-        useHash ?
-          `${route}` :
-          route
-      );
-    }
-  };
-  xhr.open('GET', `/page${route}`, true);
-  xhr.send();
-}
-
-window.addEventListener("popstate", function(e) {
+window.addEventListener('popstate', (e) => {
   const state = e.state;
-  content.innerHTML = state.content;
+  document.getElementById('spa-content-container').innerHTML = state.content;
 });
 
-(function(fn = function() {
-  const page = useHash ?
+(function(content = () => {
+  useHash ?
     window.location.hash.split('#').pop() :
     window.location.href.split('/').pop();
 
-    const route = window.location.href.split(`${window.location.host}/`)
-    const parts = route[1].split('/');
-    
-  get(routes.indexOf(parts[0]) >= 0 ? parts[0] : routes[0], parts[1] ? parts[1] : null);
+    const route = new Route(window.location.href.split(`${window.location.host}/`)[1]);
+    route.content();
 }) {
-  if (document.readyState != 'loading'){
-    fn();
+  if (document.readyState != 'loading') {
+    content();
   } else {
-    document.addEventListener('DOMContentLoaded', fn);
+    document.addEventListener('DOMContentLoaded', content);
   }
 })();
