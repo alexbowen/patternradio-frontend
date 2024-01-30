@@ -3,7 +3,7 @@ const Storage = class {
 
   constructor() {
     try {
-      const testKey = "__storage_support_test_key__";
+      const testKey = '__storage_support_test_key__';
       localStorage.setItem(testKey, testKey);
       localStorage.removeItem(testKey);
       this.isSupported = true;
@@ -24,7 +24,7 @@ const Storage = class {
     if (this.isSupported) {
       return localStorage.getItem(name);
     }
-    if (this.inMemoryStorage.hasOwnProperty(name)) {
+    if (this.inMemoryStorage.hasOwn(name)) {
       return this.inMemoryStorage[name];
     }
     return null;
@@ -61,6 +61,6 @@ const Storage = class {
       return Object.keys(this.inMemoryStorage).length;
     }
   }
-}
+};
 
-export default Storage
+export default Storage;

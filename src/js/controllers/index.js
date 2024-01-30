@@ -1,11 +1,5 @@
 import { Application } from '@hotwired/stimulus';
 
-const application = Application.start();
-
-application.warnings = false;
-application.debug = false;
-window.Stimulus = application;
-
 import NavigationController from './navigation';
 import RadioController from './radio';
 import ScheduleController from './schedule';
@@ -20,6 +14,12 @@ import PostsController from './data/post/index';
 import PaginationController from './list/pagination';
 import HeadingController from './list/heading';
 import SearchController from './list/search';
+
+const application = Application.start();
+
+application.warnings = false;
+application.debug = false;
+window.Stimulus = application;
 
 application.register('navigation', NavigationController);
 application.register('radio', RadioController);

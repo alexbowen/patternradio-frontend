@@ -3,7 +3,7 @@ import { Controller } from '@hotwired/stimulus';
 const HeadingController = class extends Controller {
   static targets = ['title', 'reset', 'preferences'];
 
-  current = 1
+  current = 1;
 
   connect() {}
 

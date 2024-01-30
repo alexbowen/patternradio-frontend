@@ -20,7 +20,7 @@ const StatusController = class extends Controller {
   }
 
   panel(next) {
-    this.trackTarget.innerHTML = next.next_track.title
+    this.trackTarget.innerHTML = next.next_track.title;
   }
 };
 

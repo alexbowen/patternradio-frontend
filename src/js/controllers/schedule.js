@@ -5,7 +5,7 @@ const ScheduleController = class extends Controller {
 
   static exclude = ['Off Air', 'On Air Soon', 'On Air Electronic', 'On Air Eclectic', 'On Air Latest', 'On Air Organic', 'On Air Funky', 'On Air NYE'];
 
-  connect(e) {
+  connect() {
     fetch('https://public.radio.co/stations/s3ad39def4/embed/schedule')
       .then((response) => response.json())
       .then((data) => {
@@ -42,13 +42,13 @@ const ScheduleController = class extends Controller {
     const parts = [
       date.toLocaleString('en-us', {  weekday: 'short' }),
       date.getDate(),
-      date.toLocaleString('en-us', { month: "short" }),
+      date.toLocaleString('en-us', { month: 'short' }),
     ];
     return parts.join(' ');
   }
 
   formatTime(d) {
-    return new Date(d).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+    return new Date(d).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   }
 };
 

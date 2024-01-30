@@ -12,11 +12,11 @@ const EpisodesController = class extends Controller {
     query: String,
     title: String,
     template: String
-  }
+  };
 
   // static MIXCLOUD_USERNAME = 'patternradio';
 
-  storage = new Storage
+  storage = new Storage;
 
   connect() {
     const query = this.queryValue ? this.queryValue : '';
@@ -58,7 +58,7 @@ const EpisodesController = class extends Controller {
   }
 
   render(html) {
-    this.itemsTarget.insertAdjacentHTML("afterbegin", html);
+    this.itemsTarget.insertAdjacentHTML('afterbegin', html);
     this.element.style.display = 'block';
   }
 
@@ -93,6 +93,6 @@ const EpisodesController = class extends Controller {
   formatTime(d) {
     return Math.floor(d / 60000);
   }
-}
+};
 
 export default EpisodesController;

@@ -4,7 +4,7 @@ import Route from '../models/Route';
 const NavigationController = class extends Controller {
   static values = {
     route: String
-  }
+  };
 
   navigate(e) {
     e.preventDefault();
