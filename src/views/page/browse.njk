@@ -3,7 +3,7 @@
 {% block content %}
 
   <div id="episodes" class="list" data-action="episodes:paginate->pagination#update episodes:heading->heading#update pagination:paginate->episodes#paginate" data-controller="episodes heading pagination search" data-episodes-items-value="12" data-episodes-search-value="true" data-episodes-filters-value="true">
-    <div class="container-fluid">
+    <div class="container-fluid gx-4 gx-sm-5">
 
       <div class="row header">
         <div class="col-12 col-md-9">
@@ -15,7 +15,7 @@
       </div>
       {% include "partial/list/_pagination.njk" %}
 
-      <div class="row episodes" data-episodes-target="items"></div>
+      <div class="row episodes gx-2 gx-sm-4" data-episodes-target="items"></div>
     </div>
   </div>
 
