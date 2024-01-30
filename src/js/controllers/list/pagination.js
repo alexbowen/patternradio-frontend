@@ -3,7 +3,7 @@ import { Controller } from '@hotwired/stimulus';
 const PaginationController = class extends Controller {
   static targets = ['stats', 'control'];
 
-  current = 1
+  current = 1;
 
   connect() {}
 
@@ -46,7 +46,7 @@ const PaginationController = class extends Controller {
 
   paginate(e) {
     this.current = e.target.dataset.page;
-    this.dispatch("paginate", { detail: { limit: e.target.dataset.limit, offset: e.target.dataset.offset } });
+    this.dispatch('paginate', { detail: { limit: e.target.dataset.limit, offset: e.target.dataset.offset } });
   }
 };
 

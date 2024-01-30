@@ -12,18 +12,12 @@ const RadioController = class extends Controller {
     this.broadcastPlayer(target.dataset.url);
   }
 
-  getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-
   broadcastPlayer(src) {
-    this.playerTarget.innerHTML = "";
+    this.playerTarget.innerHTML = '';
     const player = document.createElement('iframe');
-    player.height = "120";
-    player.width = "100%";
-    player.allow = "autoplay";
+    player.height = '120';
+    player.width = '100%';
+    player.allow = 'autoplay';
     player.src = src;
     this.playerTarget.insertAdjacentElement('beforeend', player);
   }

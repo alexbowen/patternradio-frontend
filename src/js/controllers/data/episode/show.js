@@ -6,7 +6,7 @@ const EpisodeController = class extends Controller {
 
   static values = {
     id: String
-  }
+  };
 
   connect() {
     this.request();
@@ -21,9 +21,9 @@ const EpisodeController = class extends Controller {
   }
 
   render(html) {
-    this.itemsTarget.insertAdjacentHTML("afterbegin", html);
+    this.itemsTarget.insertAdjacentHTML('afterbegin', html);
     this.element.style.display = 'block';
   }
-}
+};
 
 export default EpisodeController;

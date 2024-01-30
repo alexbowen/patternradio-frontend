@@ -1,6 +1,6 @@
 const Registry = class {
 
-  registry = {}
+  registry = {};
 
   add(key, data) {
     this.registry[key] = data;

@@ -13,9 +13,9 @@ const PostsController = class extends Controller {
     filters: Boolean,
     query: String,
     overidden: Boolean
-  }
+  };
 
-  storage = new Storage
+  storage = new Storage;
 
   connect() {
     const query = this.queryValue ? this.queryValue : '';
@@ -53,7 +53,7 @@ const PostsController = class extends Controller {
   }
 
   render(html) {
-    this.itemsTarget.insertAdjacentHTML("afterbegin", html);
+    this.itemsTarget.insertAdjacentHTML('afterbegin', html);
     this.element.style.display = 'block';
   }
 

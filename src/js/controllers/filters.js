@@ -6,41 +6,41 @@ const FiltersController = class extends Controller {
 
   static values = {
     target: String
-  }
+  };
 
   static filters = {
-    "genre" : [
-      "Blues",
-      "Broken Beat",
-      "Disco",
-      "Dub",
-      "Electro",
-      "Electronica",
-      "Funk",
-      "Hip Hop",
-      "Jazz",
-      "House",
-      "Punk",
-      "Reggae",
-      "Rock",
-      "Soul",
-      "Techno",
-      "World"
+    'genre' : [
+      'Blues',
+      'Broken Beat',
+      'Disco',
+      'Dub',
+      'Electro',
+      'Electronica',
+      'Funk',
+      'Hip Hop',
+      'Jazz',
+      'House',
+      'Punk',
+      'Reggae',
+      'Rock',
+      'Soul',
+      'Techno',
+      'World'
     ].sort(),
-    "style": [
-      "Afro",
-      "Latin",
-      "Fusion",
-      "Modern",
-      "Progressive",
-      "Balearic",
-      "Retro",
-      "Deep",
-      "Downtempo",
-      "Psychedelic",
-      "Funky",
-      "Club",
-      "Roots"
+    'style': [
+      'Afro',
+      'Latin',
+      'Fusion',
+      'Modern',
+      'Progressive',
+      'Balearic',
+      'Retro',
+      'Deep',
+      'Downtempo',
+      'Psychedelic',
+      'Funky',
+      'Club',
+      'Roots'
     ].sort()
   };
 
@@ -56,7 +56,7 @@ const FiltersController = class extends Controller {
 
       let link = document.createElement('a');
       link.classList.add('nav-link');
-      link.setAttribute('data-target', a[0])
+      link.setAttribute('data-target', a[0]);
       link.innerHTML = a[0];
       link.addEventListener('click', this.selectGroup);
       tab.appendChild(link);
@@ -109,7 +109,7 @@ const FiltersController = class extends Controller {
       el.style.display = 'none';
     });
 
-    document.querySelectorAll(`.groups ul li[data-group="${name}"]`).forEach(el => {
+    document.querySelectorAll(`.groups ul li[data-group='${name}']`).forEach(el => {
       el.style.display = 'inline';
     });
   }
@@ -128,16 +128,16 @@ const FiltersController = class extends Controller {
     
     this.selected = this.storage.getItem('filters').length ? this.storage.getItem('filters').split(',') : [];
 
-    document.querySelectorAll(`.groups ul li`).forEach(el => {
+    document.querySelectorAll('.groups ul li').forEach(el => {
       el.classList.remove('selected');
     });
 
     this.selected.forEach(a => {
-      document.querySelector(`.groups ul li[data-filter="${a}"]`).classList.add('selected');
+      document.querySelector(`.groups ul li[data-filter='${a}']`).classList.add('selected');
     });
 
     this.statusTarget.innerHTML = this.selected.length ? `(${this.selected.length})` : '';
-    this.selected.length ? this.indicatorTarget.classList.add('highlight') : this.indicatorTarget.classList.remove('highlight')
+    this.selected.length ? this.indicatorTarget.classList.add('highlight') : this.indicatorTarget.classList.remove('highlight');
   }
 
   updateSelected(e) {
@@ -157,7 +157,7 @@ const FiltersController = class extends Controller {
 
   filter() {
     const targetController = this.application.getControllerForElementAndIdentifier(document.getElementById(this.targetValue), this.targetValue);
-    targetController ? targetController.filter() : false;
+    targetController.filter();
   }
 };
 

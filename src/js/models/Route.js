@@ -12,24 +12,24 @@ const Route = class {
   content() {
     const xhr = new XMLHttpRequest();
 
-    //this scoping needs sorting out
+    // this scoping needs sorting out
     const route = this.route;
 
-    xhr.onreadystatechange = function() {
-      if (this.readyState == 4 && this.status == 200) {
+    xhr.onreadystatechange = function () {
+      if (this.readyState === 4 && this.status === 200) {
         APP_CONTAINER_ELEMENT.innerHTML = xhr.responseText;
-        const title = `Pattern Radio - Online Music Broadcasting`;
+        const title = 'Pattern Radio - Online Music Broadcasting';
         window.history.pushState(
-          { 'content': xhr.responseText, 'title': title },
+          { content: xhr.responseText, title },
           title,
-          route
+          route,
         );
       }
     };
-    
+
     xhr.open('GET', `/page${this.route}`, true);
     xhr.send();
   }
-}
+};
 
 export default Route;

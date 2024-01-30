@@ -22,7 +22,7 @@ const StreamController = class extends Controller {
   }
 
   update() {
-    this.dispatch("update", { detail: { status: this.status } })
+    this.dispatch('update', { detail: { status: this.status } });
     this.trackTarget.innerHTML = this.status.current_track.title;
   }
 };
