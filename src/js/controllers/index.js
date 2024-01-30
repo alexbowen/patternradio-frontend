@@ -1,11 +1,12 @@
 import { Application } from '@hotwired/stimulus';
 
+import FiltersController from './filters';
+import HeaderController from './header';
 import NavigationController from './navigation';
 import RadioController from './radio';
 import ScheduleController from './schedule';
 import StatusController from './status';
 import StreamController from './stream';
-import FiltersController from './filters';
 
 import EpisodesController from './data/episode/index';
 import EpisodeController from './data/episode/show';
@@ -21,12 +22,13 @@ application.warnings = false;
 application.debug = false;
 window.Stimulus = application;
 
+application.register('filters', FiltersController);
+application.register('header', HeaderController);
 application.register('navigation', NavigationController);
 application.register('radio', RadioController);
 application.register('schedule', ScheduleController);
 application.register('status', StatusController);
 application.register('stream', StreamController);
-application.register('filters', FiltersController);
 
 application.register('episodes', EpisodesController);
 application.register('episode', EpisodeController);
