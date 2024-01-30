@@ -137,7 +137,6 @@ const FiltersController = class extends Controller {
     });
 
     this.statusTarget.innerHTML = this.selected.length ? `(${this.selected.length})` : '';
-    this.selected.length ? this.indicatorTarget.classList.add('highlight') : this.indicatorTarget.classList.remove('highlight');
   }
 
   updateSelected(e) {
