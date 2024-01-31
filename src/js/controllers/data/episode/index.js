@@ -1,7 +1,9 @@
 import { Controller } from '@hotwired/stimulus';
 import Storage from '../../../models/Storage';
+import Api from '../../../models/Api';
 
 const EpisodesController = class extends Controller {
+
   static targets = ['tags', 'items', 'count'];
 
   static values = {
@@ -23,11 +25,8 @@ const EpisodesController = class extends Controller {
     this.request(this.itemsValue, this.offsetValue || 0, query);
   }
 
-  request(limit, offset, query = '') {
-    const params = {
-      limit: limit,
-      offset: offset
-    };
+  async request(limit, offset, query = '') {
+    const params = { limit, offset };
 
     if (this.searchValue === true && query.length) {
       params.q = query;
@@ -43,18 +42,17 @@ const EpisodesController = class extends Controller {
       params.filters = filters.split(',');
     }
 
-    fetch(`/partial/episodes?${new URLSearchParams(params)}`)
-    .then((response) => response.text())
-    .then((data) => {
-      if (this.searchValue === true || query) {
-        this.itemsTarget.innerHTML = '';
-      }
+    const api = new Api(params);
+    const data = await api.request('/partial/episodes', 'text');
 
-      this.render(data);
+    if (this.searchValue === true || query) {
+      this.itemsTarget.innerHTML = '';
+    }
 
-      this.dispatch('paginate', { detail: { limit: limit, offset: offset, total: parseInt(this.countTarget.dataset.count, 10) } });
-      this.dispatch('heading', { detail: { total: parseInt(this.countTarget.dataset.count, 10), query: query, filters: !!filters } });
-    });
+    this.render(data);
+
+    this.dispatch('paginate', { detail: { limit: limit, offset: offset, total: parseInt(this.countTarget.dataset.count, 10) } });
+    this.dispatch('heading', { detail: { total: parseInt(this.countTarget.dataset.count, 10), query: query, filters: !!filters } });
   }
 
   render(html) {
@@ -88,10 +86,6 @@ const EpisodesController = class extends Controller {
 
   paginate({detail: { limit, offset }}) {
     this.request(limit, offset, this.queryValue);
-  }
-
-  formatTime(d) {
-    return Math.floor(d / 60000);
   }
 };
 

@@ -1,5 +1,6 @@
 import { Controller } from '@hotwired/stimulus';
 import Storage from '../../../models/Storage';
+import Api from '../../../models/Api';
 
 const PostsController = class extends Controller {
   static targets = ['title', 'content', 'published', 'items', 'count'];
@@ -22,11 +23,9 @@ const PostsController = class extends Controller {
     this.request(this.itemsValue, this.offsetValue || 0, query);
   }
 
-  request(limit, offset, query = '') {
-    const params = {
-      limit: limit,
-      offset: offset
-    };
+  async request(limit, offset, query = '') {
+
+    const params = { limit, offset };
 
     if (this.searchValue === true && query.length) {
       params.q = query;
@@ -42,14 +41,12 @@ const PostsController = class extends Controller {
       params.filters = filters.split(',');
     }
 
-    fetch(`/partial/posts?${new URLSearchParams(params)}`)
-      .then((response) => response.text())
-      .then((data) => {
-        
-        this.render(data);
+    const api = new Api(params);
+    const data = await api.request('/partial/posts', 'text');
 
-        this.dispatch('paginate', { detail: { limit: limit, offset: offset, total: parseInt(this.countTarget.dataset.count, 10) } });
-      });
+    this.render(data);
+
+    this.dispatch('paginate', { detail: { limit: limit, offset: offset, total: parseInt(this.countTarget.dataset.count, 10) } });
   }
 
   render(html) {
