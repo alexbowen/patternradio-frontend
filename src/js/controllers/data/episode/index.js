@@ -1,6 +1,6 @@
 import { Controller } from '@hotwired/stimulus';
-import Storage from '../../../models/Storage';
-import Api from '../../../models/Api';
+import Storage from '../../../models/storage';
+import api from '../../../models/api';
 
 const EpisodesController = class extends Controller {
 
@@ -18,41 +18,67 @@ const EpisodesController = class extends Controller {
 
   // static MIXCLOUD_USERNAME = 'patternradio';
 
-  storage = new Storage;
+  static storage = new Storage;
+  static api = api;
+  // query = '';
 
   connect() {
-    const query = this.queryValue ? this.queryValue : '';
-    this.request(this.itemsValue, this.offsetValue || 0, query);
+    console.log('contect')
+    // const query = this.queryValue ? this.queryValue : '';
+    this.setParams(this.itemsValue, this.offsetValue || 0, this.queryValue);
+    this.request();
   }
 
-  async request(limit, offset, query = '') {
-    const params = { limit, offset };
+  setParams(limit, offset, query = '') {
+    this.params = { limit, offset };
 
-    if (this.searchValue === true && query.length) {
-      params.q = query;
+    if (this.searchValue === true) {
+      this.params.q = query;
     }
 
     if (this.templateValue) {
-      params.template = this.templateValue;
+      this.params.template = this.templateValue;
     }
 
-    const filters = this.storage.getItem('filters');
+    const filters = EpisodesController.storage.getItem('filters');
 
     if (filters && this.filtersValue === true) {
-      params.filters = filters.split(',');
+      this.params.filters = filters.split(',');
     }
+  }
 
-    const api = new Api(params);
-    const data = await api.request('/partial/episodes', 'text');
+  async request() {
+    // console.log('class request')
+    // const params = { limit, offset };
 
-    if (this.searchValue === true || query) {
+    // if (this.searchValue === true && query.length) {
+    //   params.q = query;
+    // }
+
+    // if (this.templateValue) {
+    //   params.template = this.templateValue;
+    // }
+
+    // const filters = this.storage.getItem('filters');
+
+    // if (filters && this.filtersValue === true) {
+    //   params.filters = filters.split(',');
+    // }
+
+    // const api = new Api(params);
+    // console.log('EpisodesController', EpisodesController)
+    const data = await EpisodesController.api.request('/partial/episodes', this.params, 'text');
+
+    console.log('data', data)
+
+    if (this.searchValue === true || this.params.q) {
       this.itemsTarget.innerHTML = '';
     }
 
     this.render(data);
 
-    this.dispatch('paginate', { detail: { limit: limit, offset: offset, total: parseInt(this.countTarget.dataset.count, 10) } });
-    this.dispatch('heading', { detail: { total: parseInt(this.countTarget.dataset.count, 10), query: query, filters: !!filters } });
+    this.dispatch('paginate', { detail: { limit: this.params.limit, offset: this.params.offset, total: parseInt(this.countTarget.dataset.count, 10) } });
+    this.dispatch('heading', { detail: { total: parseInt(this.countTarget.dataset.count, 10), query: this.params.q, filters: !!this.params.filters } });
   }
 
   render(html) {
@@ -62,12 +88,14 @@ const EpisodesController = class extends Controller {
 
   tagSearch(e) {
     if (e.target.dataset.name) {
-      this.request(this.itemsValue, 0, e.target.dataset.name.toLowerCase());
+      this.setParams(this.itemsValue, 0, e.target.dataset.name.toLowerCase());
+      this.request();
     }
   }
 
   clearSearch() {
-    this.request(this.itemsValue, 0, '');
+    this.setParams(this.itemsValue, 0, '');
+    this.request();
   }
 
   clearFilters() {
@@ -77,15 +105,18 @@ const EpisodesController = class extends Controller {
 
   search(query) {
     this.queryValue = query;
-    this.request(this.itemsValue, 0, query);
+    this.setParams(this.itemsValue, 0, query);
+    this.request();
   }
 
   filter() {
-    this.request(this.itemsValue, 0);
+    this.setParams(this.itemsValue, 0);
+    this.request();
   }
 
   paginate({detail: { limit, offset }}) {
-    this.request(limit, offset, this.queryValue);
+    this.setParams(limit, offset, this.queryValue);
+    this.request();
   }
 };
 

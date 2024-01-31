@@ -12,7 +12,7 @@ const app = express();
 
 const env = nunjucks.configure(__dirname + '/src/views', {
     autoescape: true,
-    noCache: false,
+    noCache: true,
     express: app
 });
 

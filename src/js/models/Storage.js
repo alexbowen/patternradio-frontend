@@ -1,3 +1,14 @@
+export const getItem = (name, supported, ms) => {
+  console.log('real gi')
+  if (supported) {
+    return localStorage.getItem(name);
+  }
+  if (ms.hasOwn(name)) {
+    return ms[name];
+  }
+  return null;
+}
+
 const Storage = class {
   inMemoryStorage = {};
 
@@ -21,13 +32,7 @@ const Storage = class {
   }
 
   getItem(name) {
-    if (this.isSupported) {
-      return localStorage.getItem(name);
-    }
-    if (this.inMemoryStorage.hasOwn(name)) {
-      return this.inMemoryStorage[name];
-    }
-    return null;
+    return getItem(name, this.isSupported, this.inMemoryStorage);
   }
 
   key(index) {

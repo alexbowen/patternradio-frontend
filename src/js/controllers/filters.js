@@ -1,5 +1,5 @@
 import { Controller } from '@hotwired/stimulus';
-import Storage from '../models/Storage';
+import Storage from '../models/storage';
 
 const FiltersController = class extends Controller {
   static targets = ['nav', 'selected', 'groups', 'status', 'panel', 'indicator'];

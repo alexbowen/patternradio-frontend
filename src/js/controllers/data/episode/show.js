@@ -1,5 +1,5 @@
 import { Controller } from '@hotwired/stimulus';
-import Api from '../../../models/Api';
+import Api from '../../../models/api';
 
 const EpisodeController = class extends Controller {
 

@@ -5,7 +5,6 @@
   "engines": {
     "node": "18.x"
   },
-  "main": "index.js",
   "scripts": {
     "start": "node server.js",
     "css:build:dev": "nodemon --watch src/css --ext scss build.sass.js",
@@ -15,8 +14,6 @@
     "js:test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "dependencies": {
-    "@babel/core": "^7.19.1",
-    "@babel/preset-env": "^7.19.1",
     "@hotwired/stimulus": "^3.1.0",
     "bootstrap": "^5.2.0-beta1",
     "bootstrap-icons": "^1.9.1",
@@ -29,6 +26,9 @@
     "stimulus-data-bindings": "^1.3.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.23.9",
+    "@babel/preset-env": "^7.23.9",
+    "babel-jest": "^29.7.0",
     "eslint": "^8.56.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "got": "^11.3.0",
@@ -48,14 +48,14 @@
     "express"
   ],
   "license": "MIT",
-  "type": "module",
   "jest": {
     "testMatch": [
       "<rootDir>/src/js/**/*.test.js"
     ],
+    "moduleNameMapper": {
+      "@js(.*)$": "<rootDir>/src/js$1"
+    },
     "testEnvironment": "jest-environment-jsdom",
-    "transform": {
-      "\\.js$": "babel-jest"
-    }
+    "transform": {}
   }
 }

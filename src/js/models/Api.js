@@ -1,13 +1,21 @@
-const ApiModel = class {
+export const request = async (url, params = {}, responseType = 'json') => {
+  const request = await fetch(`${url}?${new URLSearchParams(params)}`);
+  return await request[responseType]();
+}
 
-  constructor(params = {}) {
-    this.params = params;
-  }
+// const Api = class {
 
-  async request(url, responseType = 'json') {
-    const response = await fetch(`${url}?${new URLSearchParams(this.params)}`);
-    return await response[responseType]();
-  }
+//   // constructor(params = {}) {
+//   //   // this.params = params;
+//   // }
+
+//   request(url, params = {}, responseType = 'json') {
+//     return request(url, params, responseType)
+//   }
+// };
+
+const api = {
+  request,
 };
 
-export default ApiModel;
+export default api;

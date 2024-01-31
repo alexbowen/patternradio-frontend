@@ -1,6 +1,6 @@
 import { Controller } from '@hotwired/stimulus';
-import Storage from '../../../models/Storage';
-import Api from '../../../models/Api';
+import Storage from '../../../models/storage';
+import Api from '../../../models/api';
 
 const PostsController = class extends Controller {
   static targets = ['title', 'content', 'published', 'items', 'count'];
