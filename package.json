@@ -12,7 +12,7 @@
     "js:build:dev": "nodemon --watch src/js esbuild.config.mjs",
     "js:build": "node esbuild.config.mjs",
     "js:lint": "eslint ./src/js",
-    "js:test": "node test.js"
+    "js:test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "dependencies": {
     "@babel/core": "^7.19.1",
@@ -32,6 +32,8 @@
     "eslint": "^8.56.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "got": "^11.3.0",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
     "nodemon": "^2.0.22",
     "sass": "^1.53.0",
     "tape": "^4.7.0"
@@ -45,5 +47,15 @@
     "heroku",
     "express"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "type": "module",
+  "jest": {
+    "testMatch": [
+      "<rootDir>/src/js/**/*.test.js"
+    ],
+    "testEnvironment": "jest-environment-jsdom",
+    "transform": {
+      "\\.js$": "babel-jest"
+    }
+  }
 }

@@ -7,16 +7,11 @@
     },
     "extends": "eslint:recommended",
     "globals": {
-        "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly",
+        "bootstrap": "readonly",
         "document": "readonly",
         "describe": "readonly",
         "test": "readonly",
-        "expect": "readonly",
-        "history": true,
-        "GOVUK": "readonly",
-        "dataLayer": "readonly",
-        "L": "readonly"
+        "expect": "readonly"
     },
     "parserOptions": {
         "ecmaVersion": "latest",
