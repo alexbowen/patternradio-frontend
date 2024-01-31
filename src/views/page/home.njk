@@ -3,20 +3,20 @@
 {% block content %}
 
   <div class="container-fluid">
-    <div class="row row__orange pb-3 pb-md-0">
+    <div class="row row--orange pb-3 pb-md-0">
       <div class="col-12 col-xl-4 pb-4">
         <div class="flex-fill">
           <h1>Musical selections and discovery curated for enlightened listening</h1>
         </div>
         <div class="d-flex flex-column">
-          <div class="flex-fill mb-3 content">
+          <div class="flex-fill mb-3 content-area">
             <h4 class="fs-2">Streaming Now</h4>
             <div data-controller="stream" data-action="stream:update->status#update">
               {% include "partial/_stream.njk" %}
             </div>
           </div>
 
-          <div class="flex-fill content">
+          <div class="flex-fill content-area">
             <div class="row pt-0">
               <div data-controller="status">
                 <h4 class="mb-1">Streaming Next</h4>
@@ -66,14 +66,14 @@
         </div>
       </div>
 
-      <div class="col-12 col-md-6 col-xl-4">
+      <div class="col-12 col-md-6 col-xl-4 pb-4">
         <div class="row g-0 p-0">
           <h3>Coming Soon</h3>
-          <div class="col-12 col-sm-5 content pb-2">
+          <div class="col-12 col-sm-5 content-area pb-2">
             <img src="images/shows/tropicaldisco.png" class="w-100" alt="Tropical Disco Goes Gospel"/>
           </div>
 
-          <div class="col-12 col-sm-7 ps-sm-0 content">
+          <div class="col-12 col-sm-7 ps-sm-0 content-area">
             <h4 class="fs-2">Tropical Disco</h4>
             <p>Pattern Radio favourite hosted by Chris Holt. This time with guest mix from Greg Belson with his unique brand of funk fuelled gospel sounds.</p>
             <p>Starts Friday 19th 7pm UTC.</p>
@@ -83,7 +83,7 @@
 
       <div class="col-12 col-md-6 col-xl-4">
         <h3>Recommended listening</h3>
-        <div class="episodes pb-2" id="latest" data-controller="episodes" data-episodes-template-value="carousel" data-episodes-title-value="listen to latest shows" data-episodes-items-value="2" data-episodes-show-tags-value="true">
+        <div class="episodes pb-2 content-area" id="latest" data-controller="episodes" data-episodes-template-value="carousel" data-episodes-title-value="listen to latest shows" data-episodes-items-value="2" data-episodes-show-tags-value="true">
           <div class="carousel slide" id="carouselexampleautoplaying" data-bs-ride="carousel">
             <div class="episodes carousel-inner" data-episodes-target="items"></div>
           </div>

@@ -7,11 +7,11 @@
 {% block content %}
 <div class="playable episode mb-3 carousel-item{% if loop.first %} active{% endif %}" data-bs-interval="4000" data-url="https://www.mixcloud.com/widget/iframe/?hide_cover=1&autoplay=1&feed={{ item.key }}">
   <div class="row g-0 p-0">
-    <div class="col-12 col-sm-6 content">
-      <div class="image-container w-100" data-action="click->radio#play">
+    <div class="col-12 col-sm-5">
+      <div class="episode__header" data-action="click->radio#play">
         <img src="{{ item.pictures.large }}" alt="{{ item.name }}" class="w-100" />
 
-        <div class="playable-button">
+        <div class="playable__button">
           <span class="button">
             <button></button>
           </span>
@@ -19,7 +19,7 @@
       </div>
     </div>
 
-    <div class="col-12 col-sm-6 py-0 py-sm-4 px-sm-0 content">
+    <div class="col-12 col-sm-7 ps-2">
       
       {% set title = showData(item.name).title %}
       {% if item.user.username === 'patternradio' %}

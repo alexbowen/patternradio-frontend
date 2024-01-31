@@ -23,7 +23,6 @@ const PaginationController = class extends Controller {
       const control = document.createElement('ul');
 
       for (let step = 1; step < numberLinks + 1; step++) {
-        
         let page = document.createElement('li');
         let link = document.createElement('button');
         link.dataset.limit = limit;

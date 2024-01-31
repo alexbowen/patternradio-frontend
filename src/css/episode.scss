@@ -1,24 +1,31 @@
 .episode {
-  .image-container {
+  &__header {
     position: relative;
     display: inline-block;
     border: 6px solid $brand-color-light;
+
+    .playable {
+      &__button {
+        top: 8px;
+        left: 8px;
+      }
+    }
 
     .statistics {
       background-color: $brand-color-light;
       font-size: 0.9rem;
 
-      .count {
+      &__count {
         padding-left: 1.3rem;
         background-position: left;
         background-repeat: no-repeat;
       }
 
-      .likes {
+      &__likes {
         background-image: url(/images/icons/heart.svg);
       }
 
-      .reposts {
+      &__reposts {
         background-image: url(/images/icons/repost.svg);
       }
     }
@@ -35,7 +42,7 @@
   }
 
   .card-body {
-    padding: 1rem 6px;
+    padding: 0.5rem;
     width: 100%;
   }
 
@@ -45,10 +52,8 @@
 }
 
 .playable {
-  &-button {
+  &__button {
     position: absolute;
-    top: 10px;
-    left: 10px;
     align-self: center;
 
     span {
@@ -57,7 +62,7 @@
       background-color: $brand-color-dark;
       display: inline-block;
       border-radius: 50%;
-      border: 2px solid white;
+      border: 2px solid $brand-color-white;
       position: relative;
     }
 
@@ -70,12 +75,6 @@
       border-width: 9px 0px 9px 16px;
       border-color: transparent transparent transparent rgba(255, 255, 255, 1);
       box-sizing: border-box;
-    }
-
-    img {
-      position: absolute;
-      top: 0;
-      left: 0;
     }
   }
 

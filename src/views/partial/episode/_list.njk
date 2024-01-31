@@ -6,7 +6,7 @@
 
 {% block content %}
   <div class="col-6 col-sm-4 col-xl-3 col-xxl-2 playable episode card" data-url="https://www.mixcloud.com/widget/iframe/?hide_cover=1&autoplay=1&feed={{ item.key }}">
-    <div class="image-container" data-action="click->radio#play">
+    <div class="episode__header" data-action="click->radio#play">
 
       <img
         srcset="{{ item.pictures.medium }} 100w, {{ item.pictures.large }} 300w"
@@ -15,7 +15,7 @@
         alt="{{ item.name }}"
         class="card-img-top" />
 
-      <div class="playable-button">
+      <div class="playable__button">
         <span class="button">
           <button></button>
         </span>
@@ -27,13 +27,13 @@
         </div>
 
       {% if item.favorite_count > 0 and item.user.username === 'patternradio' %}
-        <div class="likes count">
+        <div class="statistics__likes statistics__count">
           <span>{{item.favorite_count}}</span>
         </div>
       {% endif %}
 
       {% if item.repost_count > 0 and item.user.username === 'patternradio' %}
-        <div class="reposts count ms-2">
+        <div class="statistics__reposts statistics__count ms-2">
           <span>{{item.repost_count}}</span>
         </div>
       {% endif %}
