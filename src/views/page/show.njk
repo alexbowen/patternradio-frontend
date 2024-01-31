@@ -2,7 +2,7 @@
 
 {% block content %}
   <div data-show-id-value="{{ item.id }}">
-    <div class="container-fluid">
+    <div class="container-fluid gx-4 gx-sm-5">
       <div class="row episodes pb-4">
         <div class="col-12 col-md-6 card episode">
           <h3 class="mb-3">{{ item.title }}</h3>
@@ -21,10 +21,10 @@
     </div>
 
     <div class="list" id="episodes" data-action="episodes:paginate->pagination#update pagination:paginate->episodes#paginate" data-controller="episodes heading pagination" data-episodes-items-value="12" data-episodes-query-value="{{ item.title }}" data-episodes-types-value="true" data-episodes-search-value="true">
-      <div class="container-fluid pb-2">
+      <div class="container-fluid pb-2 gx-4 gx-sm-5">
         {% include "partial/list/_pagination.njk" %}
 
-        <div class="row episodes" data-episodes-target="items"></div>
+        <div class="row episodes gx-2 gx-sm-4 " data-episodes-target="items"></div>
         <a class="nav-link" href="/shows" data-controller="navigation" data-action="click->navigation#navigate">Back to all shows</a>
       </div>
     </div>

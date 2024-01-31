@@ -21,7 +21,6 @@
               <div data-controller="status">
                 <h4 class="mb-1">Streaming Next</h4>
                 <p data-status-target="track" class="mb-2">next</p>
-                <a href="#upcoming-shows" class="nav-link py-2 py-md-0">Streaming Soon</a>
               </div>
               {#
               <div class="col col-md-6">
@@ -67,14 +66,14 @@
         </div>
       </div>
 
-      <div class="col-12 col-md-6 col-xl-4 pb-4">
+      <div class="col-12 col-md-6 col-xl-4">
         <div class="row g-0 p-0">
           <h3>Coming Soon</h3>
           <div class="col-12 col-sm-5 content pb-2">
             <img src="images/shows/tropicaldisco.png" class="w-100" alt="Tropical Disco Goes Gospel"/>
           </div>
 
-          <div class="col-12 col-sm-7 content">
+          <div class="col-12 col-sm-7 ps-sm-0 content">
             <h4 class="fs-2">Tropical Disco</h4>
             <p>Pattern Radio favourite hosted by Chris Holt. This time with guest mix from Greg Belson with his unique brand of funk fuelled gospel sounds.</p>
             <p>Starts Friday 19th 7pm UTC.</p>
@@ -86,10 +85,6 @@
         <h3>Recommended listening</h3>
         <div class="episodes pb-2" id="latest" data-controller="episodes" data-episodes-template-value="carousel" data-episodes-title-value="listen to latest shows" data-episodes-items-value="2" data-episodes-show-tags-value="true">
           <div class="carousel slide" id="carouselexampleautoplaying" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-              <button type="button" data-bs-target="#carouselexampleindicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="slide 1"></button>
-              <button type="button" data-bs-target="#carouselexampleindicators" data-bs-slide-to="1" aria-label="slide 2"></button>
-            </div>
             <div class="episodes carousel-inner" data-episodes-target="items"></div>
           </div>
         </div>
@@ -104,7 +99,7 @@
           </div>
 
           <p class="mb-0">Click show to load in player</p>
-          <div class="row episodes" data-episodes-target="items"></div>
+          <div class="row episodes gx-3 gx-sm-4" data-episodes-target="items"></div>
           <a data-controller="navigation" data-action="click->navigation#navigate" class="nav-link" href="/browse">Browse all shows</a>
         </div>
       </div>

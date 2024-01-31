@@ -5,9 +5,15 @@
 {% endblock %}
 
 {% block content %}
-  <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 playable episode card" data-url="https://www.mixcloud.com/widget/iframe/?hide_cover=1&autoplay=1&feed={{ item.key }}">
+  <div class="col-6 col-sm-4 col-xl-3 col-xxl-2 playable episode card" data-url="https://www.mixcloud.com/widget/iframe/?hide_cover=1&autoplay=1&feed={{ item.key }}">
     <div class="image-container" data-action="click->radio#play">
-      <img src="{{ item.pictures.large }}" alt="{{ item.name }}" class="card-img-top"/>
+
+      <img
+        srcset="{{ item.pictures.medium }} 100w, {{ item.pictures.large }} 300w"
+        sizes="(max-width: 1200px) 100px, 300px"
+        src="{{ item.pictures.large }}"
+        alt="{{ item.name }}"
+        class="card-img-top" />
 
       <div class="playable-button">
         <span class="button">
@@ -39,7 +45,7 @@
       {% if item.user.username === 'patternradio' %}
 
         <h5 class="card-title">
-          <a data-controller="navigation" data-action="click->navigation#navigate" href="/episode/{{ item.slug }}" class="nav-link mb-1 fs-3">{{ showData(item.name).detail }}</a>
+          <a data-controller="navigation" data-action="click->navigation#navigate" href="/episode/{{ item.slug }}" class="nav-link mb-1">{{ showData(item.name).detail }}</a>
         </h5>
 
         <h5 class="card-title">
@@ -61,6 +67,5 @@
         {% endfor %}
       </ul>
     </div>
-
   </div>
 {% endblock %}
