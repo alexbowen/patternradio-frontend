@@ -1,4 +1,4 @@
-const routes = ['', 'home', 'browse', 'shows', 'show', 'posts', 'about', 'episode'];
+const routes = ['', 'home', 'browse', 'shows', 'show', 'posts', 'about', 'episode', 'live'];
 const APP_CONTAINER_ELEMENT = document.getElementById('spa-content-container');
 
 const Route = class {

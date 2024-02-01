@@ -54,6 +54,14 @@ app
   }
   res.render('page/home.njk', data)
 })
+.get('/page/live', (req, res) => {
+  let  data = {
+    page: 'live',
+    layout:  'layout.njk',
+    title: 'Live'
+  }
+  res.render('page/live.njk', data)
+})
 .get('/page/shows', (req, res) => {
   let  data = {
     page: 'shows',

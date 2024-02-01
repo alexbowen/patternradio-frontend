@@ -17,7 +17,7 @@
               {% if item.external %}
                 <a href="{{ item.external }}" class="nav-link" target="_blank">{{ item.title }}</a>
               {% else %}
-                <a data-controller="navigation" data-action="click->navigation#navigate" class="nav-link" href="/show/{{ item.id }}">{{ item.title }}</a>
+                <a data-action="click->navigation#navigate" class="nav-link" href="/show/{{ item.id }}">{{ item.title }}</a>
               {% endif %}
               </h4>
             <h4 class="host m-0 pt-1 fs-5">{{ item.subtitle }}</h4>
@@ -29,7 +29,7 @@
             {% if item.external %}
               <a href="{{ item.external }}" class="nav-link" target="_blank">View shows</a>
             {% else %}
-              <a data-controller="navigation" data-action="click->navigation#navigate" class="nav-link" href="/show/{{ item.id }}">View shows</a>
+              <a data-action="click->navigation#navigate" class="nav-link" href="/show/{{ item.id }}">View shows</a>
             {% endif %}
 
             <div class="social-toolbar">

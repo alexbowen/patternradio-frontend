@@ -2,6 +2,7 @@ import { Application } from '@hotwired/stimulus';
 
 import FiltersController from './filters';
 import HeaderController from './header';
+import LiveController from './live';
 import NavigationController from './navigation';
 import RadioController from './radio';
 import ScheduleController from './schedule';
@@ -24,6 +25,7 @@ window.Stimulus = application;
 
 application.register('filters', FiltersController);
 application.register('header', HeaderController);
+application.register('live', LiveController);
 application.register('navigation', NavigationController);
 application.register('radio', RadioController);
 application.register('schedule', ScheduleController);

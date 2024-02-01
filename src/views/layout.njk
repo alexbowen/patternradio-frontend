@@ -18,19 +18,22 @@
       <div class="collapse navbar-collapse pt-3 pt-md-0" id="navbarnavdropdown">
         <ul class="navbar-nav justify-content-end flex-grow-1">
           <li class="nav-item">
-            <a data-controller="navigation" data-action="click->navigation#navigate" class="nav-link {% if page === "home" %}active{% endif %}" aria-current="page" href="/home">Home</a>
+            <a data-action="click->navigation#navigate" class="nav-link {% if page === "home" %}active{% endif %}" aria-current="page" href="/home">Home</a>
           </li>
           <li class="nav-item">
-            <a data-controller="navigation" data-action="click->navigation#navigate" class="nav-link {% if page === "browse" %}active{% endif %}" aria-current="page" href="/browse">Browse</a>
+            <a data-action="click->navigation#navigate" class="nav-link {% if page === "browse" %}active{% endif %}" aria-current="page" href="/browse">Browse</a>
           </li>
           <li class="nav-item">
-            <a data-controller="navigation" data-action="click->navigation#navigate" class="nav-link {% if page === "shows" %}active{% endif %}" href="/shows">Shows</a>
+            <a data-action="click->navigation#navigate" class="nav-link {% if page === "shows" %}active{% endif %}" href="/shows">Shows</a>
           </li>
           <li class="nav-item">
-            <a data-controller="navigation" data-action="click->navigation#navigate" class="nav-link {% if page === "posts" %}active{% endif %}" href="/posts">Blog</a>
+            <a data-action="click->navigation#navigate" class="nav-link {% if page === "live" %}active{% endif %}" href="/live" data-external="true">Live</a>
           </li>
           <li class="nav-item">
-            <a data-controller="navigation" data-action="click->navigation#navigate" class="nav-link {% if page === "about" %}active{% endif %}" href="/about">About</a>
+            <a data-action="click->navigation#navigate" class="nav-link {% if page === "posts" %}active{% endif %}" href="/posts">Blog</a>
+          </li>
+          <li class="nav-item">
+            <a data-action="click->navigation#navigate" class="nav-link {% if page === "about" %}active{% endif %}" href="/about">About</a>
           </li>
         </ul>
       </div>

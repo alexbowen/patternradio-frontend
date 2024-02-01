@@ -45,14 +45,14 @@
       {% if item.user.username === 'patternradio' %}
 
         <h5 class="card-title">
-          <a data-controller="navigation" data-action="click->navigation#navigate" href="/episode/{{ item.slug }}" class="nav-link mb-1">{{ showData(item.name).detail }}</a>
+          <a data-action="click->navigation#navigate" href="/episode/{{ item.slug }}" class="nav-link mb-1">{{ showData(item.name).detail }}</a>
         </h5>
 
         <h5 class="card-title">
           {{showData(item.name).host}}
         </h5>
 
-        <a data-controller="navigation" data-action="click->navigation#navigate" href="/show/{{ showTitleId(title | trim) }}" class="nav-link fs-6">{{ showData(item.name).title }}</a>
+        <a data-action="click->navigation#navigate" href="/show/{{ showTitleId(title | trim) }}" class="nav-link fs-6">{{ showData(item.name).title }}</a>
 
       {% else %}
         <h5 class="card-title">{{ title }}</h5>
