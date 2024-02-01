@@ -7,7 +7,7 @@ const LiveController = class extends Controller {
   connect() {
     new Twitch.Embed(this.embedTarget, {
       width: '100%',
-      height: 600,
+      height: 800,
       channel: "patternradio",
     });
   }
