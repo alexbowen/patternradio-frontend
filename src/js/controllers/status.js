@@ -1,5 +1,5 @@
 import { Controller } from '@hotwired/stimulus';
-import { Manager } from "socket.io-client";
+import { io } from "socket.io-client";
 
 const StatusController = class extends Controller {
   static targets = ['track'];
@@ -21,11 +21,11 @@ const StatusController = class extends Controller {
 
     
 
-const manager = new Manager('wss://eventsub.wss.twitch.tv/ws');
+// const manager = new Manager('wss://eventsub.wss.twitch.tv/ws');
 
-const socket = manager.socket("/");
+const socket = io('wss://eventsub.wss.twitch.tv/ws');
 
-socket.io.on('message', (data) => {
+socket.on('message', (data) => {
   console.log('data', data);
 })
 
