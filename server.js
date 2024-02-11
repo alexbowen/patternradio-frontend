@@ -12,11 +12,43 @@ const app = express();
 
 const env = nunjucks.configure(__dirname + '/src/views', {
     autoescape: true,
-    noCache: false,
+    noCache: true,
     express: app
 });
 
 env.addGlobal('timeToMinutes', (d) => Math.floor(d * 1000 / 60000));
+
+
+
+// const ws = new WebSocket('wss://eventsub.wss.twitch.tv/ws');
+
+// ws.on('error', console.error);
+
+// ws.on('open', function open() {
+
+// });
+
+// ws.on('message', function message(data) {
+  
+//   console.log('received: %s', data);
+//   const json = JSON.parse(data);
+
+  
+
+//   const test = {
+//     "type": "stream.online",
+//     "version": "1",
+//     "condition": {
+//         "broadcaster_user_id": "1025729262"
+//     },
+//     "transport": {
+//         "method": "websocket",
+//         "session_id": json.payload.session.id
+//     }
+// };
+
+//   ws.send(JSON.stringify(test));
+// });
 
 /* next two functions temporary till look at rails app api */
 env.addGlobal('showData', (name) => {
