@@ -7,13 +7,11 @@
     display: inline;
     text-transform: capitalize;
 
-    button {
+    span {
+      @include font-size(0.6rem);
+      margin-right: 0;
       border: none;
       background-color: $brand-color-light;
-
-      &:hover {
-        text-decoration: underline;
-      }
     }
   }
 }

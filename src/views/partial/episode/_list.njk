@@ -59,10 +59,10 @@
         <p class="card-text">{{item.user.name}}</p>
       {% endif %}
 
-      <ul class="tags ps-0 mt-2" data-action="click->episodes#tagSearch">
+      <ul class="tags ps-0 mt-1" data-action="click->episodes#tagSearch">
         {% for tag in item.tags %}
           <li>
-            <button class="me-2 badge" data-name="{{ tag.name }}">{{ tag.name }}</button>
+            <span class="me-1 badge" data-name="{{ tag.name }}">{{ tag.name }}</span>
           </li>
         {% endfor %}
       </ul>
