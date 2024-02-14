@@ -1,21 +1,13 @@
-export const request = async (url, params = {}, responseType = 'json') => {
-  const request = await fetch(`${url}?${new URLSearchParams(params)}`);
-  return await request[responseType]();
-}
+const Api = class {
 
-// const Api = class {
+  constructor(params = {}) {
+    this.params = params;
+  }
 
-//   // constructor(params = {}) {
-//   //   // this.params = params;
-//   // }
-
-//   request(url, params = {}, responseType = 'json') {
-//     return request(url, params, responseType)
-//   }
-// };
-
-const api = {
-  request,
+  async request (url, responseType = 'json') {
+    const request = await fetch(`${url}?${new URLSearchParams(this.params)}`);
+    return await request[responseType]();
+  }
 };
 
-export default api;
+export default Api;

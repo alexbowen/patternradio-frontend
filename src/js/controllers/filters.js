@@ -1,5 +1,5 @@
 import { Controller } from '@hotwired/stimulus';
-import Storage from '../models/storage';
+import Storage from '../models/Storage';
 
 const FiltersController = class extends Controller {
   static targets = ['nav', 'selected', 'groups', 'status', 'panel', 'indicator'];
@@ -155,8 +155,12 @@ const FiltersController = class extends Controller {
   }
 
   filter() {
-    const targetController = this.application.getControllerForElementAndIdentifier(document.getElementById(this.targetValue), this.targetValue);
-    targetController.filter();
+    const targetEl = document.getElementById(this.targetValue);
+
+    if (targetEl) {
+      const targetController = this.application.getControllerForElementAndIdentifier(targetEl, this.targetValue);
+      targetController.filter();
+    }
   }
 };
 

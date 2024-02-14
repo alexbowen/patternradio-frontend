@@ -1,6 +1,6 @@
 import { Controller } from '@hotwired/stimulus';
-import Storage from '../../../models/storage';
-import api from '../../../models/api';
+import Storage from '../../../models/Storage';
+import Api from '../../../models/Api';
 
 const EpisodesController = class extends Controller {
 
@@ -16,15 +16,9 @@ const EpisodesController = class extends Controller {
     template: String
   };
 
-  // static MIXCLOUD_USERNAME = 'patternradio';
-
   static storage = new Storage;
-  static api = api;
-  // query = '';
 
   connect() {
-    console.log('contect')
-    // const query = this.queryValue ? this.queryValue : '';
     this.setParams(this.itemsValue, this.offsetValue || 0, this.queryValue);
     this.request();
   }
@@ -40,36 +34,17 @@ const EpisodesController = class extends Controller {
       this.params.template = this.templateValue;
     }
 
-    const filters = EpisodesController.storage.getItem('filters');
-
-    if (filters && this.filtersValue === true) {
-      this.params.filters = filters.split(',');
+    if (this.filtersValue === true) {
+      this.params.filters = this.getFilters().split(',');
     }
   }
 
+  getFilters() {
+    return EpisodesController.storage.getItem('filters');
+  }
+
   async request() {
-    // console.log('class request')
-    // const params = { limit, offset };
-
-    // if (this.searchValue === true && query.length) {
-    //   params.q = query;
-    // }
-
-    // if (this.templateValue) {
-    //   params.template = this.templateValue;
-    // }
-
-    // const filters = this.storage.getItem('filters');
-
-    // if (filters && this.filtersValue === true) {
-    //   params.filters = filters.split(',');
-    // }
-
-    // const api = new Api(params);
-    // console.log('EpisodesController', EpisodesController)
-    const data = await EpisodesController.api.request('/partial/episodes', this.params, 'text');
-
-    console.log('data', data)
+    const data = await this.getData();
 
     if (this.searchValue === true || this.params.q) {
       this.itemsTarget.innerHTML = '';
@@ -79,6 +54,11 @@ const EpisodesController = class extends Controller {
 
     this.dispatch('paginate', { detail: { limit: this.params.limit, offset: this.params.offset, total: parseInt(this.countTarget.dataset.count, 10) } });
     this.dispatch('heading', { detail: { total: parseInt(this.countTarget.dataset.count, 10), query: this.params.q, filters: !!this.params.filters } });
+  }
+
+  async getData() {
+    const api = new Api(this.params);
+    return await api.request('/partial/episodes', 'text');
   }
 
   render(html) {
