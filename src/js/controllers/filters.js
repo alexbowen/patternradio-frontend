@@ -1,6 +1,8 @@
 import { Controller } from '@hotwired/stimulus';
 import Storage from '../models/Storage';
 
+export const FILTERS_KEY = 'patternradio-filters';
+
 const FiltersController = class extends Controller {
   static targets = ['nav', 'selected', 'groups', 'status', 'panel', 'indicator'];
 
@@ -116,24 +118,30 @@ const FiltersController = class extends Controller {
 
   clear() {
     this.selected = [];
-    this.storage.setItem('filters', '');
+    this.storage.setItem(FILTERS_KEY, '');
     this.updateFilters();
     this.filter();
   }
 
   updateFilters() {   
-    if (!this.storage.getItem('filters')) {
-      this.storage.setItem('filters', '');
+    if (!this.storage.getItem(FILTERS_KEY)) {
+      this.storage.setItem(FILTERS_KEY, '');
     }
     
-    this.selected = this.storage.getItem('filters').length ? this.storage.getItem('filters').split(',') : [];
+    this.selected = this.storage.getItem(FILTERS_KEY).length ? this.storage.getItem(FILTERS_KEY).split(',') : [];
 
     document.querySelectorAll('.groups ul li').forEach(el => {
       el.classList.remove('selected');
     });
 
+    let selectedEl;
+
     this.selected.forEach(a => {
-      document.querySelector(`.groups ul li[data-filter='${a}']`).classList.add('selected');
+      selectedEl = document.querySelector(`.groups ul li[data-filter='${a}']`);
+
+      if (selectedEl) {
+        selectedEl.classList.add('selected');
+      }
     });
 
     this.statusTarget.innerHTML = this.selected.length ? `(${this.selected.length})` : '';
@@ -147,7 +155,7 @@ const FiltersController = class extends Controller {
       this.selected.push(e.target.innerHTML.toLowerCase());
     }
 
-    this.storage.setItem('filters', this.selected.join(','));
+    this.storage.setItem(FILTERS_KEY, this.selected.join(','));
 
     this.filter();
 

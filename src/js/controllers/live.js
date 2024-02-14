@@ -5,9 +5,6 @@ const LiveController = class extends Controller {
   static targets = ['embed'];
 
   connect() {
-
-    console.log('live connect')
-
     if (document.querySelector('.player-footer')) {
       document.querySelector('.player-footer').remove();
     }
@@ -15,7 +12,7 @@ const LiveController = class extends Controller {
     new Twitch.Embed(this.embedTarget, {
       width: '100%',
       height: 800,
-      channel: "patternradio",
+      channel: 'patternradio',
     });
   }
 };

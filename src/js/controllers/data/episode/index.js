@@ -1,6 +1,7 @@
 import { Controller } from '@hotwired/stimulus';
 import Storage from '../../../models/Storage';
 import Api from '../../../models/Api';
+import { FILTERS_KEY } from '../../filters';
 
 const EpisodesController = class extends Controller {
 
@@ -40,7 +41,7 @@ const EpisodesController = class extends Controller {
   }
 
   getFilters() {
-    return EpisodesController.storage.getItem('filters');
+    return EpisodesController.storage.getItem(FILTERS_KEY);
   }
 
   async request() {

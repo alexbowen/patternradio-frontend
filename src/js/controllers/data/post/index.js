@@ -1,6 +1,7 @@
 import { Controller } from '@hotwired/stimulus';
 import Storage from '../../../models/Storage';
 import Api from '../../../models/Api';
+import { FILTERS_KEY } from '../../filters';
 
 const PostsController = class extends Controller {
   static targets = ['title', 'content', 'published', 'items', 'count'];
@@ -41,7 +42,7 @@ const PostsController = class extends Controller {
   }
 
   getFilters() {
-    return PostsController.storage.getItem('filters');
+    return PostsController.storage.getItem(FILTERS_KEY);
   }
 
   async request() {

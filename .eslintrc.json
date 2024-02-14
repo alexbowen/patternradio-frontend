@@ -11,7 +11,8 @@
         "document": "readonly",
         "describe": "readonly",
         "test": "readonly",
-        "expect": "readonly"
+        "expect": "readonly",
+        "Twitch": "readonly"
     },
     "parserOptions": {
         "ecmaVersion": "latest",
