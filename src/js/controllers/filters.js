@@ -155,8 +155,12 @@ const FiltersController = class extends Controller {
   }
 
   filter() {
-    const targetController = this.application.getControllerForElementAndIdentifier(document.getElementById(this.targetValue), this.targetValue);
-    targetController.filter();
+    const targetEl = document.getElementById(this.targetValue);
+
+    if (targetEl) {
+      const targetController = this.application.getControllerForElementAndIdentifier(targetEl, this.targetValue);
+      targetController.filter();
+    }
   }
 };
 

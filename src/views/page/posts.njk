@@ -2,7 +2,7 @@
 
 {% block content %}
   <div class="container-fluid pt-4">
-    <div id="posts" data-action="posts:paginate->pagination#update pagination:paginate->posts#paginate" data-controller="posts pagination" data-posts-items-value="2" data-posts-offset-value="0" data-posts-filters-value="true" data-posts-show-tags-value="true">
+    <div id="posts" data-action="posts:paginate->pagination#update pagination:paginate->posts#paginate" data-controller="posts pagination" data-posts-items-value="2" data-posts-offset-value="0" data-posts-show-tags-value="true">
       <h3>Blog Posts</h3>
 
       {% include "partial/list/_pagination.njk" %}

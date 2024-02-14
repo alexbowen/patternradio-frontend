@@ -1,4 +1,5 @@
 import { Controller } from '@hotwired/stimulus';
+import Api from '../../../models/Api';
 
 const EpisodeController = class extends Controller {
 
@@ -12,12 +13,11 @@ const EpisodeController = class extends Controller {
     this.request();
   }
 
-  request() {
-    fetch(`/partial/episode/${this.idValue}`)
-      .then((response) => response.text())
-      .then((data) => {
-        this.render(data);
-      });
+  async request() {
+    const api = new Api();
+    const data = await api.request(`/partial/episode/${this.idValue}`, 'text');
+
+    this.render(data);
   }
 
   render(html) {
