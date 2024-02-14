@@ -12,20 +12,6 @@
     }
   }
 
-  .tag {
-    position: relative;
-
-    span {
-      position: absolute;
-      top: 0;
-      left: -2px;
-      line-height: 0;
-
-      display: none;
-      color: $brand-color-light;
-    }
-  }
-
   &-selected--none {
     padding: 0;
   }
@@ -82,12 +68,6 @@
   }
 
   .selected {
-    &:hover {
-      span {
-        display: block;
-      }
-    }
-
     button {
       background-color: $brand-color-primary;
       color: $brand-color-dark;
