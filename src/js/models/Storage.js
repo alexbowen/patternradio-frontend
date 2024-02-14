@@ -24,10 +24,10 @@ const Storage = class {
     if (this.isSupported) {
       return localStorage.getItem(name);
     }
-    if (this.inMemoryStorage.hasOwn(name)) {
+    if (Object.hasOwn(this.inMemoryStorage, name)) {
       return this.inMemoryStorage[name];
     }
-    return null;
+    return '';
   }
 
   key(index) {

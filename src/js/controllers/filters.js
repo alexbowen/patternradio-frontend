@@ -90,6 +90,7 @@ const FiltersController = class extends Controller {
       el.dataset.filter = a.toLowerCase();
 
       let button = clone.querySelector('button');
+      button.classList.add('badge');
       button.innerHTML = a;
     
       this.groupsTarget.appendChild(clone);
