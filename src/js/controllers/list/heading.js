@@ -7,16 +7,16 @@ const HeadingController = class extends Controller {
 
   connect() {}
 
-  update({detail: { total, query, filters }}) {
-    if (total > 0 && query.length) {
+  update({detail: { total, query, filters, title }}) {
+    if (total > 0 && query) {
       this.titleTarget.innerHTML = `Results Matching "${query}"`;
       this.preferencesTarget.classList.add('d-none');
-    } else if (total === 0 && query.length) {
+    } else if (total === 0 && query) {
       this.titleTarget.innerHTML = `No Results Matching "${query}"`;
       this.preferencesTarget.classList.add('d-none');
     } else {
-      this.titleTarget.innerHTML = 'Shows Available For Playback';
-      filters && !query.length ? this.preferencesTarget.classList.remove('d-none') : this.preferencesTarget.classList.add('d-none');
+      this.titleTarget.innerHTML = title;
+      filters && !query ? this.preferencesTarget.classList.remove('d-none') : this.preferencesTarget.classList.add('d-none');
     }
   }
 };

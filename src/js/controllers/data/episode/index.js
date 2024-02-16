@@ -14,7 +14,8 @@ const EpisodesController = class extends Controller {
     filters: Boolean,
     query: String,
     title: String,
-    template: String
+    template: String,
+    creator: String,
   };
 
   static storage = new Storage;
@@ -35,8 +36,12 @@ const EpisodesController = class extends Controller {
       this.params.template = this.templateValue;
     }
 
-    if (this.filtersValue === true) {
+    if (this.element.hasAttribute('data-filtered') && this.getFilters()) {
       this.params.filters = this.getFilters().split(',');
+    }
+
+    if (this.creatorValue) {
+      this.params.creator = this.creatorValue;
     }
   }
 
@@ -47,14 +52,14 @@ const EpisodesController = class extends Controller {
   async request() {
     const data = await this.getData();
 
-    if (this.searchValue === true || this.params.q) {
+    // if (this.searchValue === true || this.params.q) {
       this.itemsTarget.innerHTML = '';
-    }
+    // }
 
     this.render(data);
 
     this.dispatch('paginate', { detail: { limit: this.params.limit, offset: this.params.offset, total: parseInt(this.countTarget.dataset.count, 10) } });
-    this.dispatch('heading', { detail: { total: parseInt(this.countTarget.dataset.count, 10), query: this.params.q, filters: !!this.params.filters } });
+    this.dispatch('heading', { detail: { total: parseInt(this.countTarget.dataset.count, 10), query: this.params.q, filters: !!this.params.filters, title: this.titleValue } });
   }
 
   async getData() {

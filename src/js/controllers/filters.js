@@ -164,11 +164,13 @@ const FiltersController = class extends Controller {
   }
 
   filter() {
-    const targetEl = document.getElementById(this.targetValue);
-
-    if (targetEl) {
-      const targetController = this.application.getControllerForElementAndIdentifier(targetEl, this.targetValue);
-      targetController.filter();
+    const targets = document.querySelectorAll('[data-filtered="true"]');
+    if (targets) {
+      let targetController;
+      Array.from(targets).forEach((t) => {
+        targetController = this.application.getControllerForElementAndIdentifier(t, 'episodes');
+        targetController.filter();
+      });
     }
   }
 };

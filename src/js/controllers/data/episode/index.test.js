@@ -33,11 +33,11 @@ describe('EpisodesController', () => {
   });
 
   it('sets optional parameters', async () => {
-    await setHTML(html('data-episodes-filters-value="true" data-episodes-search-value="true" data-episodes-template-value="list"'));
+    await setHTML(html('data-filtered="true" data-episodes-search-value="true" data-episodes-template-value="list"'));
     episodesController = await getControllerInstance('episodes');
     expect(episodesController.params.filters).toEqual(['disco', ' reggae']);
     expect(episodesController.params.q).toEqual('');
     expect(episodesController.params.template).toEqual('list');
-    expect(getFiltersMock).toHaveBeenCalledTimes(1);
+    expect(getFiltersMock).toHaveBeenCalledTimes(2);
   });
 });

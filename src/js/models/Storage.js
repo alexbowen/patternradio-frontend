@@ -27,7 +27,7 @@ const Storage = class {
     if (Object.hasOwn(this.inMemoryStorage, name)) {
       return this.inMemoryStorage[name];
     }
-    return '';
+    return null;
   }
 
   key(index) {
