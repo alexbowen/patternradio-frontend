@@ -35,6 +35,10 @@ h3 {
   }
 }
 
+.spa-content-container {
+  margin-bottom: 100px;
+}
+
 .main-header {
   background-color: $brand-color-dark;
   color: $brand-color-medium;
@@ -90,6 +94,12 @@ h3 {
     text-decoration: underline;
   }
 
+  .carousel {
+    .carousel-control-next {
+      width: auto;
+    }
+  }
+
   .row {
     padding-top: 1.4rem;
 
@@ -108,6 +118,14 @@ h3 {
       .content-area {
         background-color: $brand-color-white;
         padding: 1rem;
+      }
+    }
+
+    .footer {
+      background-color: $brand-color-light;
+
+      p, a {
+        @include font-size(0.8rem);
       }
     }
   }
