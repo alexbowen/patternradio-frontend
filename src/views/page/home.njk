@@ -93,7 +93,21 @@
 
     <div class="row">
       <div class="col-12 mb-2">
-        <div class="order-lg-1 episodes list" id="episodes" data-controller="episodes heading" data-action="episodes:heading->heading#update" data-episodes-filters-value="true" data-episodes-items-value="6" data-episodes-offset-value="0" data-episodes-search-value="true">
+        <div class="order-lg-1 episodes list" id="episodes" data-controller="episodes heading" data-action="episodes:heading->heading#update" data-episodes-creator-value="internal" data-episodes-title-value="Pattern Radio Latest Shows" data-filtered="true" data-episodes-items-value="6" data-episodes-offset-value="0">
+          <div class="heading d-flex">
+            {% include "partial/list/_heading.njk" %}
+          </div>
+
+          <p class="mb-0">Click show to load in player</p>
+          <div class="row episodes gx-3 gx-sm-4" data-episodes-target="items"></div>
+          <a data-action="click->navigation#navigate" class="nav-link" href="/browse">Browse all shows</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 mb-2">
+        <div class="order-lg-1 episodes list" id="episodes" data-controller="episodes heading" data-action="episodes:heading->heading#update" data-episodes-creator-value="external" data-episodes-title-value="Other Recommended Shows" data-filtered="true" data-episodes-items-value="6" data-episodes-offset-value="0">
           <div class="heading d-flex">
             {% include "partial/list/_heading.njk" %}
           </div>
