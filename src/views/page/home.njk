@@ -6,9 +6,10 @@
     <div class="row row--orange mb-3 mb-md-0">
       <div class="col-12 col-xl-4 pb-4">
         <div class="flex-fill">
-          <h1>Musical selections and discovery curated for enlightened listening</h1>
+          <h1>Musical selections and discovery for enlightened listening</h1>
         </div>
         <div class="d-flex flex-column">
+        {% if onAir() %}
           <div class="flex-fill mb-3 content-area">
             <h4 class="fs-2">Streaming Now</h4>
             <div data-controller="stream" data-action="stream:update->status#update">
@@ -18,13 +19,18 @@
 
           <div class="flex-fill content-area">
             <div class="row pt-0">
-              <div data-controller="status">
+              <div>
                 <h4 class="mb-1">Streaming Next</h4>
-                <p data-status-target="track" class="mb-2">next</p>
+                <p data-status-target="track" class="mb-2">7pm Roots & Culture Reggae Show</p>
               </div>
-
             </div>
           </div>
+        {% else %}
+          <div class="episodes  content-area" id="episodes" data-controller="episodes" data-episodes-template-value="item" data-episodes-creator-value="internal" data-filtered="true" data-episodes-items-value="1" data-episodes-offset-value="{{ [1,2,3,4,5,6,7,8,9] | random }}">
+            <h4 class="mb-1">Listen Now</h4>
+            <div class="episodes gx-3 gx-sm-4" data-episodes-target="items"></div>
+          </div>
+        {% endif %}
         </div>
       </div>
 
@@ -44,11 +50,11 @@
       <div class="col-12 col-md-6 col-xl-4 pb-4">
         <div class="row g-0 p-0">
           <h3>Coming Soon</h3>
-          <div class="col-12 col-sm-5 content-area pb-2">
+          <div class="col-12 col-sm-4 content-area pb-2">
             <img src="images/shows/skullmonday.jpg" class="w-100" alt="Skull Monday on Pattern Radio"/>
           </div>
 
-          <div class="col-12 col-sm-7 ps-sm-0 content-area">
+          <div class="col-12 col-sm-8 ps-sm-0 content-area">
             <h4 class="fs-2">Return of Skull Monday</h4>
             <p class="mb-1">Sunday 25th February</p>
             <p>Skull Monday is back this weekend as Heyyo B and Opo-wan return from their winter travels.<p>
@@ -98,6 +104,7 @@
 
     </div>
 
+{% if onAir() %}
     <div class="col-12 mb-5">
       <div id="upcoming-shows" data-controller="schedule" data-schedule-show-item-template-id="schedule">
         <div class="row episodes" data-schedule-target="episodes">
@@ -108,6 +115,7 @@
 
       </div>
     </div>
+    {% endif %}
   </div>
 </div>
 
