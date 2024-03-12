@@ -67,6 +67,14 @@ app
   }
   res.render('page/home.njk', data)
 })
+.get('/page/andrew-weatherall-tribute', (req, res) => {
+  let  data = {
+    page: 'special',
+    layout:  'layout.njk',
+    title: 'Andrew Weatherall Tribute'
+  }
+  res.render('page/special.njk', data)
+})
 .get('/page/live', (req, res) => {
   let  data = {
     page: 'live',
