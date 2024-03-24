@@ -19,16 +19,18 @@ const env = nunjucks.configure(__dirname + '/src/views', {
 env.addGlobal('timeToMinutes', (d) => Math.floor(d * 1000 / 60000));
 
 env.addGlobal('onAir', () => {
-  const d = new Date();
-  const bdays = [5,6,7];
+  // const d = new Date();
+  // const bdays = [5,6,7];
   
-  let day = d.getDay();
+  // let day = d.getDay();
 
-  if (bdays.includes(day)) {
-    return true;
-  }
+  // if (bdays.includes(day)) {
+  //   return true;
+  // }
 
-  return false;
+  // return false;
+
+  return true
 });
 
 /* next two functions temporary till look at rails app api */
