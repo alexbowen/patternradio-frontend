@@ -24,7 +24,7 @@ env.addGlobal('onAir', () => {
   
   let day = d.getDay();
 
-  if ((d.getHours() >= 14 || d.getHours() <= 6) && bdays.includes(day)) {
+  if ((d.getHours() >= 12 || d.getHours() <= 6) && bdays.includes(day)) {
     return true;
   }
 
