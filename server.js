@@ -19,6 +19,8 @@ const env = nunjucks.configure(__dirname + '/src/views', {
 env.addGlobal('timeToMinutes', (d) => Math.floor(d * 1000 / 60000));
 
 env.addGlobal('onAir', () => {
+  return true;
+  
   const d = new Date();
   const bdays = [5,6,7];
   
