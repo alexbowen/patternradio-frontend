@@ -4,7 +4,16 @@ const RadioController = class extends Controller {
   static targets = ['player'];
 
   connect() {
-    this.broadcastPlayer('https://embed.radio.co/player/b84cf70.html');
+    const d = new Date();
+    const bdays = [5,6,7];
+    
+    let day = d.getDay();
+  
+    if ((d.getHours() >= 14 || d.getHours() <= 6) && bdays.includes(day)) {
+      this.broadcastPlayer('https://embed.radio.co/player/b84cf70.html');
+    }
+  
+    return false;
   }
 
   play(e) {
